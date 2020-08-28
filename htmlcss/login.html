@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <style>
+
+      body {
+        font-family: 'Roboto';font-size: 16px;
+        line-height: 150%;
+      }
+
+      .taskbar {
+        height: 2em;
+        width: 100%;
+        margin-top: 0px;
+        margin-bottom: 2em;
+        background-color: #3F3D56;
+      }
+
+      .logincontainer {
+        width: 500px;
+        margin: auto;
+      }
+
+      .logocontainer {
+        margin: auto;
+        width: 50%;
+      }
+
+      .logocontainer img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .namecontainer {
+        margin: auto;
+        text-align: center;
+      }
+
+      .namecontainer h1 {
+        font-size: 4em;
+      }
+
+      .descriptioncontainer {
+        margin: auto;
+        width: 50%;
+        text-align: center;
+      }
+
+      .formcontainer {
+        display: block;
+        margin: auto;
+        width: inherit;
+        height: auto;
+      }
+
+      .forminput {
+        display: block;
+        margin: auto;
+        width: 55%;
+        height: auto;
+      }
+
+      .forminput input {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 2px solid #E9E9E9;
+        border-radius: 4px;
+        background-color: #E9E9E9;
+        box-sizing: border-box;
+        transition-duration: 0.4s;
+        cursor: pointer;
+      }
+
+      .forminput input:hover {
+        border: 2px solid black;
+      }
+
+      .btncontainer {
+        margin: auto;
+        width: 60%;
+        display: block;
+      }
+
+      .button {
+        color: black;
+        background-color: white;
+        border: 2px solid white;
+        border-radius: 4px;
+        padding: 4px 12px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        }
+
+      .button:hover {
+        border: 2px solid black;
+      }
+
+        #btnsignin {
+          float: left;
+        }
+
+        #btnregister {
+          float: right;
+        }
+    </style>
+  </head>
+
+  <body>
+    <!-- Taskbar -->
+    <div class="taskbar">
+    </div>
+
+    <div class="logincontainer">
+
+      <!-- logo -->
+      <div class="logocontainer">
+        <img src="logo.png" alt="Logo" style="width:200px">
+      </div>
+
+      <!-- Name -->
+      <div class="namecontainer">
+        <h1>LayerTech</h1>
+      </div>
+
+      <!-- Description -->
+      <div class="descriptioncontainer">
+            An inventory and stock management web application for your farm
+      </div>
+      <br>
+
+      <form autocomplete="off">
+        <!-- Login Fields -->
+        <div class="formcontainer">
+          <div class="forminput">
+            <input type="text" id="quantity" placeholder="Username">
+          </div>
+          <div class="forminput">
+            <input type="password" id="quantity" placeholder="Password">
+          </div>
+        </div>
+        <br>
+
+        <!-- Buttons -->
+        <div class="btncontainer">
+          <button class="button" id="btnsignin">Sign In</button>
+          <button class="button" id="btnregister">Register</button>
+        </div>
+      </form>
+
+    </div>
+
+  </body>
+</html>
