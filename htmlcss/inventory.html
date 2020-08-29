@@ -11,16 +11,29 @@
         line-height: 150%;
       }
 
-      form {
-        width: 960px;
-        margin: auto;
-      }
-
       input {
+        font-family: 'Roboto';
+        font-size: 16px;
+        line-height: 150%;
         background-color: #E5E5E5;
         border: none;
         padding: 4px;
         width: 275px;
+        border: 2px solid #E9E9E9;
+        border-radius: 4px;
+      }
+
+      .taskbar {
+        height: 2em;
+        width: 100%;
+        margin-top: 0px;
+        margin-bottom: 2em;
+        background-color: #3F3D56;
+      }
+
+      .inventorycontainer {
+        width: 960px;
+        margin: auto;
       }
 
       .headercontainer {
@@ -50,6 +63,7 @@
         display: inline-block;
         width: inherit;
         height: auto;
+        margin-bottom: 0.33em;
       }
 
       .description {
@@ -118,9 +132,21 @@
       .dropdown:hover .dropbtn {
       }
 
+      .inputcontainer {
+        width: 500px;
+        margin: auto;
+      }
+
+      .inputcontainer input {
+        background-color: #E5E5E5;
+        border: none;
+        padding: 4px;
+        width: 275px;
+      }
+
       .formcontainer {
         display: inline-block;
-        width: inherit;
+        width: 100%;
         height: auto;
       }
 
@@ -157,13 +183,13 @@
         color: white;
       }
 
-      #summarybtn {
+      #btngeneratesummary {
         background-color: #2F5400;
         color: white;
         border: 2px solid #2F5400;
       }
 
-      #summarybtn:hover {
+      #btngeneratesummary:hover {
         background-color: #2F5400;
         color: black;
         border: 2px solid #2F5400;
@@ -175,31 +201,96 @@
         width: 100%;
       }
 
-      .inventory {
+      .inventorytable {
         overflow-x:auto;
-      }
-
-      .inventory {
         width:100%;
       }
 
-      .inventory th {
+      .inventorytable th {
       	background-color:  #C4C4C4;
       }
 
-      .inventory th, td {
+      .inventorytable th, td {
         text-align: left;
         padding: 8px;
         overflow: auto;
-        width: 14%; /* 960px / 7 */
+        width: 14%;
+      }
+
+      /*Modal*/
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+      }
+
+      .addmodal {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border-radius: 1em;
+        width: 640px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
+      }
+
+      @-webkit-keyframes animatetop {
+        from {top:-300px; opacity:0}
+        to {top:0; opacity:1}
+      }
+
+      @keyframes animatetop {
+        from {top:-300px; opacity:0}
+        to {top:0; opacity:1}
+      }
+
+      .close {
+        color: black;
+        position:absolute;
+        top:0.33em;
+        right:0.5em;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        cursor: pointer;
+      }
+
+      .modalbody {
+        padding: 2px 16px;
+      }
+
+      .modalbtncontainer {
+        margin: auto;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
       }
 
     </style>
   </head>
 
   <body>
-    <form>
 
+    <!-- Taskbar -->
+    <div class="taskbar">
+    </div>
+
+    <div class="inventorycontainer">
       <div class="headercontainer">
         <div class="headerleft">
           <h1>Inventory</h1>
@@ -211,24 +302,21 @@
 
       <div class="descriptioncontainer">
         <div class="description">
-            <p>
               Add a short description about this page. Add a short description
               about this page. Add a short description about this page. Add a
                short description about this page.
-            </p>
         </div>
       </div>
-      <br>
 
       <div class="toolcontainer">
         <div class="toolleft">
           <div class="btncontainer">
-            <button class="button" id="addbtn">Add an Item</button>
+            <button class="button" id="btnadditemmodal">Add a Product</button>
           </div>
         </div>
         <div class="toolleft">
           <div class="btncontainer">
-            <button class="button" id="summarybtn">Generate Summary</button>
+            <button class="button" id="btngeneratesummary">Generate Summary</button>
           </div>
         </div>
         <div class="toolright">
@@ -244,8 +332,8 @@
       </div>
       <br>
 
-      <div class "inventorycontainer">
-        <table class="inventory">
+      <form>
+        <table class="inventorytable">
           <col style="background-color: #FAFA87;"/>
           <tr>
             <th>PD NO.</th>
@@ -284,10 +372,114 @@
             <td>67</td>
           </tr>
         </table>
+      </form>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="modalbg" class="modal">
+      <!-- Modal Content -->
+      <div class="addmodal">
+        <!-- Modal Close Button -->
+        <span class="close">&times;</span>
+        <br>
+        <!-- Modal Form -->
+        <div class="modalbody">
+          <!-- Modal Add Item Fields -->
+          <div class="inputcontainer">
+            <h1>Add a Product</h1>
+            <form autocomplete="off">
+              <!-- Product Name -->
+              <div class="formcontainer">
+                <div class="formlabel">
+                  Product Name
+                </div>
+                <div class="forminput">
+                  <input type="text" id="productname">
+                </div>
+              </div>
+              <br>
+
+              <!-- Quantity -->
+              <div class="formcontainer">
+                <div class="formlabel">
+                  Quantity
+                </div>
+                <div class="forminput">
+                  <input type="number" id="quantity">
+                </div>
+              </div>
+              <br>
+
+              <!-- Cost -->
+              <div class="formcontainer">
+                <div class="formlabel">
+                  Cost (per item)
+                </div>
+                <div class="forminput">
+                  <input type="number" id="cost">
+                </div>
+              </div>
+              <br>
+
+              <!-- Date Bought -->
+              <div class="formcontainer">
+                <div class="formlabel">
+                  Date Bought
+                </div>
+                <div class="forminput">
+                  <input type="date" id="datebought">
+                </div>
+              </div>
+              <br>
+
+              <!-- Expiry -->
+              <div class="formcontainer">
+                <div class="formlabel">
+                  Expiry
+                </div>
+                <div class="forminput">
+                  <input type="date" id="expiry">
+                </div>
+              </div>
+              <br>
+
+              <!-- Notes -->
+              <div class="formcontainer">
+                <div class="formlabel">
+                  Notes
+                </div>
+                <div class="forminput">
+                  <input type="text" id="notes">
+                </div>
+              </div>
+              <br>
+            </form>
+            <!-- Modal Button -->
+            <div class="modalbtncontainer">
+              <button type="submit" class="button" id="btnadditem">Add</button>
+            </div>
+          </div>
+          <br>
+        </div>
       </div>
-    </form>
+    </div>
 
-
+    <script>
+      var modal = document.getElementById("modalbg");
+      var btn = document.getElementById("btnadditemmodal");
+      var span = document.getElementsByClassName("close")[0];
+      btn.onclick = function() {
+        modal.style.display = "block";
+      }
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    </script>
 
   </body>
 </html>
