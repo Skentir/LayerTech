@@ -4,8 +4,83 @@
     <link rel="stylesheet" href="/public/css/login.css">
 {{/section}}
 
-<div>
-    <p>Hello World</p>
-    <p>Pizza Mozzarella</p>
+<div class="container" >
+    <div class="full-wrapper">
+        <div class="login-box">
+            <img src="public/assets/nature.svg" style="max-width:280px; height:auto">
+            <p>LayerTech</p>
+            <span name="description">An inventory and stock management web application for your farm by Qualiprime</span>
+            <form name="login">
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <img src="/public/assets/user.svg" alt="email field" height="24" width="24"/>
+                        </span>
+                    </div>
+                    <input type="email" class="form-control" placeholder="Email">
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <img src="/public/assets/password.svg" alt="password field" height="24" width="24"/>
+                        </span>
+                    </div>
+                    <input type="password" class="form-control" placeholder="Password">
+                </div>
+                <div>
+                    <button type="submit" id="sign-in-btn" class="btn prim-btn">Sign In</button>
+                    <a href="#" data-toggle="modal" data-target="#register-modal">
+                        <span>I don't have an account</span>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
+
+<!-- Registration Modal -->
+<div class="modal fade" role="dialog" id="register-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="login-box">
+                <p>Register</p>
+                <img src="public/assets/join.svg" style="max-width:280px; height:auto">
+                <form name="register" class="pt-3">
+                    <div class="row">
+                        <div class="col-sm pl-0 pr-1">
+                            <div class="form-group">
+                                <label for="fname">First Name</label>
+                                <input type="text" class="form-control" name="fname">
+                            </div>
+                        </div>
+                        <div class="col-sm pl-1 pr-0">
+                            <div class="form-group">
+                                <label for="fname">Last Name</label>
+                                <input type="text" class="form-control" name="fname">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="reg-email">Email Address</label>
+                            <input type="email" class="form-control" name="reg-email">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="reg-pwd">Password</label>
+                            <input type="password" class="form-control" name="reg-pwd">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="reg-comp-name">Business Name</label>
+                            <input type="text" class="form-control" name="reg-comp-name">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
