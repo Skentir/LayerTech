@@ -1,6 +1,7 @@
 body {
     background-color: darkslategray;
 }
+
 .full-wrapper {
     height: 100%;
     display: flex;
@@ -15,7 +16,7 @@ body {
     display: block;
     text-align: center;
     border-radius: 6px;
-    border: 1px solid ##afaeae;
+    border: 1px solid #afaeae;
     -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
