@@ -28,7 +28,7 @@ const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
     var params = {
-        layout: 'main'
+        layout: 'login'
       }
     res.render('login', params)
 })
@@ -39,6 +39,15 @@ app.get('/home', (req, res) => {
       }
     res.render('dashboard', params)
 })
+
+
+app.get('/inventory', (req, res) => {
+    var params = {
+        layout: 'main',
+      }
+    res.render('inventory', params)
+})
+
   app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })
