@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <style>
+      body {
+        font-family: 'Roboto';
+        font-size: 16px;
+        line-height: 150%;
+      }
+
+      .taskbar {
+        height: 2em;
+        width: 100%;
+        margin-top: 0px;
+        margin-bottom: 2em;
+        background-color: #3F3D56;
+      }
+
+      .logincontainer {
+        width: 500px;
+        margin: auto;
+      }
+
+      .logocontainer {
+        margin: auto;
+        width: 50%;
+      }
+
+      .logocontainer img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .namecontainer {
+        margin: auto;
+        text-align: center;
+      }
+
+      .namecontainer h1 {
+        font-size: 4em;
+      }
+
+      .descriptioncontainer {
+        margin: auto;
+        width: 50%;
+        text-align: center;
+      }
+
+      .formcontainer {
+        display: block;
+        margin: auto;
+        width: inherit;
+        height: auto;
+      }
+
+      .forminput, .modalforminput {
+        display: block;
+        margin: auto;
+        width: 55%;
+        height: auto;
+      }
+
+      .forminput input {
+        font-family: 'Roboto';
+        font-size: 16px;
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 2px solid #E9E9E9;
+        border-radius: 4px;
+        background-color: #E9E9E9;
+        box-sizing: border-box;
+        transition-duration: 0.4s;
+      }
+
+      .forminput input:hover {
+        border: 2px solid black;
+      }
+
+      .btncontainer {
+        margin: auto;
+        width: 60%;
+        display: block;
+      }
+
+      .button {
+        color: black;
+        background-color: white;
+        border: 2px solid white;
+        border-radius: 4px;
+        padding: 4px 12px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        }
+
+      .button:hover {
+        border: 2px solid black;
+      }
+
+      #btnsignin {
+        float: left;
+      }
+
+      #btnregistermodal {
+        float: right;
+      }
+
+      /*Modal*/
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+      }
+
+      .registermodal {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border-radius: 1em;
+        width: 500px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
+      }
+
+      @-webkit-keyframes animatetop {
+        from {top:-300px; opacity:0}
+        to {top:0; opacity:1}
+      }
+
+      @keyframes animatetop {
+        from {top:-300px; opacity:0}
+        to {top:0; opacity:1}
+      }
+
+      .close {
+        color: black;
+        position:absolute;
+        top:0.33em;
+        right:0.5em;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        cursor: pointer;
+      }
+
+      .modalbody {
+        padding: 2px 16px;
+      }
+
+      .modalforminput input {
+        font-family: 'Roboto';
+        font-size: 16px;
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 2px solid #E9E9E9;
+        border-radius: 4px;
+        background-color: #E9E9E9;
+        box-sizing: border-box;
+        transition-duration: 0.4s;
+      }
+
+      .modalforminput input:focus,
+      .modalforminput input:hover {
+        border: 2px solid #E9E9E9;
+      }
+
+      .modalbtncontainer {
+        margin: auto;
+        width: 60%;
+        display: flex;
+        justify-content: center;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <!-- Taskbar -->
+    <div class="taskbar">
+    </div>
+
+    <div class="logincontainer">
+
+      <!-- logo -->
+      <div class="logocontainer">
+        <img src="logo.png" alt="Logo" style="width:200px">
+      </div>
+
+      <!-- Name -->
+      <div class="namecontainer">
+        <h1>LayerTech</h1>
+      </div>
+
+      <!-- Description -->
+      <div class="descriptioncontainer">
+            An inventory and stock management web application for your farm
+      </div>
+      <br>
+
+      <form autocomplete="off">
+        <!-- Login Fields -->
+        <div class="formcontainer">
+          <div class="forminput">
+            <input type="text" id="quantity" placeholder="Username">
+          </div>
+          <div class="forminput">
+            <input type="password" id="quantity" placeholder="Password">
+          </div>
+        </div>
+        <br>
+
+        <!-- Buttons -->
+        <div class="btncontainer">
+          <button type="submit "class="button" id="btnsignin">Sign In</button>
+          <button type="button" class="button" id="btnregistermodal">Register</button>
+        </div>
+      </form>
+
+      <!-- Register Modal -->
+      <div id="modalbg" class="modal">
+        <!-- Modal Content -->
+        <div class="registermodal">
+          <!-- Modal Close Button -->
+          <span class="close">&times;</span>
+          <br>
+          <!-- Modal Name -->
+          <div class="namecontainer">
+            <h2>Create An Account</h2>
+          </div>
+          <!-- Modal Form -->
+          <div class="modalbody">
+            <form autocomplete="off">
+              <!-- Modal Register Fields -->
+              <div class="formcontainer">
+                <div class="modalforminput">
+                  <label for="registerusername">Username</label>
+                  <input type="text" id="registerusername" >
+                </div>
+                <div class="modalforminput">
+                  <label for="registerpassword">Password</label>
+                  <input type="password" id="registerpassword">
+                </div>
+                <div class="modalforminput">
+                  <label for="registerconfirmpassword">Confirm Password</label>
+                  <input type="password" id="registerconfirmpassword">
+                </div>
+              </div>
+              <!-- Modal Button -->
+              <div class="modalbtncontainer">
+                <button type="button" class="button" id="btnregister">Create Account</button>
+              </div>
+              <br>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        var modal = document.getElementById("modalbg");
+        var btn = document.getElementById("btnregistermodal");
+        var span = document.getElementsByClassName("close")[0];
+        btn.onclick = function() {
+          modal.style.display = "block";
+        }
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+    </script>
+  </body>
+</html>
