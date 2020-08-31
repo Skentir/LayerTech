@@ -1,0 +1,12 @@
+.header-name {
+    color: white;
+    font-weight: 400;
+    font-size: 50px;
+}
+
+.custom-jumbotron {
+    background: linear-gradient(rgb(99 255 140 / 50%), rgb(158 226 176 / 50%)),
+            url("../assets/birshtadt.jpg");
+    background-position: center center;
+    background-size: cover;
+}

@@ -32,7 +32,13 @@ app.get('/', (req, res) => {
       }
     res.render('login', params)
 })
-  
+
+app.get('/home', (req, res) => {
+    var params = {
+        layout: 'main',
+      }
+    res.render('dashboard', params)
+})
   app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })
