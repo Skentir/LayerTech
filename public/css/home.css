@@ -10,3 +10,40 @@
     background-position: center center;
     background-size: cover;
 }
+
+.adjustment {
+    padding: 0px 30px;
+}
+
+.alerts ul {
+    padding-left: 0;
+}
+
+.alerts li {
+    display: block;
+    padding: 15px 25px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.adjustment div > p {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.col-sm {
+    background: linear-gradient(rgb(99 255 140 / 50%), rgb(158 226 176 / 50%)),
+    url("../assets/birshtadt.jpg");
+    background-position: center center;
+    background-size: cover;
+    border-radius: 6px;
+    min-height: 200px;
+    margin: 0px 10;
+    display: flex;
+    color: white;
+    font-weight: 700;
+}
+
+.col-sm > span {
+    margin: auto;
+}
