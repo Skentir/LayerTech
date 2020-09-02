@@ -33,6 +33,36 @@ app.get('/', (req, res) => {
     res.render('login', params)
 })
   
+
+app.get('/home', (req, res) => {
+    var params = {
+        layout: 'main',
+      }
+    res.render('dashboard', params)
+})
+
+
+app.get('/inventory', (req, res) => {
+    var params = {
+        layout: 'main',
+      }
+    res.render('inventory', params)
+})
+
+app.get('/raw', (req, res) => {
+  var params = {
+      layout: 'main',
+    }
+  res.render('raw', params)
+})
+
+app.get('/transactions', (req, res) => {
+  var params = {
+      layout: 'main',
+    }
+  res.render('transactions', params)
+})
+
   app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })
