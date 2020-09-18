@@ -11,6 +11,7 @@ const flash = require('connect-flash');
 const MongoStore = require('connect-mongo')(session);
 
 const indexRouter = require('./routes/index');
+const userRouter = require('./routes/userRoutes');
 
 const port = 3000;
 const app = express();
@@ -57,5 +58,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/',indexRouter);
+app.use('/', userRouter);
+
 app.use('/home',indexRouter);
 app.use('/inventory',indexRouter);

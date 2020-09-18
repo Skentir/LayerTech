@@ -7,17 +7,17 @@
 <div class="container" >
     <div class="full-wrapper">
         <div class="login-box">
-            <img src="assets/nature.svg" style="max-width:280px; height:auto">
+            <img src="assets/logo.png" style="max-width:280px; height:auto; border-radius: 0px 50px 0px 50px;">
             <p>LayerTech</p>
             <span name="description">An inventory and stock management web application for your farm by Qualiprime</span>
-            <form name="login">
+            <form name="login" action="/home" method="get">
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">
                             <img src="assets/user.svg" alt="email field" height="24" width="24"/>
                         </span>
                     </div>
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="email" class="form-control" placeholder="Email" name='log-em'>
                 </div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
@@ -25,7 +25,7 @@
                             <img src="/assets/password.svg" alt="password field" height="24" width="24"/>
                         </span>
                     </div>
-                    <input type="password" class="form-control" placeholder="Password">
+                    <input type="password" class="form-control" placeholder="Password" name='log-pass'>
                 </div>
                 <div>
                     <button type="submit" id="sign-in-btn" class="btn prim-btn">Sign In</button>
@@ -43,42 +43,46 @@
 <div class="modal fade" role="dialog" id="register-modal">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="login-box">
-                <p>Register</p>
+            <div class="register-box">
                 <img src="assets/join.svg" style="max-width:280px; height:auto">
-                <form name="register" class="pt-3">
+                {{> messages}}
+                <form method='POST' class="pt-3" name="register" action='/register'>
                     <div class="row">
-                        <div class="col-sm pl-0 pr-1">
-                            <div class="form-group">
-                                <label for="fname">First Name</label>
-                                <input type="text" class="form-control" name="fname">
-                            </div>
-                        </div>
-                        <div class="col-sm pl-1 pr-0">
-                            <div class="form-group">
-                                <label for="fname">Last Name</label>
-                                <input type="text" class="form-control" name="fname">
-                            </div>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" name="name"  required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group">
-                            <label for="reg-email">Email Address</label>
-                            <input type="email" class="form-control" name="reg-email">
+                            <label for="contNo">Contact No.</label>
+                            <input type="text" class="form-control" name="contNo"  required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" class="form-control" name="email"  required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group">
                             <label for="reg-pwd">Password</label>
-                            <input type="password" class="form-control" name="reg-pwd">
+                            <input type="password" class="form-control" name="pwd"  required>
                         </div>
+                        <div class="form-group">
+                            <label for="reg-pwd1">Confirm Password</label>
+                            <input type="password" class="form-control" name="pwd1" required>
+                        </div>
+                        
                     </div>
                     <div class="row">
                         <div class="form-group">
-                            <label for="reg-comp-name">Business Name</label>
-                            <input type="text" class="form-control" name="reg-comp-name">
+                            <label for="compName">Business Name</label>
+                            <input type="text" class="form-control" name="compName" required>
                         </div>
                     </div>
+                    <button type="submit" id="sign-in-btn" class="btn prim-btn form-control">Register</button>
                 </form>
             </div>
         </div>
