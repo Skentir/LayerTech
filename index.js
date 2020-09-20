@@ -58,7 +58,10 @@ app.use((req, res, next) => {
 });
 
 app.use('/',indexRouter);
+
 app.use('/', userRouter);
+app.use('/login',userRouter);
+
 
 app.use('/home',indexRouter);
 app.use('/inventory',indexRouter);

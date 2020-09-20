@@ -10,14 +10,15 @@
             <img src="assets/logo.png" style="max-width:280px; height:auto; border-radius: 0px 50px 0px 50px;">
             <p>LayerTech</p>
             <span name="description">An inventory and stock management web application for your farm by Qualiprime</span>
-            <form name="login" action="/home" method="get">
+            <form method='post' action='/login'>
+                {{> messages}}
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">
                             <img src="assets/user.svg" alt="email field" height="24" width="24"/>
                         </span>
                     </div>
-                    <input type="email" class="form-control" placeholder="Email" name='log-em'>
+                    <input type="email" class="form-control" placeholder="Email" name='username'>
                 </div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
@@ -25,10 +26,10 @@
                             <img src="/assets/password.svg" alt="password field" height="24" width="24"/>
                         </span>
                     </div>
-                    <input type="password" class="form-control" placeholder="Password" name='log-pass'>
+                    <input type="password" class="form-control" placeholder="Password" name='password'>
                 </div>
+                <button type="submit" id="sign-in-btn" class="btn prim-btn">Sign In</button>
                 <div>
-                    <button type="submit" id="sign-in-btn" class="btn prim-btn">Sign In</button>
                     <a href="#" data-toggle="modal" data-target="#register-modal">
                         <span>I don't have an account</span>
                     </a>
@@ -45,7 +46,6 @@
         <div class="modal-content">
             <div class="register-box">
                 <img src="assets/join.svg" style="max-width:280px; height:auto">
-                {{> messages}}
                 <form method='POST' class="pt-3" name="register" action='/register'>
                     <div class="row">
                         <div class="form-group">
