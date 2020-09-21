@@ -1,11 +1,11 @@
-const mongoose = require('./connection');
+  const mongoose = require('./connection');
 
 const productSchema = new mongoose.Schema({
     _id : mongoose.Schema.Types.ObjectId,
     stockID :[{type:mongoose.Schema.Types.ObjectID}, ref:'stock'],
     productName : String,
     expirationDate : Date,
-    dateAdded : Date,
+    dateBought : Date,
     Quantity : Number,
     basePrice : Number,
     sellingPrice : Number

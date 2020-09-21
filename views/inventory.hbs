@@ -89,7 +89,7 @@
     </form>
 </div>
 
-<!-- Register Modal -->
+<!-- Add Product Modal -->
 <div id="modalbg" class="modal">
     <!-- Modal Content -->
     <div class="addmodal">
@@ -124,10 +124,21 @@
             </div>
             <br>
 
-            <!-- Cost -->
+            <!-- Base Price -->
             <div class="formcontainer">
             <div class="formlabel">
-                Cost (per item)
+                Base Price (per item)
+            </div>
+            <div class="forminput">
+                <input type="number" id="cost">
+            </div>
+            </div>
+            <br>
+
+            <!-- Selling Price -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Selling Price
             </div>
             <div class="forminput">
                 <input type="number" id="cost">
@@ -157,13 +168,104 @@
             </div>
             <br>
 
+            <br>
+        </form>
+        <!-- Modal Button -->
+        <div class="modalbtncontainer">
+            <button type="submit" class="button" id="btnadditem">Add</button>
+        </div>
+        </div>
+        <br>
+    </div>
+    </div>
+</div>
+
+<!-- Update Product Modal -->
+<div id="modalbg" class="modal">
+    <!-- Modal Content -->
+    <div class="addmodal">
+    <!-- Modal Close Button -->
+    <span class="close">&times;</span>
+    <br>
+    <!-- Modal Form -->
+    <div class="modalbody">
+        <!-- Modal Add Item Fields -->
+        <div class="inputcontainer">
+        <h1>Update Product</h1>
+        <form autocomplete="off">
+            <!-- Product Name -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Product Name
+            </div>
+            <div class="forminput">
+                <input type="text" id="updateproductname">
+            </div>
+            </div>
+            <br>
+
+            <!-- Quantity -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Quantity
+            </div>
+            <div class="forminput">
+                <input type="number" id="updatequantity">
+            </div>
+            </div>
+            <br>
+
+             <!-- Base Price -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Base Price (per item)
+            </div>
+            <div class="forminput">
+                <input type="number" id="updatecost">
+            </div>
+            </div>
+            <br>
+
+            <!-- Selling Price -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Selling Price
+            </div>
+            <div class="forminput">
+                <input type="number" id="updatecost">
+            </div>
+            </div>
+            <br>
+
+            <!-- Date Bought -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Date Bought
+            </div>
+            <div class="forminput">
+                <input type="date" id="updatedatebought">
+            </div>
+            </div>
+            <br>
+
+            <!-- Expiry -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Expiry
+            </div>
+            <div class="forminput">
+                <input type="date" id="updateexpiry">
+            </div>
+            </div>
+            <br>
+
             <!-- Notes -->
             <div class="formcontainer">
             <div class="formlabel">
                 Notes
             </div>
             <div class="forminput">
-                <input type="text" id="notes">
+                <input type="text" id="updatenotes">
             </div>
             </div>
             <br>
