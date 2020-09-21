@@ -1,0 +1,302 @@
+<<<<<<< Updated upstream
+=======
+{{#section 'header'}}
+    <title>Inventory</title>
+    <!--     CSS -->
+    <link rel="stylesheet" href="css/tables.css">
+{{/section}}
+
+<div class="inventorycontainer">
+    <div class="headercontainer">
+    <div class="headerleft">
+        <h1>Inventory</h1>
+    </div>
+    <div class="headerright">
+        <p><span>Actual Products</span></p>
+    </div>
+    </div>
+
+    <div class="descriptioncontainer">
+    <div class="description">
+            Add a short description about this page. Add a short description
+            about this page. Add a short description about this page. Add a
+            short description about this page.
+    </div>
+    </div>
+
+    <div class="toolcontainer">
+    <div class="toolleft">
+        <div class="btncontainer">
+        <button class="button" id="btnadditemmodal">Add a Product</button>
+        </div>
+    </div>
+    <div class="toolleft">
+        <div class="btncontainer">
+        <button class="button" id="btngeneratesummary">Generate Summary</button>
+        </div>
+    </div>
+    <div class="toolright">
+        <div class="dropdown">
+        <button class="dropbtn">Filter By</button>
+        <div class="dropdown-content">
+        <a href="#">abcdefg</a>
+        <a href="#">abcdefg</a>
+        <a href="#">abcdefg</a>
+        </div>
+        </div>
+    </div>
+    </div>
+    <br>
+
+    <form>
+    <table class="inventorytable">
+        <col style="background-color: #FAFA87;"/>
+        <tr>
+        <th>PD NO.</th>
+        <th>PRODUCT NAME</th>
+        <th>QUANTITY</th>
+        <th>COST</th>
+        <th>DATE BOUGHT</th>
+        <th>EXPIRY</th>
+        <th>NOTES</th>
+        </tr>
+        <tr>
+        <td>Jill</td>
+        <td>Smith</td>
+        <td>50</td>
+        <td>50</td>
+        <td>50</td>
+        <td>50</td>
+        <td>50</td>
+        </tr>
+        <tr>
+        <td>Eve</td>
+        <td>Jackson</td>
+        <td>94</td>
+        <td>94</td>
+        <td>94</td>
+        <td>94</td>
+        <td>94</td>
+        </tr>
+        <tr>
+        <td>Adam</td>
+        <td>Johnson</td>
+        <td>67</td>
+        <td>67</td>
+        <td>67</td>
+        <td>67</td>
+        <td>67</td>
+        </tr>
+    </table>
+    </form>
+</div>
+
+<!-- Register Modal -->
+<div id="modalbg" class="modal">
+    <!-- Modal Content -->
+    <div class="addmodal">
+    <!-- Modal Close Button -->
+    <span class="close">&times;</span>
+    <br>
+    <!-- Modal Form -->
+    <div class="modalbody">
+        <!-- Modal Add Item Fields -->
+        <div class="inputcontainer">
+        <h1>Add a Product</h1>
+        <form autocomplete="off">
+            <!-- Product Name -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Product Name
+            </div>
+            <div class="forminput">
+                <input type="text" id="productname">
+            </div>
+            </div>
+            <br>
+
+            <!-- Quantity -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Quantity
+            </div>
+            <div class="forminput">
+                <input type="number" id="quantity">
+            </div>
+            </div>
+            <br>
+
+            <!-- Base Price -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Base Price (per item)
+            </div>
+            <div class="forminput">
+                <input type="number" id="cost">
+            </div>
+            </div>
+            <br>
+
+            <!-- Selling Price -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Selling Price
+            </div>
+            <div class="forminput">
+                <input type="number" id="cost">
+            </div>
+            </div>
+            <br>
+
+            <!-- Date Bought -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Date Bought
+            </div>
+            <div class="forminput">
+                <input type="date" id="datebought">
+            </div>
+            </div>
+            <br>
+
+            <!-- Expiry -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Expiry
+            </div>
+            <div class="forminput">
+                <input type="date" id="expiry">
+            </div>
+            </div>
+            <br>
+
+            <br>
+        </form>
+        <!-- Modal Button -->
+        <div class="modalbtncontainer">
+            <button type="submit" class="button" id="btnadditem">Add</button>
+        </div>
+        </div>
+        <br>
+    </div>
+    </div>
+</div>
+
+<!-- Update Product Modal -->
+<div id="modalbg" class="modal">
+    <!-- Modal Content -->
+    <div class="addmodal">
+    <!-- Modal Close Button -->
+    <span class="close">&times;</span>
+    <br>
+    <!-- Modal Form -->
+    <div class="modalbody">
+        <!-- Modal Add Item Fields -->
+        <div class="inputcontainer">
+        <h1>Update Product</h1>
+        <form autocomplete="off">
+            <!-- Product Name -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Product Name
+            </div>
+            <div class="forminput">
+                <input type="text" id="updateproductname">
+            </div>
+            </div>
+            <br>
+
+            <!-- Quantity -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Quantity
+            </div>
+            <div class="forminput">
+                <input type="number" id="updatequantity">
+            </div>
+            </div>
+            <br>
+
+             <!-- Base Price -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Base Price (per item)
+            </div>
+            <div class="forminput">
+                <input type="number" id="updatecost">
+            </div>
+            </div>
+            <br>
+
+            <!-- Selling Price -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Selling Price
+            </div>
+            <div class="forminput">
+                <input type="number" id="updatecost">
+            </div>
+            </div>
+            <br>
+
+            <!-- Date Bought -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Date Bought
+            </div>
+            <div class="forminput">
+                <input type="date" id="updatedatebought">
+            </div>
+            </div>
+            <br>
+
+            <!-- Expiry -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Expiry
+            </div>
+            <div class="forminput">
+                <input type="date" id="updateexpiry">
+            </div>
+            </div>
+            <br>
+
+            <!-- Notes -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Notes
+            </div>
+            <div class="forminput">
+                <input type="text" id="updatenotes">
+            </div>
+            </div>
+            <br>
+        </form>
+        <!-- Modal Button -->
+        <div class="modalbtncontainer">
+            <button type="submit" class="button" id="btnadditem">Add</button>
+        </div>
+        </div>
+        <br>
+    </div>
+    </div>
+</div>
+
+<script>
+    var modal = document.getElementById("modalbg");
+    var btn = document.getElementById("btnadditemmodal");
+    var span = document.getElementsByClassName("close")[0];
+    btn.onclick = function() {
+    modal.style.display = "block";
+    }
+    span.onclick = function() {
+    modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+    }
+</script>
+
+>>>>>>> Stashed changes
