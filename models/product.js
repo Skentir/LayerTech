@@ -2,7 +2,7 @@
 
 const productSchema = new mongoose.Schema({
     _id : mongoose.Schema.Types.ObjectId,
-    stockID :[{type:mongoose.Schema.Types.ObjectID}, ref:'stock'],
+    stockID :[{type:mongoose.Schema.Types.ObjectID, ref:'stock'}],
     productName : String,
     expirationDate : Date,
     dateBought : Date,
