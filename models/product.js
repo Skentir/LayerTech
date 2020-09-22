@@ -6,7 +6,7 @@ const productSchema = new mongoose.Schema({
     productName : String,
     expirationDate : Date,
     dateBought : Date,
-    Quantity : Number,
+    quantity : Number,
     basePrice : Number,
     sellingPrice : Number
 },{
@@ -18,6 +18,6 @@ const productSchema = new mongoose.Schema({
         }
 });
 
-const adminModel = mongoose.model('admin', adminSachema);
+//const adminModel = mongoose.model('admin', adminSachema);
 
 module.exports = mongoose;

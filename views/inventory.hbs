@@ -58,33 +58,18 @@
         <th>EXPIRY</th>
         <th>NOTES</th>
         </tr>
-        <tr>
-        <td>Jill</td>
-        <td>Smith</td>
-        <td>50</td>
-        <td>50</td>
-        <td>50</td>
-        <td>50</td>
-        <td>50</td>
+
+        {{#each product}}
+        <tr id={{this._id}}>
+            <td>{{this.productName}}</td>
+            <td>{{this.expirationDate}}</td>
+            <td>{{this.dateBought}}</td>
+            <td>{{this.quantity}}</td>
+            <td>{{this.basePrice}}</td>
+            <td>{{this.sellingPrice}}</td>
         </tr>
-        <tr>
-        <td>Eve</td>
-        <td>Jackson</td>
-        <td>94</td>
-        <td>94</td>
-        <td>94</td>
-        <td>94</td>
-        <td>94</td>
-        </tr>
-        <tr>
-        <td>Adam</td>
-        <td>Johnson</td>
-        <td>67</td>
-        <td>67</td>
-        <td>67</td>
-        <td>67</td>
-        <td>67</td>
-        </tr>
+        {{/each}}
+
     </table>
     </form>
 </div>

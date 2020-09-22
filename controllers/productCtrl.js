@@ -6,6 +6,35 @@ const userModel = require('../models/product');
 
 const {validationResult} = require('express-validator');
 
+  // _id : mongoose.Schema.Types.ObjectId,
+  // productName : String,
+  // expirationDate : Date,
+  // dateBought : Date,
+  // quantity : Number,
+  // basePrice : Number,
+  // sellingPrice : Number
+
+exports.getProducts = function(req, res) {
+  products.find({})
+    .exec(function(err, result){
+      if (err)
+        res.send(err);
+      else if (!result)
+        res.send(err);
+      else 
+        params = {
+          layout: 'main',
+          productName: result.productName,
+          expirationDate: result.expirationDate,
+          dateBought: result.dateBought,
+          quantity: result.quantity,
+          basePrice: result.basePrice,
+          sellingPrice:result.sellingPrice,
+        }
+        res.send(products);
+    })
+}
+
 
 exports.editProduct = (req, res, next) => {
   
@@ -24,7 +53,8 @@ exports.editProduct = (req, res, next) => {
 //   basePrice : Number,
 //   sellingPrice : Number
 
-  userModel.getAndUpdate(
+
+  product.getAndUpdate(
     { _id: req.session.product },
     { productName: req.body.productName },
     { new: true },
