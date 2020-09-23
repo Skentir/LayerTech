@@ -1,4 +1,4 @@
-  const mongoose = require('./connection');
+const mongoose = require('./connection');
 
 const productSchema = new mongoose.Schema({
     _id : mongoose.Schema.Types.ObjectId,
@@ -18,17 +18,5 @@ const productSchema = new mongoose.Schema({
         }
 });
 
-const productModel = mongoose.model('prod', productSchema);
+module.exports = mongoose.model('product', productSchema, 'products');
 
-exports.getAllProducts = function(sort, next){
-    productModel.find({}).sort(sort).exec(function(err,result){
-       if(err) throw err;
-        var productObjects = [];
-        
-        result.forEach(function(doc){
-           productObjects.push(doc.toObject()); 
-        });
-        
-        next(productObjects);
-    });
-}
