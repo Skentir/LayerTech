@@ -2,7 +2,7 @@
 
 const bcrypt = require('bcrypt');
 
-const userModel = require('../models/product');
+const prodModel = require('../models/product');
 
 const {validationResult} = require('express-validator');
 
@@ -13,9 +13,9 @@ const {validationResult} = require('express-validator');
   // quantity : Number,
   // basePrice : Number,
   // sellingPrice : Number
-
+/*
 exports.getProducts = function(req, res) {
-  products.find({})
+  prodModel.find({})
     .exec(function(err, result){
       if (err)
         res.send(err);
@@ -33,6 +33,19 @@ exports.getProducts = function(req, res) {
         }
         res.send(products);
     })
+}*/
+
+exports.getAllProducts = function(sort, next){
+  productModel.find({}).sort(sort).exec(function(err,result){
+     if(err) throw err;
+      var productObjects = [];
+      
+      result.forEach(function(doc){
+         productObjects.push(doc.toObject()); 
+      });
+      
+      next(productObjects);
+  });
 }
 
 

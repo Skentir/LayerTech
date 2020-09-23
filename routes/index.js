@@ -12,12 +12,6 @@ router.get('/home', (req,res)=>{
     });
 });
 
-router.get('/inventory', (req,res) =>{
-   res.render('inventory',{
-       layout : 'main'
-   })
-});
-
 module.exports = router;
 
 
