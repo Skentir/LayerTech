@@ -30,4 +30,3 @@ exports.getOne = function(query, next) {
     next(err, user);
   });
 };
-

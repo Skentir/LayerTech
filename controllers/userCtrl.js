@@ -6,17 +6,17 @@ const {validationResult} = require('express-validator');
 
 exports.registerUser = function(req,res){
   const errors = validationResult(req);
-    
+
     if(errors.isEmpty()){
         const {name, contNo, email, pwd, compName} = req.body;
-        
+
         userModel.getOne({email : email}, function(err, result){
            if(result){
                req.flash('error_msg', 'Email already used');
                res.redirect('/');
            } else{
                const saltRounds = 10;
-               
+
                bcrypt.hash(pwd, saltRounds, function(err, hashed){
                    const newUser = {
                        name,
@@ -40,7 +40,7 @@ exports.registerUser = function(req,res){
         });
     }else{
         const messages = errors.array().map((item) => item.msg);
-        
+
         req.flash('error_msg', messages.join(' '));
         res.redirect('/');
     }
