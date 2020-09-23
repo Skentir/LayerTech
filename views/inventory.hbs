@@ -67,6 +67,9 @@
             <td>{{this.quantity}}</td>
             <td>{{this.basePrice}}</td>
             <td>{{this.sellingPrice}}</td>
+            <td>
+                 <button class="button lauchUpdate" type="button" data-toggle="modal" data-target="#updateModal">Update</button>
+            </td>
         </tr>
         {{/each}}
 
@@ -75,7 +78,7 @@
 </div>
 
 <!-- Add Product Modal -->
-<div id="modalbg" class="modal">
+<div id="addProductModal" class="modal">
     <!-- Modal Content -->
     <div class="addmodal">
     <!-- Modal Close Button -->
@@ -166,11 +169,11 @@
 </div>
 
 <!-- Update Product Modal -->
-<div id="modalbg" class="modal">
+<div id="updateModal" class="modal" data-backdrop="false">
     <!-- Modal Content -->
     <div class="addmodal">
     <!-- Modal Close Button -->
-    <span class="close">&times;</span>
+    <span class="close" data-dismiss="modal">&times;</span>
     <br>
     <!-- Modal Form -->
     <div class="modalbody">
@@ -257,7 +260,7 @@
         </form>
         <!-- Modal Button -->
         <div class="modalbtncontainer">
-            <button type="submit" class="button" id="btnadditem">Add</button>
+            <button type="submit" class="button" id="btnUpdateItem">Add</button>
         </div>
         </div>
         <br>
@@ -266,7 +269,7 @@
 </div>
 
 <script>
-    var modal = document.getElementById("modalbg");
+    var modal = document.getElementById("addProductModal");
     var btn = document.getElementById("btnadditemmodal");
     var span = document.getElementsByClassName("close")[0];
     btn.onclick = function() {
