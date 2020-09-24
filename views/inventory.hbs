@@ -3,9 +3,8 @@
     <!--     CSS -->
     <link rel="stylesheet" href="css/tables.css">
     <!-- JS -->
-    
+    <script src="addProduct.js"></script>
 {{/section}}
-
 <div class="inventorycontainer">
     <div class="headercontainer">
     <div class="headerleft">
@@ -289,23 +288,5 @@
 -->
 <script>
     // UPDATE PRODUCT
-    $(".launchUpdate").click(function(){
-       var itemID = $(this).data('id');
-
-     $.ajax({
-           type: "GET",
-           url: "/getItemDetails/"+itemID,
-         }).done(function(data) {
-             var parsedData = JSON.parse(JSON.stringify(data));
-             console.log(parsedData);
-             $("#updateproductname").val(parsedData[0].productName);
-             $("#updatequantity").val(parsedData[0].quantity);
-             $("#updatecost").val(parsedData[0].cost);
-             $("#updatebaseprice").val(parsedData[0].basePrice);
-             $("#updatesellingprice").val(parsedData[0].sellingPrice);
-             $("#updateexpiry").val(parsedData[0].expirationDate);
-         }).fail(function(){
-             alert("Can't fetch this item.")
-         });
-     });
+  
 </script>

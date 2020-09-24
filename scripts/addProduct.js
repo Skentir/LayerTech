@@ -2,19 +2,43 @@
 $(document).ready(function() {
 
      // UPDATE PRODUCT
-     $(".launchUpdate").click(function(){
-        console.log("Update btn launch");
-        var itemID = $(this).data('id');
+    //  $(".launchUpdate").click(function(){
+    //     console.log("Update btn launch");
+    //     var itemID = $(this).data('id');
 
+    //   $.ajax({
+    //         type: "GET",
+    //         url: "/getItemDetails/"+itemID,
+    //       }).done(function(data) {
+    //           alert("This item is " + data.productName)
+    //       }).fail(function(){
+    //           alert("Can't fetch this item.")
+    //       });
+    //   });
+
+      // UPDATE PRODUCT
+    $(".launchUpdate").click(function(){
+        var itemID = $(this).data('id');
+ 
       $.ajax({
             type: "GET",
             url: "/getItemDetails/"+itemID,
           }).done(function(data) {
-              alert("This item is " + data.productName)
+              var parsedData = JSON.parse(JSON.stringify(data));
+              console.log(parsedData);
+              $("#updateproductname").val(parsedData[0].productName);
+              $("#updatequantity").val(parsedData[0].quantity);
+              $("#updatecost").val(parsedData[0].cost);
+              $("#updatebaseprice").val(parsedData[0].basePrice);
+              $("#updatesellingprice").val(parsedData[0].sellingPrice);
+              
+              var parseDate = parsedData[0].expirationDate
+              $("#updateexpiry").val(parseDate);
+              
           }).fail(function(){
               alert("Can't fetch this item.")
           });
-      });
+        });
     /*
     // ADD PRODUCT 
     function addProduct(item, parentDiv){

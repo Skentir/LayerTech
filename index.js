@@ -37,6 +37,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.use(express.static('public'));
+app.use(express.static('scripts'));
 
 app.listen(port, function() {
     console.log('App listening at port ' + port);
