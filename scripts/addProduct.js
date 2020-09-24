@@ -1,9 +1,22 @@
-{/* <div class="modalbtncontainer">
-        <button type="submit" class="button" id="btnadditem">Add</button>
-    </div> */}
 
 $(document).ready(function() {
 
+     // UPDATE PRODUCT
+     $(".launchUpdate").click(function(){
+        console.log("Update btn launch");
+        var itemID = $(this).data('id');
+
+      $.ajax({
+            type: "GET",
+            url: "/getItemDetails/"+itemID,
+          }).done(function(data) {
+              alert("This item is " + data.productName)
+          }).fail(function(){
+              alert("Can't fetch this item.")
+          });
+      });
+    /*
+    // ADD PRODUCT 
     function addProduct(item, parentDiv){
         var rowDiv = document.createElement('div');
         var idCol = document.createElement('div');
@@ -84,6 +97,6 @@ $(document).ready(function() {
             var productListContainer = $('#productList');
             addProduct(data, productListContainer);
         });
-
     });
+    */
 });

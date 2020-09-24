@@ -2,6 +2,8 @@
     <title>Inventory</title>
     <!--     CSS -->
     <link rel="stylesheet" href="css/tables.css">
+    <!-- JS -->
+    
 {{/section}}
 
 <div class="inventorycontainer">
@@ -60,7 +62,7 @@
         </tr>
 
         {{#each products}}
-        <tr id={{this._id}}>
+        <tr>
             <td>{{this.productName}}</td>
             <td>{{this.expirationDate}}</td>
             <td>{{this.dateBought}}</td>
@@ -68,7 +70,7 @@
             <td>{{this.basePrice}}</td>
             <td>{{this.sellingPrice}}</td>
             <td>
-                 <button class="button lauchUpdate" type="button" data-toggle="modal" data-target="#updateModal">Update</button>
+                 <button class="button launchUpdate" data-id={{this._id}} type="button" data-toggle="modal" data-target="#updateModal">Update</button>
             </td>
         </tr>
         {{/each}}
@@ -209,7 +211,7 @@
                 Base Price (per item)
             </div>
             <div class="forminput">
-                <input type="number" id="updatecost">
+                <input type="number" id="updatebaseprice">
             </div>
             </div>
             <br>
@@ -220,7 +222,7 @@
                 Selling Price
             </div>
             <div class="forminput">
-                <input type="number" id="updatecost">
+                <input type="number" id="updatesellingprice">
             </div>
             </div>
             <br>
@@ -267,7 +269,7 @@
     </div>
     </div>
 </div>
-
+<!--
 <script>
     var modal = document.getElementById("addProductModal");
     var btn = document.getElementById("btnadditemmodal");
@@ -283,4 +285,27 @@
         modal.style.display = "none";
     }
     }
+</script>
+-->
+<script>
+    // UPDATE PRODUCT
+    $(".launchUpdate").click(function(){
+       var itemID = $(this).data('id');
+
+     $.ajax({
+           type: "GET",
+           url: "/getItemDetails/"+itemID,
+         }).done(function(data) {
+             var parsedData = JSON.parse(JSON.stringify(data));
+             console.log(parsedData);
+             $("#updateproductname").val(parsedData[0].productName);
+             $("#updatequantity").val(parsedData[0].quantity);
+             $("#updatecost").val(parsedData[0].cost);
+             $("#updatebaseprice").val(parsedData[0].basePrice);
+             $("#updatesellingprice").val(parsedData[0].sellingPrice);
+             $("#updateexpiry").val(parsedData[0].expirationDate);
+         }).fail(function(){
+             alert("Can't fetch this item.")
+         });
+     });
 </script>

@@ -18,8 +18,10 @@ const productSchema = new mongoose.Schema({
         }
 });
 
-const productModel = mongoose.model('products', productSchema);
+module.exports = mongoose.model('products', productSchema);
 
+// THIS SHOULD BE IN THE CONTROLLER
+/*
 exports.create = function(obj, next) {
   const product = new productModel(obj);
 
@@ -27,3 +29,4 @@ exports.create = function(obj, next) {
     next(err, product);
   })
 };
+*/

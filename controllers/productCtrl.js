@@ -1,6 +1,5 @@
-const bcrypt = require('bcrypt');
-
-const productModel = require('../models/product');
+var mongoose = require('mongoose');
+const productModel = require('../models/products');
 
 const {validationResult} = require('express-validator');
 
@@ -28,13 +27,21 @@ exports.addProduct = function(req, res) {
   })
 };
 
-  // _id : mongoose.Schema.Types.ObjectId,
-  // productName : String,
-  // expirationDate : Date,
-  // dateBought : Date,
-  // quantity : Number,
-  // basePrice : Number,
-  // sellingPrice : Number
+exports.getItemDetails = function(req,res) 
+{
+  console.log("Inside get item details");
+  var itemID = mongoose.Types.ObjectId(req.params.id);
+
+  productModel.find({'_id':itemID})
+    .exec(function(err,results){
+      if (err)
+        res.send(err);
+      else if (!results)
+        res.send(err);
+      else
+        res.send(results);
+    });
+} 
 
 exports.getProducts = function(req, res) {
   productModel.find({})
@@ -57,20 +64,6 @@ exports.getProducts = function(req, res) {
 exports.editProduct = (req, res, next) => {
 
   console.log(req.body);
-
-  // get user objects to validate password
-  // if match get one and update
-  // else redirect to profile page with error message for wrong password
-
-//   _id : mongoose.Schema.Types.ObjectId,
-//   stockID :[{type:mongoose.Schema.Types.ObjectID}, ref:'stock'],
-//   productName : String,
-//   expirationDate : Date,
-//   dateAdded : Date,
-//   Quantity : Number,
-//   basePrice : Number,
-//   sellingPrice : Number
-
 
   product.getAndUpdate(
     { _id: req.session.product },

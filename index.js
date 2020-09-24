@@ -65,4 +65,5 @@ app.use('/login',userRouter);
 
 
 app.use('/home',indexRouter);
+app.use('/', prodRouter);
 app.use('/inventory',prodRouter);
