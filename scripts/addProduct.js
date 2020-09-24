@@ -32,9 +32,12 @@ $(document).ready(function() {
               $("#updatebaseprice").val(parsedData[0].basePrice);
               $("#updatesellingprice").val(parsedData[0].sellingPrice);
               
-              var parseDate = parsedData[0].expirationDate
-              $("#updateexpiry").val(parseDate);
+              var parsedDate = new Date(parsedData[0].expirationDate);
+              var finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + ("0" + (parsedDate.getDay() + 1)).slice(-2);
               
+              console.log(finalDate);
+              $("#updateexpiry").val(finalDate);
+
           }).fail(function(){
               alert("Can't fetch this item.")
           });
