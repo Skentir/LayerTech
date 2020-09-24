@@ -1,10 +1,32 @@
-// Edit Function Templates For Edit Products
-
 const bcrypt = require('bcrypt');
 
-const prodModel = require('../models/product');
+const productModel = require('../models/product');
 
 const {validationResult} = require('express-validator');
+
+exports.addProduct = function(req, res) {
+  const {productName, expirationDate, dateBought, quantity, basePrice, sellingPrice} = req.body;
+
+  const newProduct = {
+    productName : productName,
+    expirationDate : expirationDate,
+    dateBought : dateBought,
+    quantity : quantity,
+    basePrice : basePrice,
+    sellingPrice : sellingPrice
+  };
+
+  productModel.create(newProduct, function(err, product){
+    if (err) {
+      console.log(err);
+      req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.redirect('/inventory');
+    } else {
+      req.flash("success_msg", 'Product added!');
+      res.redirect('/inventory');
+    }
+  })
+};
 
   // _id : mongoose.Schema.Types.ObjectId,
   // productName : String,
@@ -15,13 +37,13 @@ const {validationResult} = require('express-validator');
   // sellingPrice : Number
 
 exports.getProducts = function(req, res) {
-  prodModel.find({})
+  productModel.find({})
     .exec(function(err, results){
       if (err)
         res.send(err);
       else if (!results)
         res.send(err);
-      else 
+      else
         var prod = JSON.parse(JSON.stringify(results))
         var params = {
           layout: 'main',
@@ -33,11 +55,11 @@ exports.getProducts = function(req, res) {
 }
 
 exports.editProduct = (req, res, next) => {
-  
+
   console.log(req.body);
 
   // get user objects to validate password
-  // if match get one and update 
+  // if match get one and update
   // else redirect to profile page with error message for wrong password
 
 //   _id : mongoose.Schema.Types.ObjectId,
@@ -59,7 +81,7 @@ exports.editProduct = (req, res, next) => {
         req.flash('error_msg', 'Something happened! Please try again.');
         res.redirect('/inventory');
       } else {
-        
+
           if (product) {
             bycrypt.compare(password, user.password, (err, result) => {
               if (result) {
@@ -78,7 +100,7 @@ exports.editProduct = (req, res, next) => {
           }
 
       }
-      
+
       console.log(result);
       //if successful redirect to profile but send suc message
       // res.status(200).json({

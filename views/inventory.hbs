@@ -78,7 +78,7 @@
 </div>
 
 <!-- Add Product Modal -->
-<div id="addProductModal" class="modal">
+<div class="modal" id="modalbg" >
     <!-- Modal Content -->
     <div class="addmodal">
     <!-- Modal Close Button -->
@@ -89,47 +89,25 @@
         <!-- Modal Add Item Fields -->
         <div class="inputcontainer">
         <h1>Add a Product</h1>
-        <form autocomplete="off">
+        <form method='POST' autocomplete="off" name="addProduct" action='/addProduct'>
             <!-- Product Name -->
             <div class="formcontainer">
             <div class="formlabel">
                 Product Name
             </div>
             <div class="forminput">
-                <input type="text" id="productname">
+                <input type="text" name="productname" required>
             </div>
             </div>
             <br>
 
-            <!-- Quantity -->
+            <!-- Expiration Date -->
             <div class="formcontainer">
             <div class="formlabel">
-                Quantity
+                Expiration Date
             </div>
             <div class="forminput">
-                <input type="number" id="quantity">
-            </div>
-            </div>
-            <br>
-
-            <!-- Base Price -->
-            <div class="formcontainer">
-            <div class="formlabel">
-                Base Price (per item)
-            </div>
-            <div class="forminput">
-                <input type="number" id="cost">
-            </div>
-            </div>
-            <br>
-
-            <!-- Selling Price -->
-            <div class="formcontainer">
-            <div class="formlabel">
-                Selling Price
-            </div>
-            <div class="forminput">
-                <input type="number" id="cost">
+                <input type="date" name="expirationDate" required>
             </div>
             </div>
             <br>
@@ -140,28 +118,50 @@
                 Date Bought
             </div>
             <div class="forminput">
-                <input type="date" id="datebought">
+                <input type="date" name="dateBought" required>
             </div>
             </div>
             <br>
 
-            <!-- Expiry -->
+            <!-- Quantity -->
             <div class="formcontainer">
             <div class="formlabel">
-                Expiry
+                Quantity
             </div>
             <div class="forminput">
-                <input type="date" id="expiry">
+                <input type="number" name="quantity" required>
+            </div>
+            </div>
+            <br>
+
+            <!-- Base Price -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Base Price (per item)
+            </div>
+            <div class="forminput">
+                <input type="number" name="basePrice" required>
+            </div>
+            </div>
+            <br>
+
+            <!-- Selling Price -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Selling Price
+            </div>
+            <div class="forminput">
+                <input type="number" name="sellingPrice" required>
             </div>
             </div>
             <br>
 
             <br>
+            <!-- Modal Button -->
+            <div class="modalbtncontainer">
+                <button type="submit" id="add-item-btn" class="button">Add</button>
+            </div>
         </form>
-        <!-- Modal Button -->
-        <div class="modalbtncontainer">
-            <button type="submit" class="button" id="btnadditem">Add</button>
-        </div>
         </div>
         <br>
     </div>
