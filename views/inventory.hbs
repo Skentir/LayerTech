@@ -61,13 +61,13 @@
         </tr>
 
         {{#each products}}
-        <tr>
-            <td>{{this.productName}}</td>
-            <td>{{this.expirationDate}}</td>
-            <td>{{this.dateBought}}</td>
-            <td>{{this.quantity}}</td>
-            <td>{{this.basePrice}}</td>
-            <td>{{this.sellingPrice}}</td>
+        <tr id={{this._id}}>
+            <td class="productName">{{this.productName}}</td>
+            <td class="expiry">{{this.expirationDate}}</td>
+            <td> {{this.dateBought}}</td>
+            <td class="quantity">{{this.quantity}}</td>
+            <td class="basePrice">{{this.basePrice}}</td>
+            <td class="sellingPrice">{{this.sellingPrice}}</td>
             <td>
                  <button class="button launchUpdate" data-id={{this._id}} type="button" data-toggle="modal" data-target="#updateModal">Update</button>
             </td>

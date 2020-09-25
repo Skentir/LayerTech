@@ -63,17 +63,19 @@ exports.getProducts = function(req, res) {
 }
 
 exports.updateItem = function(req,res) {
-
-  productModel.findById(req.params.id)
-    .exec(function(err,results){
-      if (err) 
-        //req.flash('error_msg', 'Something happened! Please try again.');
+  productModel.findByIdAndUpdate({_id:req.params.id},
+    {
+      $set: {
+        productName:req.body.name,
+        quantity: req.body.quantity,
+        basePrice: req.body.base,
+        sellingPrice: req.body.selling,
+        expiryDate: req.body.expiryDate
+      }      
+    }, (err) => {
+      if(err)
         res.send(err);
-      else if (!results)
-        res.send(err)
-      else    
-        console.log(JSON.parse(JSON.stringify(results)));
-        //res.render('inventory',results);
-    }
-  )
+      else
+        res.redirect('/inventory') 
+    });
 };

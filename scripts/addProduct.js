@@ -50,21 +50,24 @@ $(document).ready(function() {
         var basePrice = $("#updatebaseprice").val();
         var sellingPrice = $("#updatesellingprice").val();
         var expiryDate = $("#updateexpiry").val();
-        //var dateBought = $("#updateproductname").val();
         
-        console.log("ID : " + itemID);
-        console.log("Product Name : " + productName);
+        var object = {
+            name: productName,
+            quantity: quantity,
+            base: basePrice,
+            selling: sellingPrice,
+            expiry: expiryDate
+        }
         
-        // $.ajax({
-        //     type: "POST",
-        //     data : "",
-        //     url: "/updateItem/"+itemID,
-        //   }).done(function(data) {
-        //     alert("Updated");
-        //   }).fail(function() {
-        //       alert("Error");
-        //     console.log("error")
-        //   });
+        $.ajax({
+             type: "POST",
+             data : JSON.stringify(object),
+             processData: false,
+             contentType: 'application/json',
+             url: "/updateItem/"+itemID,
+        }).done(function(data){
+            $("#"+itemID+".productName").val(productName);
+        });
     })
 
     /*
