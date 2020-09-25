@@ -45,9 +45,13 @@ $(document).ready(function() {
     $('#updateForm').submit(function() {
         console.log("Update called")
         var itemID = $(this).data('id');
+        var productName = "";
+        var quantity = "";
+        
         console.log("ID : " + itemID);
         $.ajax({
             type: "POST",
+            data : "",
             url: "/updateItem/"+itemID,
           }).done(function(data) {
             alert("Updated");
@@ -56,7 +60,7 @@ $(document).ready(function() {
             console.log("error")
           });
     })
-    
+
     /*
     // ADD PRODUCT 
     function addProduct(item, parentDiv){

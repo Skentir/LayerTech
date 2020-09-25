@@ -63,7 +63,7 @@ exports.getProducts = function(req, res) {
 }
 
 exports.updateItem = function(req,res) {
-  console.log("HERE");
+
   productModel.findById(req.params.id)
     .exec(function(err,results){
       if (err) 
@@ -73,10 +73,7 @@ exports.updateItem = function(req,res) {
         res.send(err)
       else    
         console.log(JSON.parse(JSON.stringify(results)));
-      //if successful redirect to profile but send suc message
-      // res.status(200).json({
-      //    message: "Product Successfully Updated",
-      // })
+        //res.render('inventory',results);
     }
   )
 };
