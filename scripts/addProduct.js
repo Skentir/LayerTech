@@ -24,15 +24,14 @@ $(document).ready(function() {
             type: "GET",
             url: "/getItemDetails/"+itemID,
           }).done(function(data) {
-              var parsedData = JSON.parse(JSON.stringify(data));
-              console.log(parsedData);
-              $("#updateproductname").val(parsedData[0].productName);
-              $("#updatequantity").val(parsedData[0].quantity);
-              $("#updatecost").val(parsedData[0].cost);
-              $("#updatebaseprice").val(parsedData[0].basePrice);
-              $("#updatesellingprice").val(parsedData[0].sellingPrice);
-              
-              var parsedDate = new Date(parsedData[0].expirationDate);
+              $("#updateproductname").val(data.productName);
+              $("#updatequantity").val(data.quantity);
+              $("#updatecost").val(data.cost);
+              $("#updatebaseprice").val(data.basePrice);
+              $("#updatesellingprice").val(data.sellingPrice);
+              console.log("ID "+data._id);
+              $("#updateForm").attr('data-id', data._id);
+              var parsedDate = new Date(data.expirationDate);
               var finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + ("0" + (parsedDate.getDay() + 1)).slice(-2);
               
               console.log(finalDate);
@@ -41,7 +40,23 @@ $(document).ready(function() {
           }).fail(function(){
               alert("Can't fetch this item.")
           });
-        });
+    });
+    
+    $('#updateForm').submit(function() {
+        console.log("Update called")
+        var itemID = $(this).data('id');
+        console.log("ID : " + itemID);
+        $.ajax({
+            type: "POST",
+            url: "/updateItem/"+itemID,
+          }).done(function(data) {
+            alert("Updated");
+          }).fail(function() {
+              alert("Error");
+            console.log("error")
+          });
+    })
+    
     /*
     // ADD PRODUCT 
     function addProduct(item, parentDiv){
