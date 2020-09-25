@@ -26,7 +26,7 @@ $(document).ready(function() {
           }).done(function(data) {
               $("#updateproductname").val(data.productName);
               $("#updatequantity").val(data.quantity);
-              $("#updatecost").val(data.cost);
+              //$("#updatecost").val(data.cost);
               $("#updatebaseprice").val(data.basePrice);
               $("#updatesellingprice").val(data.sellingPrice);
               console.log("ID "+data._id);
@@ -45,20 +45,26 @@ $(document).ready(function() {
     $('#updateForm').submit(function() {
         console.log("Update called")
         var itemID = $(this).data('id');
-        var productName = "";
-        var quantity = "";
+        var productName = $("#updateproductname").val();
+        var quantity = $("#updatequantity").val();
+        var basePrice = $("#updatebaseprice").val();
+        var sellingPrice = $("#updatesellingprice").val();
+        var expiryDate = $("#updateexpiry").val();
+        //var dateBought = $("#updateproductname").val();
         
         console.log("ID : " + itemID);
-        $.ajax({
-            type: "POST",
-            data : "",
-            url: "/updateItem/"+itemID,
-          }).done(function(data) {
-            alert("Updated");
-          }).fail(function() {
-              alert("Error");
-            console.log("error")
-          });
+        console.log("Product Name : " + productName);
+        
+        // $.ajax({
+        //     type: "POST",
+        //     data : "",
+        //     url: "/updateItem/"+itemID,
+        //   }).done(function(data) {
+        //     alert("Updated");
+        //   }).fail(function() {
+        //       alert("Error");
+        //     console.log("error")
+        //   });
     })
 
     /*
