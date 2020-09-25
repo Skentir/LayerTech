@@ -66,7 +66,11 @@ $(document).ready(function() {
              contentType: 'application/json',
              url: "/updateItem/"+itemID,
         }).done(function(data){
-            $("#"+itemID+".productName").val(productName);
+            $("#"+itemsID+".productName").val(productName);
+            $("#"+itemID+".quantity").val(quantity);
+            $("#"+itemID+".basePrice").val(basePrice);
+            $("#"+itemID+".sellingPrice").val(sellingPrice);
+            $("#"+itemID+".expiryDate").val(expiryDate);
         });
     })
 
