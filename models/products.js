@@ -1,8 +1,7 @@
 const mongoose = require('./connection');
 
 const productSchema = new mongoose.Schema({
-    //_id : mongoose.Schema.Types.ObjectId,
-    //stockID :[{type:mongoose.Schema.Types.ObjectID, ref:'stock'}],
+    //stockID :[{type:mongoose.Schema.Types.ObjectID, ref:'raw'}],
     productName : {type: String},
     expirationDate : {type: Date},
     dateBought : {type: Date},
@@ -19,14 +18,3 @@ const productSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('products', productSchema);
-
-// THIS SHOULD BE IN THE CONTROLLER
-/*
-exports.create = function(obj, next) {
-  const product = new productModel(obj);
-
-  product.save(function(err, product) {
-    next(err, product);
-  })
-};
-*/
