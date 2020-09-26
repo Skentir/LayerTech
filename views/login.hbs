@@ -1,36 +1,35 @@
 {{#section 'header'}}
     <title>LayerTech</title>
-    <!-- CSS -->
-    <link rel="stylesheet" href="/public/css/login.css">
+    <!--CSS -->
+    <link rel="stylesheet" href="css/login.css">
 {{/section}}
 
-<div>
-    <p>Hello World</p>
 <div class="container" >
     <div class="full-wrapper">
         <div class="login-box">
-            <img src="public/assets/nature.svg" style="max-width:280px; height:auto">
+            <img src="assets/logo.png" style="max-width:280px; height:auto; border-radius: 0px 50px 0px 50px;">
             <p>LayerTech</p>
             <span name="description">An inventory and stock management web application for your farm by Qualiprime</span>
-            <form name="login">
+            <form method='post' action='/login'>
+                {{> messages}}
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">
-                            <img src="/public/assets/user.svg" alt="email field" height="24" width="24"/>
+                            <img src="assets/user.svg" alt="email field" height="24" width="24"/>
                         </span>
                     </div>
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="email" class="form-control" placeholder="Email" name='username'>
                 </div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">
-                            <img src="/public/assets/password.svg" alt="password field" height="24" width="24"/>
+                            <img src="/assets/password.svg" alt="password field" height="24" width="24"/>
                         </span>
                     </div>
-                    <input type="password" class="form-control" placeholder="Password">
+                    <input type="password" class="form-control" placeholder="Password" name='password'>
                 </div>
+                <button type="submit" id="sign-in-btn" class="btn prim-btn">Sign In</button>
                 <div>
-                    <a href="./home"><button type="submit" id="sign-in-btn" class="btn prim-btn" >Sign In</button></a>
                     <a href="#" data-toggle="modal" data-target="#register-modal">
                         <span>I don't have an account</span>
                     </a>
@@ -40,3 +39,52 @@
     </div>
 </div>
 
+
+<!-- Registration Modal -->
+<div class="modal fade" role="dialog" id="register-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="register-box">
+                <img src="assets/join.svg" style="max-width:280px; height:auto">
+                <form method='POST' class="pt-3" name="register" action='/register'>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" name="name"  required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="contNo">Contact No.</label>
+                            <input type="text" class="form-control" name="contNo"  required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" class="form-control" name="email"  required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="reg-pwd">Password</label>
+                            <input type="password" class="form-control" name="pwd"  required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-pwd1">Confirm Password</label>
+                            <input type="password" class="form-control" name="pwd1" required>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="compName">Business Name</label>
+                            <input type="text" class="form-control" name="compName" required>
+                        </div>
+                    </div>
+                    <button type="submit" id="sign-in-btn" class="btn prim-btn form-control">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

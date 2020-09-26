@@ -1,0 +1,86 @@
+body {
+    background-color: darkslategray;
+}
+
+.full-wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.login-box {
+    background-color: #d2f3c6;
+    max-width: 400px;
+    padding: 20px;
+    margin: auto;
+    display: block;
+    text-align: center;
+    border-radius: 6px;
+    border: 1px solid #afaeae;
+    -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+}
+
+.login-box p {
+    font-weight: 700;
+    font-size: 60px;
+    margin-bottom: 0;
+}
+
+form[name="login"] a {
+    display: block;
+    margin-top: 10px;
+    display: block;
+    font-size: 12px;
+}
+
+span[name="description"] {
+    display: inline-block;
+    font-weight: 300;
+    margin-bottom: 1rem;
+}
+
+form[name="login"],
+form[name="register"] {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+form[name="register"] .form-group{ 
+    text-align: left;
+    width: 100%;
+}
+
+.prim-btn {
+    color: white;
+    background: #3a3a3a;
+    display: inline-block;
+    font-family: Roboto;
+    font-size: 15px;
+    padding: 8px 30px;
+    letter-spacing: 0;
+    border-radius: 2px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.modal-content {
+    width: fit-content;
+    margin: auto;
+}
+
+.register-box{
+     background-color: #d2f3c6;
+    max-width: 400px;
+    width: 400px;
+    padding: 20px;
+    margin: auto;
+    display: block;
+    text-align: center;
+    border-radius: 6px;
+    border: 1px solid #afaeae;
+    -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+}

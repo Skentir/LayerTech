@@ -1,11 +1,20 @@
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+>>>>>>> master
 {{#section 'header'}}
     <title>Inventory</title>
     <!--     CSS -->
     <link rel="stylesheet" href="css/tables.css">
+<<<<<<< HEAD
 {{/section}}
 
+=======
+    <!-- JS -->
+    <script src="addProduct.js"></script>
+{{/section}}
+>>>>>>> master
 <div class="inventorycontainer">
     <div class="headercontainer">
     <div class="headerleft">
@@ -52,6 +61,7 @@
     <table class="inventorytable">
         <col style="background-color: #FAFA87;"/>
         <tr>
+<<<<<<< HEAD
         <th>PD NO.</th>
         <th>PRODUCT NAME</th>
         <th>QUANTITY</th>
@@ -87,12 +97,42 @@
         <td>67</td>
         <td>67</td>
         </tr>
+=======
+        <th>PRODUCT NAME</th>
+        <th>EXPIRY</th>
+        <th>DATE BOUGHT</th>
+        <th>QUANTITY</th>
+        <th>BASE PRICE</th>
+        <th>SELLING PRICE</th>
+        <th>UPDATE</th>
+        </tr>
+
+        {{#each products}}
+        <tr id={{this._id}}>
+            <td class="productName">{{this.productName}}</td>
+            <td class="expiry">{{this.expirationDate}}</td>
+            <td> {{this.dateBought}}</td>
+            <td class="quantity">{{this.quantity}}</td>
+            <td class="basePrice">{{this.basePrice}}</td>
+            <td class="sellingPrice">{{this.sellingPrice}}</td>
+            <td>
+                 <button class="button launchUpdate" data-id={{this._id}} type="button" data-toggle="modal" data-target="#updateModal">Update</button>
+            </td>
+        </tr>
+        {{/each}}
+
+>>>>>>> master
     </table>
     </form>
 </div>
 
+<<<<<<< HEAD
 <!-- Register Modal -->
 <div id="modalbg" class="modal">
+=======
+<!-- Add Product Modal -->
+<div class="modal" id="modalbg" >
+>>>>>>> master
     <!-- Modal Content -->
     <div class="addmodal">
     <!-- Modal Close Button -->
@@ -103,18 +143,27 @@
         <!-- Modal Add Item Fields -->
         <div class="inputcontainer">
         <h1>Add a Product</h1>
+<<<<<<< HEAD
         <form autocomplete="off">
+=======
+        <form method='POST' autocomplete="off" name="addProduct" action='/addProduct'>
+>>>>>>> master
             <!-- Product Name -->
             <div class="formcontainer">
             <div class="formlabel">
                 Product Name
             </div>
             <div class="forminput">
+<<<<<<< HEAD
                 <input type="text" id="productname">
+=======
+                <input type="text" name="productName" required>
+>>>>>>> master
             </div>
             </div>
             <br>
 
+<<<<<<< HEAD
             <!-- Quantity -->
             <div class="formcontainer">
             <div class="formlabel">
@@ -122,10 +171,20 @@
             </div>
             <div class="forminput">
                 <input type="number" id="quantity">
+=======
+            <!-- Expiration Date -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Expiration Date
+            </div>
+            <div class="forminput">
+                <input type="date" name="expirationDate" required>
+>>>>>>> master
             </div>
             </div>
             <br>
 
+<<<<<<< HEAD
             <!-- Base Price -->
             <div class="formcontainer">
             <div class="formlabel">
@@ -133,10 +192,20 @@
             </div>
             <div class="forminput">
                 <input type="number" id="cost">
+=======
+            <!-- Date Bought -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Date Bought
+            </div>
+            <div class="forminput">
+                <input type="date" name="dateBought" required>
+>>>>>>> master
             </div>
             </div>
             <br>
 
+<<<<<<< HEAD
             <!-- Selling Price -->
             <div class="formcontainer">
             <div class="formlabel">
@@ -144,10 +213,20 @@
             </div>
             <div class="forminput">
                 <input type="number" id="cost">
+=======
+            <!-- Quantity -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Quantity
+            </div>
+            <div class="forminput">
+                <input type="number" name="quantity" required>
+>>>>>>> master
             </div>
             </div>
             <br>
 
+<<<<<<< HEAD
             <!-- Date Bought -->
             <div class="formcontainer">
             <div class="formlabel">
@@ -155,10 +234,20 @@
             </div>
             <div class="forminput">
                 <input type="date" id="datebought">
+=======
+            <!-- Base Price -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Base Price (per item)
+            </div>
+            <div class="forminput">
+                <input type="number" name="basePrice" required>
+>>>>>>> master
             </div>
             </div>
             <br>
 
+<<<<<<< HEAD
             <!-- Expiry -->
             <div class="formcontainer">
             <div class="formlabel">
@@ -166,16 +255,33 @@
             </div>
             <div class="forminput">
                 <input type="date" id="expiry">
+=======
+            <!-- Selling Price -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Selling Price
+            </div>
+            <div class="forminput">
+                <input type="number" name="sellingPrice" required>
+>>>>>>> master
             </div>
             </div>
             <br>
 
             <br>
+<<<<<<< HEAD
         </form>
         <!-- Modal Button -->
         <div class="modalbtncontainer">
             <button type="submit" class="button" id="btnadditem">Add</button>
         </div>
+=======
+            <!-- Modal Button -->
+            <div class="modalbtncontainer">
+                <button type="submit" id="add-item-btn" class="button">Add</button>
+            </div>
+        </form>
+>>>>>>> master
         </div>
         <br>
     </div>
@@ -183,16 +289,25 @@
 </div>
 
 <!-- Update Product Modal -->
+<<<<<<< HEAD
 <div id="modalbg" class="modal">
     <!-- Modal Content -->
     <div class="addmodal">
     <!-- Modal Close Button -->
     <span class="close">&times;</span>
+=======
+<div id="updateModal" class="modal" data-backdrop="false">
+    <!-- Modal Content -->
+    <div class="addmodal">
+    <!-- Modal Close Button -->
+    <span class="close" data-dismiss="modal">&times;</span>
+>>>>>>> master
     <br>
     <!-- Modal Form -->
     <div class="modalbody">
         <!-- Modal Add Item Fields -->
         <div class="inputcontainer">
+<<<<<<< HEAD
         <h1>Update Product</h1>
         <form autocomplete="off">
             <!-- Product Name -->
@@ -276,6 +391,69 @@
         <div class="modalbtncontainer">
             <button type="submit" class="button" id="btnadditem">Add</button>
         </div>
+=======
+            <h1>Update Product</h1>
+            <form id="updateForm"> 
+                <!-- Product Name -->
+                <div class="formcontainer">
+                    <div class="formlabel">
+                        Product Name
+                    </div>
+                    <div class="forminput">
+                        <input type="text" id="updateproductname">
+                    </div>
+                </div>
+                <br>
+
+                <!-- Quantity -->
+                <div class="formcontainer">
+                    <div class="formlabel">
+                        Quantity
+                    </div>
+                    <div class="forminput">
+                        <input type="number" id="updatequantity">
+                    </div>
+                </div>
+                <br>
+
+                <!-- Base Price -->
+                <div class="formcontainer">
+                    <div class="formlabel">
+                        Base Price (per item)
+                    </div>
+                    <div class="forminput">
+                        <input type="number" id="updatebaseprice">
+                    </div>
+                </div>
+                <br>
+
+                <!-- Selling Price -->
+                <div class="formcontainer">
+                    <div class="formlabel">
+                        Selling Price
+                    </div>
+                    <div class="forminput">
+                        <input type="number" id="updatesellingprice">
+                    </div>
+                </div>
+                <br>
+
+                <!-- Expiry -->
+                <div class="formcontainer">
+                    <div class="formlabel">
+                        Expiry
+                    </div>
+                    <div class="forminput">
+                        <input type="date" id="updateexpiry">
+                    </div>
+                </div>
+                <br>
+                    <!-- Modal Button -->
+                <div class="modalbtncontainer">
+                    <button type="submit" class="button" id="btnUpdateItem">Update</button>
+                </div>
+            </form>
+>>>>>>> master
         </div>
         <br>
     </div>
@@ -297,6 +475,10 @@
         modal.style.display = "none";
     }
     }
+<<<<<<< HEAD
 </script>
 
 >>>>>>> Stashed changes
+=======
+</script>
+>>>>>>> master
