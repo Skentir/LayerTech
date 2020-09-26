@@ -1,7 +1,7 @@
 {{#section 'header'}}
     <title>Home</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="/public/css/home.css">
+    <link rel="stylesheet" href="css/home.css">
 {{/section}}
 
 <!-- Event Image Header -->
@@ -25,9 +25,11 @@
     </div>
     <div class="alerts">
         <ul>
-            <li style="background-color: aquamarine;">Raw Materials: You have 3 items about to expire</li>
-            <li style="background-color: bisque;">Products: You have 3 items about to expire</li>
+            <li style="background-color: aquamarine;">Raw Materials: You have {{rawCount}} items about to expire</li>
+            <li style="background-color: bisque;">Products: You have {{productCount}} items about to expire</li>
+            <!--
             <li style="background-color: rgb(233, 127, 127);">Transactions: You have 3 items about to expire</li>
+            -->
         </ul>
     </div>
 </div>
