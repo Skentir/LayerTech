@@ -1,0 +1,287 @@
+{{#section 'header'}}
+    <title>Inventory</title>
+    <!--     CSS -->
+    <link rel="stylesheet" href="css/tables.css">
+    <!-- JS -->
+    <script src="addProduct.js"></script> <!-- change once js for raw is created -->
+{{/section}}
+<div class="inventorycontainer">
+    <div class="headercontainer">
+    <div class="headerleft">
+        <h1>Raw Materials</h1>
+    </div>
+    <div class="headerright">
+        <p><span>Actual Products</span></p>
+    </div>
+    </div>
+
+    <div class="descriptioncontainer">
+    <div class="description">
+            This page contains all the raw materials the company has
+            acquired to produces products.
+    </div>
+    </div>
+
+    <div class="toolcontainer">
+    <div class="toolleft">
+        <div class="btncontainer">
+        <button class="button" id="btnadditemmodal">Add a Material</button>
+        </div>
+    </div>
+    {{!-- <div class="toolleft">
+        <div class="btncontainer">
+        <button class="button" id="btngeneratesummary">Generate Summary</button>
+        </div>
+    </div> --}}
+    <div class="toolright">
+        <div class="dropdown">
+        <button class="dropbtn">Filter By</button>
+        <div class="dropdown-content">
+        <a href="#">abcdefg</a>
+        <a href="#">abcdefg</a>
+        <a href="#">abcdefg</a>
+        </div>
+        </div>
+    </div>
+    </div>
+    <br>
+
+    <form>
+    <table class="inventorytable">
+        <col style="background-color: #FAFA87;"/>
+
+        <tr>
+        <th>RAW MATERIAL</th>
+        <th>SUPPLIER</th>
+        <th>EXPIRATION DATE</th>
+        <th>DATE BOUGHT</th>
+        <th>QUANTITY</th>
+        <th>UNIT</th>
+        <th>COST</th>
+        <th>UPDATE</th>
+        <th>DELETE</th>
+        </tr>
+
+        {{#each material}}
+        <tr id={{this._id}}>
+            <td class="rawMaterial">{{this.rawMaterial}}</td>
+            <td class="supplier">{{this.supplier}}</td>
+            <td class="expiry">{{this.expiry}}</td>
+            <td> {{this.dateBought}}</td>
+            <td class="quantity">{{this.quantity}}</td>
+            <td class="unit">{{this.unit}}</td>
+            <td class="cost">{{this.cost}}</td>
+            <td>
+                 <button class="button launchUpdate" data-id={{this._id}} type="button" data-toggle="modal" data-target="#updateModal">Update</button>
+            </td>
+        </tr>
+        {{/each}}
+
+    </table>
+    </form>
+</div>
+
+      {{!-- rawMaterial : {type: String},
+            supplier : {type: String},
+            expirationDate : {type: Date},
+            dateBought : {type: Date},
+            quantity : {type: Number},
+            unit : {type: String},
+            cost : {type: Number} --}}
+
+<!-- Add Raw Material Modal -->
+<div class="modal" id="modalbg" >
+    <!-- Modal Content -->
+    <div class="addmodal">
+    <!-- Modal Close Button -->
+    <span class="close">&times;</span>
+    <br>
+    <!-- Modal Form -->
+    <div class="modalbody">
+        <!-- Modal Add Item Fields -->
+        <div class="inputcontainer">
+        <h1>Add a Raw Material</h1>
+        <form method='POST' autocomplete="off" name="addProduct" action='/addProduct'>
+            <!-- Product Name -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Material Name
+            </div>
+            <div class="forminput">
+                <input type="text" name="rawMaterial" required>
+            </div>
+            </div>
+            <br>
+
+            <!-- Supplier Name -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Supplier
+            </div>
+            <div class="forminput">
+                <input type="text" name="supplier" required>
+            </div>
+            </div>
+            <br>
+
+            <!-- Expiration Date -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Expiration Date
+            </div>
+            <div class="forminput">
+                <input type="date" name="expirationDate" required>
+            </div>
+            </div>
+            <br>
+
+            <!-- Date Bought -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Date Bought
+            </div>
+            <div class="forminput">
+                <input type="date" name="dateBought" required>
+            </div>
+            </div>
+            <br>
+
+            <!-- Quantity -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Quantity
+            </div>
+            <div class="forminput">
+                <input type="number" name="quantity" required>
+            </div>
+            </div>
+            <br>
+
+            <!-- Unit -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Unit
+            </div>
+            <div class="forminput">
+                <input type="number" name="unit" required>
+            </div>
+            </div>
+            <br>
+
+            <!-- Cost -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                COST
+            </div>
+            <div class="forminput">
+                <input type="number" name="cost" required>
+            </div>
+            </div>
+            <br>
+
+            <br>
+            <!-- Modal Button -->
+            <div class="modalbtncontainer">
+                <button type="submit" id="add-item-btn" class="button">Add</button>
+            </div>
+        </form>
+        </div>
+        <br>
+    </div>
+    </div>
+</div>
+
+<!-- Update Raw Material Modal -->
+<div id="updateModal" class="modal" data-backdrop="false">
+    <!-- Modal Content -->
+    <div class="addmodal">
+    <!-- Modal Close Button -->
+    <span class="close" data-dismiss="modal">&times;</span>
+    <br>
+    <!-- Modal Form -->
+    <div class="modalbody">
+        <!-- Modal Add Item Fields -->
+        <div class="inputcontainer">
+            <h1>Update Material</h1>
+            <form id="updateForm"> 
+                <!-- Product Name -->
+                <div class="formcontainer">
+                    <div class="formlabel">
+                        Raw Material
+                    </div>
+                    <div class="forminput">
+                        <input type="text" id="updaterawmaterial" required>
+                    </div>
+                </div>
+                <br>
+
+                <!-- Quantity -->
+                <div class="formcontainer">
+                    <div class="formlabel">
+                        Quantity
+                    </div>
+                    <div class="forminput">
+                        <input type="number" id="updatequantity">
+                    </div>
+                </div>
+                <br>
+
+                <!-- Unit -->
+                <div class="formcontainer">
+                    <div class="formlabel">
+                        Unit
+                    </div>
+                    <div class="forminput">
+                        <input type="number" id="updateunit">
+                    </div>
+                </div>
+                <br>
+
+                <!-- Cost -->
+                <div class="formcontainer">
+                    <div class="formlabel">
+                        Cost
+                    </div>
+                    <div class="forminput">
+                        <input type="number" id="updatecost">
+                    </div>
+                </div>
+                <br>
+
+                <!-- Expiry -->
+                <div class="formcontainer">
+                    <div class="formlabel">
+                        Expiry
+                    </div>
+                    <div class="forminput">
+                        <input type="date" id="updateexpiry">
+                    </div>
+                </div>
+                <br>
+                    <!-- Modal Button -->
+                <div class="modalbtncontainer">
+                    <button type="submit" class="button" id="btnUpdateItem">Update</button>
+                </div>
+            </form>
+        </div>
+        <br>
+    </div>
+    </div>
+</div>
+
+<script>
+    var modal = document.getElementById("modalbg");
+    var btn = document.getElementById("btnadditemmodal");
+    var span = document.getElementsByClassName("close")[0];
+    btn.onclick = function() {
+    modal.style.display = "block";
+    }
+    span.onclick = function() {
+    modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+    }
+</script>
