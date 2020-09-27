@@ -3,7 +3,7 @@
     <!--     CSS -->
     <link rel="stylesheet" href="css/tables.css">
     <!-- JS -->
-    <script src="addProduct.js"></script>
+    <script src="addSupplier.js"></script>
 {{/section}}
 <div class="inventorycontainer">
     <div class="headercontainer">
@@ -50,23 +50,25 @@
     <table class="inventorytable">
         <col style="background-color: #FAFA87;"/>
         <tr>
-        <th>PRODUCT NAME</th>
-        <th>EXPIRY</th>
-        <th>DATE BOUGHT</th>
-        <th>QUANTITY</th>
-        <th>BASE PRICE</th>
-        <th>SELLING PRICE</th>
-        <th>UPDATE</th>
+        <th>NAME</th>
+        <th>POSITION</th>
+        <th>COMPANY</th>
+        <th>CONTACT NO.</th>
+        <th>EMAIL</th>
+        <th>CONTRACT TERMS</th>
+        <th>NOTES</th>
+        <th></th>
         </tr>
 
-        {{#each products}}
+        {{#each supplier}}
         <tr id={{this._id}}>
-            <td class="productName">{{this.productName}}</td>
-            <td class="expiry">{{this.expirationDate}}</td>
-            <td> {{this.dateBought}}</td>
-            <td class="quantity">{{this.quantity}}</td>
-            <td class="basePrice">{{this.basePrice}}</td>
-            <td class="sellingPrice">{{this.sellingPrice}}</td>
+            <td class="name">{{this.name}}</td>
+            <td class="position">{{this.position}}</td>
+            <td class="company"> {{this.companyName}}</td>
+            <td class="contact">{{this.contactNo}}</td>
+            <td class="email">{{this.email}}</td>
+            <td class="contract">{{this.contractTerms}}</td>
+            <td class="notes">{{this.notes}}</td>
             <td>
                  <button class="button launchUpdate" data-id={{this._id}} type="button" data-toggle="modal" data-target="#updateModal">Update</button>
             </td>
