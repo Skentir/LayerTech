@@ -1,8 +1,9 @@
 $(document).ready(function() {
 
+  var itemID;
     // UPDATE PRODUCT
   $(".launchUpdate").click(function(){
-      var itemID = $(this).data('id');
+      itemID = $(this).data('id');
 
     $.ajax({
           type: "GET",
@@ -19,25 +20,26 @@ $(document).ready(function() {
             alert("Can't fetch this item.")
         });
   });
-  /*
+  
   $('#updateForm').submit(function() {
-      console.log("Update called")
-      var itemID = $(this).data('id');
-      var productName = $("#updateproductname").val();
-      var quantity = $("#updatequantity").val();
-      var basePrice = $("#updatebaseprice").val();
-      var sellingPrice = $("#updatesellingprice").val();
-      var expiryDate = $("#updateexpiry").val();
-      var location = $("#updatelocation").val();
-      console.log("Location " + location);
+      var name = $("#updateSuppName").val();
+      var position = $("#updatePosition").val();
+      var company = $("#updateCompany").val();
+      var contact = $("#updateContact").val();
+      var email = $("#updateEmail").val();
+      var contract = $("#updateTerms").val();
+      var notes = $("#updateNotes").val();
+  
+      console.log("Item" + itemID)
 
       var object = {
-          name: productName,
-          quantity: quantity,
-          base: basePrice,
-          selling: sellingPrice,
-          expiry: expiryDate,
-          location: location
+          name: name,
+          position: position,
+          company: company,
+          contactNo: contact,
+          email: email,
+          contract: contract,
+          notes: notes
       }
       
       $.ajax({
@@ -45,14 +47,15 @@ $(document).ready(function() {
            data : JSON.stringify(object),
            processData: false,
            contentType: 'application/json',
-           url: "/inventory/updateItem/"+itemID,
+           url: "/suppliers/updateSupplier/"+itemID,
       }).done(function(data){
-          $("#"+itemsID+".productName").val(productName);
-          $("#"+itemID+".quantity").val(quantity);
-          $("#"+itemID+".basePrice").val(basePrice);
-          $("#"+itemID+".sellingPrice").val(sellingPrice);
-          $("#"+itemID+".expiryDate").val(expiryDate);
-          $("#"+itemID+".location").val(loca);
+          $("#"+itemsID+".name").val(name);
+          $("#"+itemID+".position").val(position);
+          $("#"+itemID+".company").val(company);
+          $("#"+itemID+".contact").val(contact);
+          $("#"+itemID+".email").val(email);
+          $("#"+itemID+".contract").val(contract);
+          $("#"+itemID+".notes").val(notes);
       });
-  }) */
+  }) 
 });

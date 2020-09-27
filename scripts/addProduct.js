@@ -29,6 +29,7 @@ $(document).ready(function() {
     $('#updateForm').submit(function() {
         console.log("Update called")
         var itemID = $(this).data('id');
+        console.log("ID" + itemID)
         var productName = $("#updateproductname").val();
         var quantity = $("#updatequantity").val();
         var basePrice = $("#updatebaseprice").val();

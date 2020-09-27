@@ -78,7 +78,7 @@ exports.updateItem = function(req,res) {
     }, (err) => {
       if(err)
         res.send(err);
-      else
-        res.redirect('/inventory') 
+      //else
+        //res.redirect('/inventory') 
     });
 };

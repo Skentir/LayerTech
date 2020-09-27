@@ -61,3 +61,29 @@ exports.getSupplierDetails = function(req,res)
         res.send(results);
     });
 }
+
+
+exports.updateSupplier= function(req,res) {
+    console.log("YO " + JSON.stringify(req.body))
+    console.log("ID " + req.params.id)
+    supplierModel.findByIdAndUpdate({_id:req.params.id},
+      {
+        $set: {
+            name :req.body.name,
+            position: req.body.position,
+            companyName: req.body.company,
+            contactNo: req.body.contactNo,
+            email: req.body.email,
+            contractTerms: req.body.contract,
+            notes: req.body.notes
+        }      
+      }, (err) => {
+        if(err)
+            res.send(err);
+        else {
+            console.log("DONE")
+            res.redirect('/suppliers') 
+        }
+      });
+  };
+  
