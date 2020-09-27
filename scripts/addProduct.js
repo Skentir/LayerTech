@@ -1,10 +1,10 @@
 
 $(document).ready(function() {
 
-      // UPDATE PRODUCT
+    // UPDATE PRODUCT
     $(".launchUpdate").click(function(){
         var itemID = $(this).data('id');
- 
+
       $.ajax({
             type: "GET",
             url: "/inventory/getItemDetails/"+itemID,
@@ -17,7 +17,7 @@ $(document).ready(function() {
               $("#updateForm").attr('data-id', data._id);
               var parsedDate = new Date(data.expirationDate);
               var finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + ("0" + (parsedDate.getDay() + 1)).slice(-2);
-              
+
               console.log(finalDate);
               $("#updateexpiry").val(finalDate);
 
@@ -25,7 +25,7 @@ $(document).ready(function() {
               alert("Can't fetch this item.")
           });
     });
-    
+
     $('#updateForm').submit(function() {
         console.log("Update called")
         var itemID = $(this).data('id');
@@ -45,7 +45,7 @@ $(document).ready(function() {
             expiry: expiryDate,
             location: location
         }
-        
+
         $.ajax({
              type: "POST",
              data : JSON.stringify(object),
@@ -62,8 +62,23 @@ $(document).ready(function() {
         });
     })
 
+    // DELETE PRODUCT
+    $(".launchDelete").click(function(){
+        var itemID = $(this).data('id');
+        $.ajax({
+          url: "/inventory/deleteItem/"+itemID,
+          type: 'DELETE',
+          success: function(result) {
+              // Do something with the result
+          }
+        });
+
+
+
+    });
+
     /*
-    // ADD PRODUCT 
+    // ADD PRODUCT
     function addProduct(item, parentDiv){
         var rowDiv = document.createElement('div');
         var idCol = document.createElement('div');
@@ -99,7 +114,7 @@ $(document).ready(function() {
         quantityCol.append(quantity);
         basePriceCol.append(basePrice);
         sellPriceCol.append(sellPrice);
-        
+
         rowDiv.append(idCol);
         rowDiv.append(prodNameCol);
         rowDiv.append(exDateCol);
@@ -127,7 +142,7 @@ $(document).ready(function() {
         var dateBought = $('#dateBough').val();
         var quantity = $('#quantity').val();
         var basePrice = $('#basePrice').val();
-        var sellPrice = $('#sellPrice').val(); 
+        var sellPrice = $('#sellPrice').val();
 
         var newProduct = {
             id: id,

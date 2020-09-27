@@ -4,34 +4,44 @@ const productModel = require('../models/products');
 const {validationResult} = require('express-validator');
 
 exports.addProduct = function(req, res) {
-  const {productName, expirationDate, dateBought, quantity, basePrice, sellingPrice, location} = req.body;
+  const errors = validationResult(req);
 
-  const newProduct = {
-    productName : productName,
-    expirationDate : expirationDate,
-    dateBought : dateBought,
-    quantity : quantity,
-    basePrice : basePrice,
-    sellingPrice : sellingPrice,
-    location : location
-  };
+  if(errors.isEmpty()){
 
-  productModel.create(newProduct, function(err, product){
-    if (err) {
-      console.log(err);
-      req.flash('error_msg', 'Could not add product. Please Try Again!');
-      res.redirect('/inventory');
-    } else {
-      req.flash("success_msg", 'Product added!');
-      res.redirect('/inventory');
-    }
-  })
+    const {productName, expirationDate, dateBought, quantity, basePrice, sellingPrice, location} = req.body;
+
+    const newProduct = {
+      productName : productName,
+      expirationDate : expirationDate,
+      dateBought : dateBought,
+      quantity : quantity,
+      basePrice : basePrice,
+      sellingPrice : sellingPrice,
+      location : location
+    };
+
+    productModel.create(newProduct, function(err, product){
+      if (err) {
+        console.log(err);
+        req.flash('error_msg', 'Could not add product. Please Try Again!');
+        res.redirect('/inventory');
+      } else {
+        req.flash("success_msg", 'Product added!');
+        res.redirect('/inventory');
+      }
+    })
+  } else {
+    const messages = errors.array().map((item) => item.msg);
+
+    req.flash('error_msg', messages.join(' '));
+    res.redirect('/inventory');
+  }
 };
 
-exports.getItemDetails = function(req,res) 
+exports.getItemDetails = function(req,res)
 {
   var itemID = mongoose.Types.ObjectId(req.params.id);
-  
+
   productModel.findById(itemID)
     .exec(function(err,results){
       if (err)
@@ -42,7 +52,7 @@ exports.getItemDetails = function(req,res)
         //var data = JSON.parse(JSON.stringify(results))
         res.send(results);
     });
-} 
+}
 
 exports.getProducts = function(req, res) {
 
@@ -74,11 +84,22 @@ exports.updateItem = function(req,res) {
         sellingPrice: req.body.selling,
         expiryDate: req.body.expiryDate,
         location: req.body.location
-      }      
+      }
     }, (err) => {
       if(err)
         res.send(err);
       else
-        res.redirect('/inventory') 
+        res.redirect('/inventory')
     });
+};
+
+exports.deleteItem = function(req,res) {
+
+  productModel.findByIdAndDelete({_id:req.params.id}, function (err, docs) {
+    if (err) {
+        console.log(err)
+    } else {
+        console.log("Deleted : ", docs);
+    }
+  });
 };
