@@ -1,35 +1,19 @@
 
 $(document).ready(function() {
 
-     // UPDATE PRODUCT
-    //  $(".launchUpdate").click(function(){
-    //     console.log("Update btn launch");
-    //     var itemID = $(this).data('id');
-
-    //   $.ajax({
-    //         type: "GET",
-    //         url: "/getItemDetails/"+itemID,
-    //       }).done(function(data) {
-    //           alert("This item is " + data.productName)
-    //       }).fail(function(){
-    //           alert("Can't fetch this item.")
-    //       });
-    //   });
-
       // UPDATE PRODUCT
     $(".launchUpdate").click(function(){
         var itemID = $(this).data('id');
  
       $.ajax({
             type: "GET",
-            url: "/getItemDetails/"+itemID,
+            url: "/inventory/getItemDetails/"+itemID,
           }).done(function(data) {
               $("#updateproductname").val(data.productName);
               $("#updatequantity").val(data.quantity);
-              //$("#updatecost").val(data.cost);
               $("#updatebaseprice").val(data.basePrice);
               $("#updatesellingprice").val(data.sellingPrice);
-              console.log("ID "+data._id);
+              $("#updatelocation").val(data.location);
               $("#updateForm").attr('data-id', data._id);
               var parsedDate = new Date(data.expirationDate);
               var finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + ("0" + (parsedDate.getDay() + 1)).slice(-2);
@@ -50,13 +34,16 @@ $(document).ready(function() {
         var basePrice = $("#updatebaseprice").val();
         var sellingPrice = $("#updatesellingprice").val();
         var expiryDate = $("#updateexpiry").val();
-        
+        var location = $("#updatelocation").val();
+        console.log("Location " + location);
+
         var object = {
             name: productName,
             quantity: quantity,
             base: basePrice,
             selling: sellingPrice,
-            expiry: expiryDate
+            expiry: expiryDate,
+            location: location
         }
         
         $.ajax({
@@ -64,13 +51,14 @@ $(document).ready(function() {
              data : JSON.stringify(object),
              processData: false,
              contentType: 'application/json',
-             url: "/updateItem/"+itemID,
+             url: "/inventory/updateItem/"+itemID,
         }).done(function(data){
             $("#"+itemsID+".productName").val(productName);
             $("#"+itemID+".quantity").val(quantity);
             $("#"+itemID+".basePrice").val(basePrice);
             $("#"+itemID+".sellingPrice").val(sellingPrice);
             $("#"+itemID+".expiryDate").val(expiryDate);
+            $("#"+itemID+".location").val(loca);
         });
     })
 
@@ -123,7 +111,7 @@ $(document).ready(function() {
         parentDiv.append(rowDiv);
     };
 
-    $.get('getProducts', function(data, status){
+    $.get('/inventory/getProducts', function(data, status){
         var productListContainer = $(products);
 
         data.forEach((item, i) => {
@@ -152,10 +140,11 @@ $(document).ready(function() {
         };
 
         //Change ID to match with new format
-        $.post('addProduct', newProduct, function(data, status){
+        $.post('/inventory/addProduct', newProduct, function(data, status){
             var productListContainer = $('#productList');
             addProduct(data, productListContainer);
         });
+
     });
     */
 });
