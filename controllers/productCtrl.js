@@ -45,7 +45,7 @@ exports.getItemDetails = function(req,res)
 } 
 
 exports.getProducts = function(req, res) {
-  console.log("HERE 1");
+
   productModel.find({})
     .exec(function(err, results){
       if (err)
@@ -64,7 +64,7 @@ exports.getProducts = function(req, res) {
 }
 
 exports.updateItem = function(req,res) {
-  console.log("UPDATE HERE")
+
   productModel.findByIdAndUpdate({_id:req.params.id},
     {
       $set: {
