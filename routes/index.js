@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const homeController = require('../controllers/homeCtrl'); 
 
 router.get('/', (req, res) => {
   res.render('login', { 
@@ -7,7 +6,11 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/home', homeController.getExpired);
+router.get('/home', (req,res) =>{
+    res.render('dashboard',{
+       layout: 'main' 
+    });
+});
 
 module.exports = router;
 

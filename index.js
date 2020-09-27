@@ -13,6 +13,7 @@ const MongoStore = require('connect-mongo')(session);
 const indexRouter = require('./routes/index');
 const prodRouter = require('./routes/productRoutes');
 const userRouter = require('./routes/userRoutes');
+const homeRouter = require('./routes/homeRoutes');
 
 const port = 3000;
 const app = express();
@@ -36,8 +37,8 @@ app.set('view engine', 'hbs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-app.use(express.static('public'));
-app.use(express.static('scripts'));
+app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/scripts'));
 
 app.listen(port, function() {
     console.log('App listening at port ' + port);
@@ -62,9 +63,6 @@ app.use((req, res, next) => {
 app.use('/',indexRouter);
 
 app.use('/', userRouter);
-app.use('/login',userRouter);
-
-
-app.use('/home',indexRouter);
+app.use('/home',homeRouter);
 app.use('/', prodRouter);
 app.use('/inventory',prodRouter);
