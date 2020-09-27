@@ -61,8 +61,6 @@ app.use((req, res, next) => {
 });
 
 app.use('/',indexRouter);
-
 app.use('/', userRouter);
 app.use('/home',homeRouter);
-app.use('/', prodRouter);
 app.use('/inventory',prodRouter);

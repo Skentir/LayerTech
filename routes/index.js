@@ -8,6 +8,18 @@ router.get('/', (req, res) => {
 
 router.get('/home', (req,res) =>{
     res.render('dashboard',{
+       layout: 'main'
+    });
+});
+
+router.get('/raw', (req,res) =>{
+    res.render('raw',{
+       layout: 'main' 
+    });
+});
+
+router.get('/suppliers', (req,res) =>{
+    res.render('suppliers',{
        layout: 'main' 
     });
 });
