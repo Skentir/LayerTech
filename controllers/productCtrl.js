@@ -4,7 +4,7 @@ const productModel = require('../models/products');
 const {validationResult} = require('express-validator');
 
 exports.addProduct = function(req, res) {
-  const {productName, expirationDate, dateBought, quantity, basePrice, sellingPrice} = req.body;
+  const {productName, expirationDate, dateBought, quantity, basePrice, sellingPrice, location} = req.body;
 
   const newProduct = {
     productName : productName,
@@ -12,7 +12,8 @@ exports.addProduct = function(req, res) {
     dateBought : dateBought,
     quantity : quantity,
     basePrice : basePrice,
-    sellingPrice : sellingPrice
+    sellingPrice : sellingPrice,
+    location : location
   };
 
   productModel.create(newProduct, function(err, product){
@@ -29,9 +30,8 @@ exports.addProduct = function(req, res) {
 
 exports.getItemDetails = function(req,res) 
 {
-  console.log("Inside get item details");
   var itemID = mongoose.Types.ObjectId(req.params.id);
-
+  
   productModel.findById(itemID)
     .exec(function(err,results){
       if (err)
@@ -45,6 +45,7 @@ exports.getItemDetails = function(req,res)
 } 
 
 exports.getProducts = function(req, res) {
+  console.log("HERE 1");
   productModel.find({})
     .exec(function(err, results){
       if (err)
@@ -70,7 +71,8 @@ exports.updateItem = function(req,res) {
         quantity: req.body.quantity,
         basePrice: req.body.base,
         sellingPrice: req.body.selling,
-        expiryDate: req.body.expiryDate
+        expiryDate: req.body.expiryDate,
+        location: req.body.location
       }      
     }, (err) => {
       if(err)

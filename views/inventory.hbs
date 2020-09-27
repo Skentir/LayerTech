@@ -56,6 +56,7 @@
         <th>QUANTITY</th>
         <th>BASE PRICE</th>
         <th>SELLING PRICE</th>
+        <th>LOCATION</th>
         <th>UPDATE</th>
         </tr>
 
@@ -67,6 +68,7 @@
             <td class="quantity">{{this.quantity}}</td>
             <td class="basePrice">{{this.basePrice}}</td>
             <td class="sellingPrice">{{this.sellingPrice}}</td>
+            <td class="location">{{this.location}}</td>
             <td>
                  <button class="button launchUpdate" data-id={{this._id}} type="button" data-toggle="modal" data-target="#updateModal">Update</button>
             </td>
@@ -92,67 +94,76 @@
         <form method='POST' autocomplete="off" name="addProduct" action='/addProduct'>
             <!-- Product Name -->
             <div class="formcontainer">
-            <div class="formlabel">
-                Product Name
-            </div>
-            <div class="forminput">
-                <input type="text" name="productName" required>
-            </div>
+                <div class="formlabel">
+                    Product Name
+                </div>
+                <div class="forminput">
+                    <input type="text" name="productName" required>
+                </div>
             </div>
             <br>
 
             <!-- Expiration Date -->
             <div class="formcontainer">
-            <div class="formlabel">
-                Expiration Date
-            </div>
-            <div class="forminput">
-                <input type="date" name="expirationDate" required>
-            </div>
+                <div class="formlabel">
+                    Expiration Date
+                </div>
+                <div class="forminput">
+                    <input type="date" name="expirationDate" required>
+                </div>
             </div>
             <br>
 
             <!-- Date Bought -->
             <div class="formcontainer">
-            <div class="formlabel">
-                Date Bought
-            </div>
-            <div class="forminput">
-                <input type="date" name="dateBought" required>
-            </div>
+                <div class="formlabel">
+                    Date Bought
+                </div>
+                <div class="forminput">
+                    <input type="date" name="dateBought" required>
+                </div>
             </div>
             <br>
 
             <!-- Quantity -->
             <div class="formcontainer">
-            <div class="formlabel">
-                Quantity
-            </div>
-            <div class="forminput">
-                <input type="number" name="quantity" required>
-            </div>
+                <div class="formlabel">
+                    Quantity
+                </div>
+                <div class="forminput">
+                    <input type="number" name="quantity" required>
+                </div>
             </div>
             <br>
 
             <!-- Base Price -->
             <div class="formcontainer">
-            <div class="formlabel">
-                Base Price (per item)
-            </div>
-            <div class="forminput">
-                <input type="number" name="basePrice" required>
-            </div>
+                <div class="formlabel">
+                    Base Price (per item)
+                </div>
+                <div class="forminput">
+                    <input type="number" name="basePrice" required>
+                </div>
             </div>
             <br>
 
             <!-- Selling Price -->
             <div class="formcontainer">
-            <div class="formlabel">
-                Selling Price
+                <div class="formlabel">
+                    Selling Price
+                </div>
+                <div class="forminput">
+                    <input type="number" name="sellingPrice" required>
+                </div>
             </div>
-            <div class="forminput">
-                <input type="number" name="sellingPrice" required>
-            </div>
+             <!-- Location -->
+            <div class="formcontainer">
+                <div class="formlabel">
+                    Location
+                </div>
+                <div class="forminput">
+                    <input type="text" name="location" required>
+                </div>
             </div>
             <br>
 
@@ -232,6 +243,15 @@
                     </div>
                     <div class="forminput">
                         <input type="date" id="updateexpiry">
+                    </div>
+                </div>
+                <!-- Expiry -->
+                <div class="formcontainer">
+                    <div class="formlabel">
+                        Location
+                    </div>
+                    <div class="forminput">
+                        <input type="text" id="updatelocation">
                     </div>
                 </div>
                 <br>

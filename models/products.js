@@ -7,7 +7,8 @@ const productSchema = new mongoose.Schema({
     dateBought : {type: Date},
     quantity : {type: Number},
     basePrice : {type: Number},
-    sellingPrice : {type: Number}
+    sellingPrice : {type: Number},
+    location : {type: String}
 },{
         toObject: {
             virtuals: true,
