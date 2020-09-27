@@ -50,23 +50,23 @@
     <table class="inventorytable">
         <col style="background-color: #FAFA87;"/>
         <tr>
-        <th>PRODUCT NAME</th>
-        <th>EXPIRY</th>
-        <th>DATE BOUGHT</th>
-        <th>QUANTITY</th>
-        <th>BASE PRICE</th>
-        <th>SELLING PRICE</th>
+        <th>SUPPLIER NAME</th>
+        <th>CONTACT NO.</th>
+        <th>EMAIL</th>
+        <th>COMPANY NAME</th>
+        <th>PRODUCT LIST</th>
+        <th>CONTRACT TERMS</th>
         <th>UPDATE</th>
         </tr>
 
-        {{#each products}}
+        {{#each supplier}}
         <tr id={{this._id}}>
-            <td class="productName">{{this.productName}}</td>
-            <td class="expiry">{{this.expirationDate}}</td>
-            <td> {{this.dateBought}}</td>
-            <td class="quantity">{{this.quantity}}</td>
-            <td class="basePrice">{{this.basePrice}}</td>
-            <td class="sellingPrice">{{this.sellingPrice}}</td>
+            <td class="suppliertName">{{this.suppliertName}}</td>
+            <td class="contactNo">{{this.contactNo}}</td>
+            <td class="email">{{this.email}}</td>
+            <td class="companyName">{{this.companyName}}</td>
+            <td class="productList">{{this.productList}}</td>
+            <td class="contract">{{this.contract}}</td>
             <td>
                  <button class="button launchUpdate" data-id={{this._id}} type="button" data-toggle="modal" data-target="#updateModal">Update</button>
             </td>
