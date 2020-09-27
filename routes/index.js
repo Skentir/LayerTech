@@ -11,13 +11,6 @@ router.get('/raw', (req,res) =>{
        layout: 'main' 
     });
 });
-
-router.get('/suppliers', (req,res) =>{
-    res.render('suppliers',{
-       layout: 'main' 
-    });
-});
-
 module.exports = router;
 
 
