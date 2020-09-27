@@ -64,8 +64,6 @@ exports.getSupplierDetails = function(req,res)
 
 
 exports.updateSupplier= function(req,res) {
-    console.log("YO " + JSON.stringify(req.body))
-    console.log("ID " + req.params.id)
     supplierModel.findByIdAndUpdate({_id:req.params.id},
       {
         $set: {
@@ -80,10 +78,6 @@ exports.updateSupplier= function(req,res) {
       }, (err) => {
         if(err)
             res.send(err);
-        else {
-            console.log("DONE")
-            res.redirect('/suppliers') 
-        }
       });
   };
   
