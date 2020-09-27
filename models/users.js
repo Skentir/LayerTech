@@ -25,10 +25,8 @@ exports.create = function(obj, next) {
   });
 };
 
-
 exports.getOne = function(query, next) {
   userModel.findOne(query, function(err, user) {
     next(err, user);
   });
 };
-

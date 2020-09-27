@@ -25,8 +25,8 @@ const registerValidation = [
 ];
 
 const loginValidation = [
-  body('log-em').not().isEmpty().withMessage("Email is required."),
-  body('log-pass').not().isEmpty().withMessage("Password is required.")
+  body('username').not().isEmpty().withMessage("Email is required."),
+  body('password').not().isEmpty().withMessage("Password is required.")
 ];
 
 module.exports = {registerValidation, loginValidation};

@@ -1,14 +1,14 @@
 const mongoose = require('./connection');
 
 const stockSchema = new mongoose.Schema({
-    _id : mongoose.Schema.Types.ObjectId,
-    material : type: String,
-    expirationDate : Date,
-    location: String,
-    description: String,
-    quantity: Number,
-    cost: Number,
-//    supplierID: type:String This will be implemented when Suppliers are included
+    rawMaterial : {type:String},
+    //supplier :[{type:mongoose.Schema.Types.ObjectID, ref:'products'}],
+    expirationDate : {type:Date},
+    dateBought : {type:Date},
+    quantity: {type:Number},
+    location: {type:String},
+    unit: {type:String},
+    cost: {type:Number}
 },{
         toObject: {
             virtuals: true,
@@ -18,6 +18,4 @@ const stockSchema = new mongoose.Schema({
         }
 });
 
-const stockModel = mongoose.model('stocks', stockSchema);
-
-module.exports = mongoose;
+module.exports = mongoose.model('raw', stockSchema);

@@ -3,12 +3,12 @@
     <!--     CSS -->
     <link rel="stylesheet" href="css/tables.css">
     <!-- JS -->
-    <script src="addProduct.js"></script>
+    <script src="addProduct.js"></script> <!-- change once js for raw is created -->
 {{/section}}
 <div class="inventorycontainer">
     <div class="headercontainer">
     <div class="headerleft">
-        <h1>Inventory</h1>
+        <h1>Raw Materials</h1>
     </div>
     <div class="headerright">
         <p><span>Actual Products</span></p>
@@ -17,29 +17,29 @@
 
     <div class="descriptioncontainer">
     <div class="description">
-            This page contains the list of products that the
-            company has produced.
+            This page contains all the raw materials the company has
+            acquired to produces products.
     </div>
     </div>
 
     <div class="toolcontainer">
     <div class="toolleft">
         <div class="btncontainer">
-        <button class="button" id="btnadditemmodal">Add a Product</button>
+        <button class="button" id="btnadditemmodal">Add a Material</button>
         </div>
     </div>
-    <div class="toolleft">
+    {{!-- <div class="toolleft">
         <div class="btncontainer">
         <button class="button" id="btngeneratesummary">Generate Summary</button>
         </div>
-    </div>
+    </div> --}}
     <div class="toolright">
         <div class="dropdown">
         <button class="dropbtn">Filter By</button>
         <div class="dropdown-content">
-        <a href="#">Name</a>
-        <a href="#">Price</a>
-        <a href="#">Quantity</a>
+        <a href="#">abcdefg</a>
+        <a href="#">abcdefg</a>
+        <a href="#">abcdefg</a>
         </div>
         </div>
     </div>
@@ -49,26 +49,30 @@
     <form>
     <table class="inventorytable">
         <col style="background-color: #FAFA87;"/>
+
         <tr>
-        <th>PRODUCT NAME</th>
-        <th>EXPIRY</th>
+        <th>RAW MATERIAL</th>
+        <th>SUPPLIER</th>
+        <th>EXPIRATION DATE</th>
         <th>DATE BOUGHT</th>
         <th>QUANTITY</th>
-        <th>BASE PRICE</th>
-        <th>SELLING PRICE</th>
+        <th>UNIT</th>
+        <th>COST</th>
         <th>UPDATE</th>
+        <th>DELETE</th>
         </tr>
 
-        {{#each products}}
+        {{#each material}}
         <tr id={{this._id}}>
-            <td class="productName">{{this.productName}}</td>
-            <td class="expiry">{{this.expirationDate}}</td>
+            <td class="rawMaterial">{{this.rawMaterial}}</td>
+            <td class="supplier">{{this.supplier}}</td>
+            <td class="expiry">{{this.expiry}}</td>
             <td> {{this.dateBought}}</td>
             <td class="quantity">{{this.quantity}}</td>
-            <td class="basePrice">{{this.basePrice}}</td>
-            <td class="sellingPrice">{{this.sellingPrice}}</td>
+            <td class="unit">{{this.unit}}</td>
+            <td class="cost">{{this.cost}}</td>
             <td>
-                 <button class="button launchUpdate" data-id={{this._id}} type="button" data-toggle="modal" data-target="#updateModal">Update</button>
+                 <button class="button launchUpdate" data-id={{this._id}} data-toggle="modal" data-target="#updateModal">Update</button>
             </td>
         </tr>
         {{/each}}
@@ -77,7 +81,15 @@
     </form>
 </div>
 
-<!-- Add Product Modal -->
+      {{!-- rawMaterial : {type: String},
+            supplier : {type: String},
+            expirationDate : {type: Date},
+            dateBought : {type: Date},
+            quantity : {type: Number},
+            unit : {type: String},
+            cost : {type: Number} --}}
+
+<!-- Add Raw Material Modal -->
 <div class="modal" id="modalbg" >
     <!-- Modal Content -->
     <div class="addmodal">
@@ -88,15 +100,26 @@
     <div class="modalbody">
         <!-- Modal Add Item Fields -->
         <div class="inputcontainer">
-        <h1>Add a Product</h1>
+        <h1>Add a Raw Material</h1>
         <form method='POST' autocomplete="off" name="addProduct" action='/addProduct'>
             <!-- Product Name -->
             <div class="formcontainer">
             <div class="formlabel">
-                Product Name
+                Material Name
             </div>
             <div class="forminput">
-                <input type="text" name="productName" required>
+                <input type="text" name="rawMaterial" required>
+            </div>
+            </div>
+            <br>
+
+            <!-- Supplier Name -->
+            <div class="formcontainer">
+            <div class="formlabel">
+                Supplier
+            </div>
+            <div class="forminput">
+                <input type="text" name="supplier" required>
             </div>
             </div>
             <br>
@@ -134,24 +157,24 @@
             </div>
             <br>
 
-            <!-- Base Price -->
+            <!-- Unit -->
             <div class="formcontainer">
             <div class="formlabel">
-                Base Price (per item)
+                Unit
             </div>
             <div class="forminput">
-                <input type="number" name="basePrice" required>
+                <input type="number" name="unit" required>
             </div>
             </div>
             <br>
 
-            <!-- Selling Price -->
+            <!-- Cost -->
             <div class="formcontainer">
             <div class="formlabel">
-                Selling Price
+                COST
             </div>
             <div class="forminput">
-                <input type="number" name="sellingPrice" required>
+                <input type="number" name="cost" required>
             </div>
             </div>
             <br>
@@ -168,7 +191,7 @@
     </div>
 </div>
 
-<!-- Update Product Modal -->
+<!-- Update Raw Material Modal -->
 <div id="updateModal" class="modal" data-backdrop="false">
     <!-- Modal Content -->
     <div class="addmodal">
@@ -179,15 +202,15 @@
     <div class="modalbody">
         <!-- Modal Add Item Fields -->
         <div class="inputcontainer">
-            <h1>Update Product</h1>
+            <h1>Update Material</h1>
             <form id="updateForm"> 
                 <!-- Product Name -->
                 <div class="formcontainer">
                     <div class="formlabel">
-                        Product Name
+                        Raw Material
                     </div>
                     <div class="forminput">
-                        <input type="text" id="updateproductname">
+                        <input type="text" id="updaterawmaterial" required>
                     </div>
                 </div>
                 <br>
@@ -203,24 +226,24 @@
                 </div>
                 <br>
 
-                <!-- Base Price -->
+                <!-- Unit -->
                 <div class="formcontainer">
                     <div class="formlabel">
-                        Base Price (per item)
+                        Unit
                     </div>
                     <div class="forminput">
-                        <input type="number" id="updatebaseprice">
+                        <input type="number" id="updateunit">
                     </div>
                 </div>
                 <br>
 
-                <!-- Selling Price -->
+                <!-- Cost -->
                 <div class="formcontainer">
                     <div class="formlabel">
-                        Selling Price
+                        Cost
                     </div>
                     <div class="forminput">
-                        <input type="number" id="updatesellingprice">
+                        <input type="number" id="updatecost">
                     </div>
                 </div>
                 <br>

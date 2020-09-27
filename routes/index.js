@@ -6,16 +6,22 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/home', (req,res)=>{
+router.get('/home', (req,res) =>{
     res.render('dashboard',{
-       layout:'main'
+       layout: 'main'
     });
 });
 
-router.get('/inventory', (req,res) =>{
-   res.render('inventory',{
-       layout : 'main'
-   })
+router.get('/raw', (req,res) =>{
+    res.render('raw',{
+       layout: 'main' 
+    });
+});
+
+router.get('/suppliers', (req,res) =>{
+    res.render('suppliers',{
+       layout: 'main' 
+    });
 });
 
 module.exports = router;
