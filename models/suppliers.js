@@ -5,7 +5,8 @@ const supplierSchema = new mongoose.Schema({
     contactNo: {type: String},
     email: {type: String},
     companyName: {type:String},
-    productList: {type: Array}  //array of string products the supplier provides
+    productList: {type: Array},  //array of string products the supplier provides
+    contractTerms: {type: String}
 },{
         toObject: {
             virtuals: true,
