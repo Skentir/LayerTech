@@ -17,6 +17,7 @@ const supplierSchema = new mongoose.Schema({
 });
 
 const supplierModel = mongoose.model('suppliers', supplierSchema);
+module.exports = supplierModel;
 
 exports.create = function(obj, next) {
   const supplier = new supplierModel(obj);

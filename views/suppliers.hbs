@@ -3,7 +3,7 @@
     <!--     CSS -->
     <link rel="stylesheet" href="css/tables.css">
     <!-- JS -->
-    <script src="addProduct.js"></script>
+    <script src="addSupplier.js"></script>
 {{/section}}
 <div class="inventorycontainer">
     <div class="headercontainer">
@@ -50,23 +50,25 @@
     <table class="inventorytable">
         <col style="background-color: #FAFA87;"/>
         <tr>
-        <th>SUPPLIER NAME</th>
+        <th>NAME</th>
+        <th>POSITION</th>
+        <th>COMPANY</th>
         <th>CONTACT NO.</th>
         <th>EMAIL</th>
-        <th>COMPANY NAME</th>
-        <th>PRODUCT LIST</th>
         <th>CONTRACT TERMS</th>
-        <th>UPDATE</th>
+        <th>NOTES</th>
+        <th></th>
         </tr>
 
         {{#each supplier}}
         <tr id={{this._id}}>
-            <td class="suppliertName">{{this.suppliertName}}</td>
-            <td class="contactNo">{{this.contactNo}}</td>
+            <td class="name">{{this.name}}</td>
+            <td class="position">{{this.position}}</td>
+            <td class="company"> {{this.companyName}}</td>
+            <td class="contact">{{this.contactNo}}</td>
             <td class="email">{{this.email}}</td>
-            <td class="companyName">{{this.companyName}}</td>
-            <td class="productList">{{this.productList}}</td>
-            <td class="contract">{{this.contract}}</td>
+            <td class="contract">{{this.contractTerms}}</td>
+            <td class="notes">{{this.notes}}</td>
             <td>
                  <button class="button launchUpdate" data-id={{this._id}} type="button" data-toggle="modal" data-target="#updateModal">Update</button>
             </td>
@@ -77,7 +79,7 @@
     </form>
 </div>
 
-<!-- Add Product Modal -->
+<!-- Add Supplier Modal -->
 <div class="modal" id="modalbg" >
     <!-- Modal Content -->
     <div class="addmodal">
@@ -86,73 +88,84 @@
     <br>
     <!-- Modal Form -->
     <div class="modalbody">
-        <!-- Modal Add Item Fields -->
+        <!-- Modal Add Supplier Fields -->
         <div class="inputcontainer">
-        <h1>Add a Product</h1>
-        <form method='POST' autocomplete="off" name="addProduct" action='/addProduct'>
-            <!-- Product Name -->
+        <h1>Add a Supplier</h1>
+        <form method='POST' autocomplete="off" name="addSupplier" action='/suppliers/addSupplier'>
+            <!-- Name -->
             <div class="formcontainer">
-            <div class="formlabel">
-                Product Name
-            </div>
-            <div class="forminput">
-                <input type="text" name="productName" required>
-            </div>
+                <div class="formlabel">
+                Supplier Name
+                </div>
+                <div class="forminput">
+                    <input type="text" name="name" required>
+                </div>
             </div>
             <br>
 
-            <!-- Expiration Date -->
+            <!-- Position -->
             <div class="formcontainer">
-            <div class="formlabel">
-                Expiration Date
-            </div>
-            <div class="forminput">
-                <input type="date" name="expirationDate" required>
-            </div>
+                <div class="formlabel">
+                    Position
+                </div>
+                <div class="forminput">
+                    <input type="text" name="position" required>
+                </div>
             </div>
             <br>
 
-            <!-- Date Bought -->
+            <!-- Company -->
             <div class="formcontainer">
-            <div class="formlabel">
-                Date Bought
-            </div>
-            <div class="forminput">
-                <input type="date" name="dateBought" required>
-            </div>
+                <div class="formlabel">
+                    Company
+                </div>
+                <div class="forminput">
+                    <input type="text" name="company" required>
+                </div>
             </div>
             <br>
 
-            <!-- Quantity -->
+            <!-- Contact No.  -->
             <div class="formcontainer">
-            <div class="formlabel">
-                Quantity
-            </div>
-            <div class="forminput">
-                <input type="number" name="quantity" required>
-            </div>
+                <div class="formlabel">
+                    Contact No.
+                </div>
+                <div class="forminput">
+                    <input type="number" name="contactNo" required>
+                </div>
             </div>
             <br>
 
-            <!-- Base Price -->
+            <!-- Email -->
             <div class="formcontainer">
-            <div class="formlabel">
-                Base Price (per item)
-            </div>
-            <div class="forminput">
-                <input type="number" name="basePrice" required>
-            </div>
+                <div class="formlabel">
+                    Email
+                </div>
+                <div class="forminput">
+                    <input type="number" name="basePrice" required>
+                </div>
             </div>
             <br>
 
-            <!-- Selling Price -->
+            <!-- ContractTerms -->
             <div class="formcontainer">
-            <div class="formlabel">
-                Selling Price
+                <div class="formlabel">
+                    Contract Terms
+                </div>
+                <div class="forminput">
+                    <input type="text" name="contractTerms" required>
+                </div>
             </div>
-            <div class="forminput">
-                <input type="number" name="sellingPrice" required>
-            </div>
+            <br>
+
+             <!-- Notes -->
+            <div class="formcontainer">
+                <div class="formlabel">
+                    notes
+                </div>
+                <div class="forminput">
+                    <input type="text" name="notes" required>
+                </div>
             </div>
             <br>
 

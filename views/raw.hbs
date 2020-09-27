@@ -3,7 +3,7 @@
     <!--     CSS -->
     <link rel="stylesheet" href="css/tables.css">
     <!-- JS -->
-    <script src="addProduct.js"></script> <!-- change once js for raw is created -->
+    <script src="raw.js"></script> <!-- change once js for raw is created -->
 {{/section}}
 <div class="inventorycontainer">
     <div class="headercontainer">
@@ -28,18 +28,15 @@
         <button class="button" id="btnadditemmodal">Add a Material</button>
         </div>
     </div>
-    {{!-- <div class="toolleft">
-        <div class="btncontainer">
-        <button class="button" id="btngeneratesummary">Generate Summary</button>
-        </div>
-    </div> --}}
+        
+        
     <div class="toolright">
         <div class="dropdown">
         <button class="dropbtn">Filter By</button>
         <div class="dropdown-content">
-        <a href="#">abcdefg</a>
-        <a href="#">abcdefg</a>
-        <a href="#">abcdefg</a>
+        <a href="#">Name</a>
+        <a href="#">Price</a>
+        <a href="#">Date</a>
         </div>
         </div>
     </div>
@@ -51,15 +48,15 @@
         <col style="background-color: #FAFA87;"/>
 
         <tr>
-        <th>RAW MATERIAL</th>
-        <th>SUPPLIER</th>
-        <th>EXPIRATION DATE</th>
-        <th>DATE BOUGHT</th>
-        <th>QUANTITY</th>
-        <th>UNIT</th>
-        <th>COST</th>
-        <th>UPDATE</th>
-        <th>DELETE</th>
+            <th>RAW MATERIAL</th>
+            <th>SUPPLIER</th>
+            <th>EXPIRATION DATE</th>
+            <th>DATE BOUGHT</th>
+            <th>QUANTITY</th>
+            <th>UNIT</th>
+            <th>COST</th>
+            <th>UPDATE</th>
+            <th>DELETE</th>
         </tr>
 
         {{#each material}}
@@ -273,15 +270,17 @@
     var modal = document.getElementById("modalbg");
     var btn = document.getElementById("btnadditemmodal");
     var span = document.getElementsByClassName("close")[0];
+    
     btn.onclick = function() {
-    modal.style.display = "block";
+        modal.style.display = "block";
     }
+    
     span.onclick = function() {
-    modal.style.display = "none";
-    }
-    window.onclick = function(event) {
-    if (event.target == modal) {
         modal.style.display = "none";
     }
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
 </script>
