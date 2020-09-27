@@ -64,6 +64,7 @@ exports.getProducts = function(req, res) {
 }
 
 exports.updateItem = function(req,res) {
+  console.log("UPDATE HERE")
   productModel.findByIdAndUpdate({_id:req.params.id},
     {
       $set: {

@@ -26,9 +26,15 @@
     </div>
     <div class="alerts">
         <ul>
-            <li style="background-color: aquamarine;">Raw Materials: You have 3 items about to expire</li>
-            <li style="background-color: bisque;">Products: You have 3 items about to expire</li>
+            {{#if rawCount}}
+                <li style="background-color: aquamarine;">Raw Materials: You have {{rawCount}} item/s about to expire</li>
+            {{/if}}
+            {{#if productCount}}
+                <li style="background-color: bisque;">Products: You have {{productCount}} item/s about to expire</li>
+            {{/if}}
+            <!--
             <li style="background-color: rgb(233, 127, 127);">Transactions: You have 3 items about to expire</li>
+            -->
         </ul>
     </div>
 </div>
@@ -44,15 +50,15 @@
                 Transactions
             </span>
         </div>
-         <div class="col-sm">
+         <a href="/raw" class="col-sm">
             <span>
                 Raw Materials
             </span>
-        </div>
-         <div class="col-sm">
+        </a>
+        <a href = "/inventory" class="col-sm">
             <span>
                 Products
             </span>
-        </div>
+        </a>
     </div>
 </div>

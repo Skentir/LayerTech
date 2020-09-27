@@ -35,6 +35,7 @@ $(document).ready(function() {
         var sellingPrice = $("#updatesellingprice").val();
         var expiryDate = $("#updateexpiry").val();
         var location = $("#updatelocation").val();
+        console.log("Location " + location);
 
         var object = {
             name: productName,
@@ -50,7 +51,7 @@ $(document).ready(function() {
              data : JSON.stringify(object),
              processData: false,
              contentType: 'application/json',
-             url: "/updateItem/"+itemID,
+             url: "/inventory/updateItem/"+itemID,
         }).done(function(data){
             $("#"+itemsID+".productName").val(productName);
             $("#"+itemID+".quantity").val(quantity);
@@ -61,7 +62,7 @@ $(document).ready(function() {
         });
     })
 
-    
+    /*
     // ADD PRODUCT 
     function addProduct(item, parentDiv){
         var rowDiv = document.createElement('div');
@@ -145,5 +146,5 @@ $(document).ready(function() {
         });
 
     });
-    
+    */
 });
