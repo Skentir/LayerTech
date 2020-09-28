@@ -77,7 +77,7 @@
     </form>
 </div>
 
-<!-- Add Supplier Modal -->
+<!-- Add Transaction Modal -->
 <div class="modal" id="modalbg" >
     <!-- Modal Content -->
     <div class="addmodal">
@@ -86,72 +86,83 @@
     <br>
     <!-- Modal Form -->
     <div class="modalbody">
-        <!-- Modal Add Supplier Fields -->
+        <!-- Modal Add Transaction Fields -->
         <div class="inputcontainer">
-        <h1>Add a Supplier</h1>
-        <form method='POST' autocomplete="off" name="addSupplier" action='/suppliers/addSupplier'>
-            <!-- Name -->
+        <h1>Add a Transaction</h1>
+        <form method='POST' autocomplete="off" name="addSupplier" action='/transactions/addTransaction'>
+            <!-- Description -->
             <div class="formcontainer">
                 <div class="formlabel">
-                Supplier Name
+                Description
                 </div>
                 <div class="forminput">
-                    <input type="text" name="name" required>
+                    <input type="text" name="description" required>
                 </div>
             </div>
             <br>
 
-            <!-- Position -->
+            <!-- Date of Transaction -->
             <div class="formcontainer">
                 <div class="formlabel">
-                    Position
+                    Date of Transaction
                 </div>
                 <div class="forminput">
-                    <input type="text" name="position" required>
+                    <input type="date" name="date" required>
                 </div>
             </div>
             <br>
 
-            <!-- Company -->
+            <!-- Amount -->
             <div class="formcontainer">
                 <div class="formlabel">
-                    Company
+                    Amount
                 </div>
                 <div class="forminput">
-                    <input type="text" name="company" required>
+                    <input type="number" name="amount" required>
                 </div>
             </div>
             <br>
 
-            <!-- Contact No.  -->
+            <!-- Type -->
             <div class="formcontainer">
                 <div class="formlabel">
-                    Contact No.
+                    Type
                 </div>
                 <div class="forminput">
-                    <input type="text" name="contactNo" required>
+                    <input type="text" name="type" required>
                 </div>
             </div>
             <br>
 
-            <!-- Email -->
+            <!-- Payee -->
             <div class="formcontainer">
                 <div class="formlabel">
-                    Email
+                    Payee
                 </div>
                 <div class="forminput">
-                    <input type="text" name="email" required>
+                    <input type="text" name="payee" required>
                 </div>
             </div>
             <br>
 
-            <!-- ContractTerms -->
+            <!-- Payer -->
             <div class="formcontainer">
                 <div class="formlabel">
-                    Contract Terms
+                    Payer
                 </div>
                 <div class="forminput">
-                    <input type="text" name="contractTerms" required>
+                    <input type="text" name="payer" required>
+                </div>
+            </div>
+            <br>
+
+            <!-- Payer Contact No -->
+            <div class="formcontainer">
+                <div class="formlabel">
+                    Payer Contact No
+                </div>
+                <div class="forminput">
+                    <input type="text" name="contact" required>
                 </div>
             </div>
             <br>
