@@ -20,3 +20,18 @@ exports.getTransactions = function (req,res) {
             }
         })   
 }
+
+exports.getTransactionDetails = function(req,res) 
+{
+  var itemID = mongoose.Types.ObjectId(req.params.id);
+  
+  transactionModel.findById(itemID)
+    .exec(function(err,results){
+      if (err)
+        res.send(err);
+      else if (!results)
+        res.send(err);
+      else
+        res.send(results);
+    });
+} 

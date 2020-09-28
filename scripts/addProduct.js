@@ -17,8 +17,6 @@ $(document).ready(function() {
               $("#updateForm").attr('data-id', data._id);
               var parsedDate = new Date(data.expirationDate);
               var finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + ("0" + (parsedDate.getDay() + 1)).slice(-2);
-              
-              console.log(finalDate);
               $("#updateexpiry").val(finalDate);
 
           }).fail(function(){
