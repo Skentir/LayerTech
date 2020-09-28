@@ -64,7 +64,7 @@ exports.addTransaction = function(req, res) {
 
 
 exports.updateTransaction = function(req,res) {
-  console.log(JSON.stringify(req.body))
+  
   transactionModel.findByIdAndUpdate({_id:req.params.id},
     {
       $set: {
