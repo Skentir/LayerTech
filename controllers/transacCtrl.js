@@ -37,7 +37,6 @@ exports.getTransactionDetails = function(req,res)
 } 
 
 exports.addTransaction = function(req, res) {
-  console.log(JSON.stringify(req.body))
   const {description, date, amount, type, payee, payer, contact, notes} = req.body;
 
   const newTransaction = {
@@ -57,6 +56,29 @@ exports.addTransaction = function(req, res) {
       req.flash('error_msg', 'Could not add. Please Try Again!');
     } else {
       req.flash("success_msg", 'Added!');
+      res.redirect("/transactions")
     }
   })
+};
+
+
+
+exports.updateTransaction = function(req,res) {
+  console.log(JSON.stringify(req.body))
+  transactionModel.findByIdAndUpdate({_id:req.params.id},
+    {
+      $set: {
+        description: req.body.description,
+        dateAdded: req.body.dateAdded,
+        amount: req.body.amount,
+        type: req.body.type,
+        payee: req.body.payee,
+        payer: req.body.payer,
+        payerContact: req.body.payerContact,
+        notes: req.body.notes
+      }      
+    }, (err) => {
+      if(err)
+          res.send(err);
+    });
 };

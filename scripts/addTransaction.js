@@ -26,23 +26,25 @@ $(document).ready(function() {
 
 
   $('#updateForm').submit(function() {
-    var name = $("#updateSuppName").val();
-    var position = $("#updatePosition").val();
-    var company = $("#updateCompany").val();
+    var desc = $("#updateDesc").val();
+    var date = $("#updateDate").val();
+    var amount = $("#updateAmount").val();
+    var type = $("#updateType").val();
+    var payee = $("#updatePayee").val();
+    var payer = $("#updatePayer").val();
     var contact = $("#updateContact").val();
-    var email = $("#updateEmail").val();
-    var contract = $("#updateTerms").val();
     var notes = $("#updateNotes").val();
 
     console.log("Item" + itemID)
 
     var object = {
-        name: name,
-        position: position,
-        company: company,
-        contactNo: contact,
-        email: email,
-        contract: contract,
+        description: desc,
+        dateAdded: date,
+        amount: amount,
+        type: type,
+        payee: payee,
+        payer: payer,
+        payerContact: contact,
         notes: notes
     }
     
@@ -51,14 +53,15 @@ $(document).ready(function() {
          data : JSON.stringify(object),
          processData: false,
          contentType: 'application/json',
-         url: "/suppliers/updateSupplier/"+itemID,
+         url: "/transactions/updateTransaction/"+itemID,
     }).done(function(data){
-        $("#"+itemsID+".name").val(name);
-        $("#"+itemID+".position").val(position);
-        $("#"+itemID+".company").val(company);
+        $("#"+itemsID+".desc").val(desc);
+        $("#"+itemID+".date").val(date);
+        $("#"+itemID+".amount").val(amount);
+        $("#"+itemID+".type").val(type);
+        $("#"+itemID+".payee").val(payee);
+        $("#"+itemID+".payer").val(payer);
         $("#"+itemID+".contact").val(contact);
-        $("#"+itemID+".email").val(email);
-        $("#"+itemID+".contract").val(contract);
         $("#"+itemID+".notes").val(notes);
     });
 }) 

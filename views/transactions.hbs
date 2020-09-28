@@ -1,5 +1,5 @@
 {{#section 'header'}}
-    <title>Inventory</title>
+    <title>Transactions</title>
     <!--     CSS -->
     <link rel="stylesheet" href="css/tables.css">
     <!-- JS -->
@@ -65,7 +65,7 @@
             <td class="type"> {{this.type}}</td>
             <td class="payee"> {{this.payee}}</td>
             <td class="payer">{{this.payer}}</td>
-            <td class="payerContact">{{this.payerContact}}</td> 
+            <td class="contact">{{this.payerContact}}</td> 
             <td class="notes">{{this.notes}}</td>
             <td>
                  <button class="button launchUpdate" data-id={{this._id}} type="button" data-toggle="modal" data-target="#updateModal">Update</button>
