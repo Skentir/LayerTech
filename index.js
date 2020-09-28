@@ -15,6 +15,7 @@ const prodRouter = require('./routes/productRoutes');
 const suppRouter = require('./routes/suppRoutes');
 const userRouter = require('./routes/userRoutes');
 const homeRouter = require('./routes/homeRoutes');
+const transactionRouter = require('./routes/transacRoutes');
 
 const port = 3000;
 const app = express();
@@ -66,3 +67,4 @@ app.use('/', userRouter);
 app.use('/home',homeRouter);
 app.use('/inventory',prodRouter);
 app.use('/suppliers',suppRouter);
+app.use('/transactions', transactionRouter)
