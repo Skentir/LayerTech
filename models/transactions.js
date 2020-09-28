@@ -8,8 +8,8 @@ const transactionSchema = new mongoose.Schema({
     payer: {type: String},
     description: {type: String},
     payerContact: {type: String},
-    transactionType: {type:String},
-    transactionNotes : {type: String} //for transaction details
+    type: {type:String},
+    notes : {type: String} //for transaction details
 },{
         toObject: {
             virtuals: true,

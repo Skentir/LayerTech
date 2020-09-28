@@ -47,22 +47,25 @@
         <col style="background-color: #FAFA87;"/>
         <tr>
         <th>DESCRIPTION</th>
+        <th>DATE</th>
+        <th>AMOUNT</th>
+        <th>TYPE</th>
         <th>PAYEE</th>
-        <th>CONTACT NO.</th>
-        <th>PAYEE</th>
-        <th>CONTRACT TERMS</th>
+        <th>PAYER</th>
+        <th>PAYER CONTACT<th>
         <th>NOTES</th>
         <th></th>
         </tr>
 
-        {{#each supplier}}
+        {{#each transaction}}
         <tr id={{this._id}}>
-            <td class="name">{{this.name}}</td>
-            <td class="position">{{this.position}}</td>
-            <td class="company"> {{this.companyName}}</td>
-            <td class="contact">{{this.contactNo}}</td>
-            <td class="email">{{this.email}}</td>
-            <td class="contract">{{this.contractTerms}}</td>
+            <td class="desc">{{this.description}}</td>
+            <td class="date">{{this.dateStarted}}</td>
+             <td class="amount"> Php {{this.amount}}</td>
+            <td class="type"> {{this.type}}</td>
+            <td class="payee"> {{this.payee}}</td>
+            <td class="payer">{{this.payer}}</td>
+            <td class="payerContact">{{this.payerContact}}</td> 
             <td class="notes">{{this.notes}}</td>
             <td>
                  <button class="button launchUpdate" data-id={{this._id}} type="button" data-toggle="modal" data-target="#updateModal">Update</button>

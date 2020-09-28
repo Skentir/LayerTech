@@ -11,10 +11,10 @@ exports.getTransactions = function (req,res) {
             else if (!result)
                 res.send(err)
             else {
-                var supp = JSON.parse(JSON.stringify(result))
+                var parsed = JSON.parse(JSON.stringify(result))
                 var params = {
                     layout: 'main',
-                    supplier: supp
+                    transaction: parsed
                 }
                 res.render('transactions',params)
             }
