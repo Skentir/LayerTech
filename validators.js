@@ -38,7 +38,7 @@ const addProductValidation = [
       var dateBought = new Date(value).getTime();
       var expirationDate = new Date(req.body.expirationDate).getTime();
 
-      if (dateBought < expirationDate) {
+      if (dateBought > expirationDate) {
         throw new Error("Date bought must be greater than expiration date.");
       }
       return true;
