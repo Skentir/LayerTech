@@ -9,6 +9,8 @@
             url("../assets/birshtadt.jpg");
     background-position: center center;
     background-size: cover;
+    height: 200px;
+    border-radius: 0px 4px 4px;
 }
 
 .adjustment {
@@ -46,4 +48,8 @@
 
 .col-sm > span {
     margin: auto;
+}
+
+.to-add {
+    background: linear-gradient(#495057, #6c757d);
 }
