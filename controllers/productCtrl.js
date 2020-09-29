@@ -93,13 +93,14 @@ exports.updateItem = function(req,res) {
     });
 };
 
-exports.deleteItem = function(req,res) {
-
-  productModel.findByIdAndDelete({_id:req.params.id}, function (err, docs) {
-    if (err) {
-        console.log(err)
+exports.deleteItem = function(req, res) {
+  productModel.deleteOne({ _id:req.params.id }, (err) => {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
     } else {
-        console.log("Deleted : ", docs);
+      //req.flash("success_msg", 'Product added!');
+      res.redirect('/inventory')
     }
   });
-};
+ };

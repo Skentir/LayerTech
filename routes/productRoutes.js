@@ -9,6 +9,6 @@ router.get('/getItemDetails/:id', productController.getItemDetails)
 router.post('/updateItem/:id', productController.updateItem)
 router.get('/getProducts', productController.getItemDetails)
 router.post('/addProduct', addProductValidation, productController.addProduct)
-router.post('/deleteItem/:id', productController.deleteItem)
+router.delete('/deleteItem/:id', productController.deleteItem)
 
 module.exports = router;
