@@ -20,3 +20,19 @@ exports.getStocks = function(req, res) {
             }
         })   
 }
+
+
+exports.getStockDetails = function(req,res) 
+{
+  var itemID = mongoose.Types.ObjectId(req.params.id);
+  
+  stockModel.findById(itemID)
+    .exec(function(err,results){
+      if (err)
+        res.send(err);
+      else if (!results)
+        res.send(err);
+      else
+        res.send(results);
+    });
+}

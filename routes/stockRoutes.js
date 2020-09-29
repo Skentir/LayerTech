@@ -1,9 +1,9 @@
 const router = require('express').Router();
 
-const productController = require('../controllers/stockCtrl');
+const stockController = require('../controllers/stockCtrl');
 
-router.get('/', productController.getStocks)
-//router.get('/getItemDetails/:id', productController.getItemDetails)
+router.get('/', stockController.getStocks)
+router.get('/getStockDetails/:id', stockController.getItemDetails)
 //router.post('/updateItem/:id', productController.updateItem)
 //router.get('/getProducts', productController.getItemDetails)
 //Add product
