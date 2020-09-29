@@ -36,3 +36,28 @@ exports.getStockDetails = function(req,res)
         res.send(results);
     });
 }
+
+exports.addStock = function(req, res) {
+  const {rawMaterial, supplier, expirationDate, dateBought, quantity, unit, cost, location} = req.body;
+
+  const obj = {
+    rawMaterial : rawMaterial,
+    supplier : supplier,
+    expirationDate : expirationDate,
+    dateBought :dateBought,
+    quantity: quantity,
+    location: location,
+    unit: unit,
+    cost: cost
+  };
+
+  stockModel.create(obj, function(err, result){
+    if (err) {
+      console.log(err);
+      req.flash('error_msg', 'Could not add product. Please Try Again!');
+    } else {
+      req.flash("success_msg", 'Raw Material added!');
+      res.redirect('/raw');
+    }
+  })
+};
