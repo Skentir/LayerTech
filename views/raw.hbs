@@ -53,19 +53,21 @@
             <th>EXPIRATION DATE</th>
             <th>DATE BOUGHT</th>
             <th>QUANTITY</th>
+            <th>LOCATION</th>
             <th>UNIT</th>
             <th>COST</th>
-            <th>UPDATE</th>
-            <th>DELETE</th>
+            <th></th>
+            <th></th>
         </tr>
 
-        {{#each material}}
+        {{#each stock}}
         <tr id={{this._id}}>
             <td class="rawMaterial">{{this.rawMaterial}}</td>
             <td class="supplier">{{this.supplier}}</td>
-            <td class="expiry">{{this.expiry}}</td>
-            <td> {{this.dateBought}}</td>
+            <td class="expiry">{{this.expirationDate}}</td>
+            <td class="dateBought"> {{this.dateBought}}</td>
             <td class="quantity">{{this.quantity}}</td>
+             <td class="quantity">{{this.location}}</td>
             <td class="unit">{{this.unit}}</td>
             <td class="cost">{{this.cost}}</td>
             <td>

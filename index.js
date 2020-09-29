@@ -12,6 +12,7 @@ const MongoStore = require('connect-mongo')(session);
 
 const indexRouter = require('./routes/index');
 const prodRouter = require('./routes/productRoutes');
+const stockRouter = require('./routes/stockRoutes');
 const suppRouter = require('./routes/suppRoutes');
 const userRouter = require('./routes/userRoutes');
 const homeRouter = require('./routes/homeRoutes');
@@ -67,4 +68,5 @@ app.use('/', userRouter);
 app.use('/home',homeRouter);
 app.use('/inventory',prodRouter);
 app.use('/suppliers',suppRouter);
-app.use('/transactions', transactionRouter)
+app.use('/transactions', transactionRouter);
+app.use('/raw',stockRouter);

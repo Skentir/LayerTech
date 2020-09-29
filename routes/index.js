@@ -6,11 +6,6 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/raw', (req,res) =>{
-    res.render('raw',{
-       layout: 'main' 
-    });
-});
 module.exports = router;
 
 
