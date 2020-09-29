@@ -3,7 +3,7 @@
     <!--     CSS -->
     <link rel="stylesheet" href="css/tables.css">
     <!-- JS -->
-    <script src="raw.js"></script> <!-- change once js for raw is created -->
+    <script src="raw.js"></script>
 {{/section}}
 <div class="inventorycontainer">
     <div class="headercontainer">
@@ -80,14 +80,6 @@
     </form>
 </div>
 
-      {{!-- rawMaterial : {type: String},
-            supplier : {type: String},
-            expirationDate : {type: Date},
-            dateBought : {type: Date},
-            quantity : {type: Number},
-            unit : {type: String},
-            cost : {type: Number} --}}
-
 <!-- Add Raw Material Modal -->
 <div class="modal" id="modalbg" >
     <!-- Modal Content -->
@@ -103,78 +95,89 @@
         <form method='POST' autocomplete="off" name="addProduct" action='/addProduct'>
             <!-- Product Name -->
             <div class="formcontainer">
-            <div class="formlabel">
-                Material Name
-            </div>
-            <div class="forminput">
-                <input type="text" name="rawMaterial" required>
-            </div>
+                <div class="formlabel">
+                    Material Name
+                </div>
+                <div class="forminput">
+                    <input type="text" name="rawMaterial" required>
+                </div>
             </div>
             <br>
 
             <!-- Supplier Name -->
             <div class="formcontainer">
-            <div class="formlabel">
-                Supplier
-            </div>
-            <div class="forminput">
-                <input type="text" name="supplier" required>
-            </div>
+                <div class="formlabel">
+                    Supplier
+                </div>
+                <div class="forminput">
+                    <input type="text" name="supplier" required>
+                </div>
             </div>
             <br>
 
             <!-- Expiration Date -->
             <div class="formcontainer">
-            <div class="formlabel">
-                Expiration Date
-            </div>
-            <div class="forminput">
-                <input type="date" name="expirationDate" required>
-            </div>
+                <div class="formlabel">
+                    Expiration Date
+                </div>
+                <div class="forminput">
+                    <input type="date" name="expirationDate" required>
+                </div>
             </div>
             <br>
 
             <!-- Date Bought -->
             <div class="formcontainer">
-            <div class="formlabel">
-                Date Bought
-            </div>
-            <div class="forminput">
-                <input type="date" name="dateBought" required>
-            </div>
+                <div class="formlabel">
+                    Date Bought
+                </div>
+                <div class="forminput">
+                    <input type="date" name="dateBought" required>
+                </div>
             </div>
             <br>
 
             <!-- Quantity -->
             <div class="formcontainer">
-            <div class="formlabel">
-                Quantity
-            </div>
-            <div class="forminput">
-                <input type="number" name="quantity" required>
-            </div>
+                <div class="formlabel">
+                    Quantity
+                </div>
+                <div class="forminput">
+                    <input type="number" name="quantity" required>
+                </div>
             </div>
             <br>
 
             <!-- Unit -->
             <div class="formcontainer">
-            <div class="formlabel">
-                Unit
-            </div>
-            <div class="forminput">
-                <input type="number" name="unit" required>
-            </div>
+                <div class="formlabel">
+                    Unit
+                </div>
+                <div class="forminput">
+                    <input type="number" name="unit" required>
+                </div>
             </div>
             <br>
 
             <!-- Cost -->
             <div class="formcontainer">
-            <div class="formlabel">
-                COST
+                <div class="formlabel">
+                    Cost
+                </div>
+                <div class="forminput">
+                    <input type="number" name="cost" required>
+                </div>
             </div>
-            <div class="forminput">
-                <input type="number" name="cost" required>
-            </div>
+            <br>
+
+            <!-- Location -->
+            <div class="formcontainer">
+                <div class="formlabel">
+                    Location
+                </div>
+                <div class="forminput">
+                    <input type="text" name="location" required>
+                </div>
             </div>
             <br>
 
@@ -206,10 +209,21 @@
                 <!-- Product Name -->
                 <div class="formcontainer">
                     <div class="formlabel">
-                        Raw Material
+                        Material Name
                     </div>
                     <div class="forminput">
-                        <input type="text" id="updaterawmaterial" required>
+                        <input type="text" id="updateRawMaterial" required>
+                    </div>
+                </div>
+                <br>
+
+                 <!-- Quantity -->
+                <div class="formcontainer">
+                    <div class="formlabel">
+                        Supplier
+                    </div>
+                    <div class="forminput">
+                        <input type="text" id="updateSupp">
                     </div>
                 </div>
                 <br>
@@ -220,7 +234,7 @@
                         Quantity
                     </div>
                     <div class="forminput">
-                        <input type="number" id="updatequantity">
+                        <input type="number" id="updateQuantity">
                     </div>
                 </div>
                 <br>
@@ -231,7 +245,7 @@
                         Unit
                     </div>
                     <div class="forminput">
-                        <input type="number" id="updateunit">
+                        <input type="text" id="updateUnit">
                     </div>
                 </div>
                 <br>
@@ -242,18 +256,39 @@
                         Cost
                     </div>
                     <div class="forminput">
-                        <input type="number" id="updatecost">
+                        <input type="number" id="updateCost">
                     </div>
                 </div>
                 <br>
 
-                <!-- Expiry -->
+                <!-- Date Bought -->
+                <div class="formcontainer">
+                    <div class="formlabel">
+                        Date Bought
+                    </div>
+                    <div class="forminput">
+                        <input type="date" id="updateBought">
+                    </div>
+                </div>
+                <br>
+                 <!-- Expiry -->
                 <div class="formcontainer">
                     <div class="formlabel">
                         Expiry
                     </div>
                     <div class="forminput">
-                        <input type="date" id="updateexpiry">
+                        <input type="date" id="updateExpiry">
+                    </div>
+                </div>
+                <br>
+
+                <!-- Location-->
+                <div class="formcontainer">
+                    <div class="formlabel">
+                        Location
+                    </div>
+                    <div class="forminput">
+                        <input type="text" id="updateLocation">
                     </div>
                 </div>
                 <br>
