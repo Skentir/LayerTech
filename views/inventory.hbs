@@ -8,12 +8,12 @@
 <div class="container wrapper">
     <div class="inventorycontainer">
         <div class="headercontainer">
-        <div class="headerleft">
-            <h1>Inventory</h1>
-        </div>
-        <div class="headerright">
-            <p><span>Actual Products</span></p>
-        </div>
+            <div class="headerleft">
+                <h1>Inventory</h1>
+            </div>
+            <div class="headerright">
+                <p><span>Actual Products</span></p>
+            </div>
         </div>
 
         <div class="descriptioncontainer">
@@ -26,56 +26,59 @@
 
         <div class="toolcontainer">
         <div class="toolleft">
-            <div class="btncontainer">
-            <button class="button" id="btnadditemmodal" data-toggle="modal" data-target="#modalbg">Add a Product</button>
+                <div class="btncontainer">
+                <button class="button" id="btnadditemmodal" data-toggle="modal" data-target="#modalbg">Add a Product</button>
+                </div>
             </div>
-        </div>
-        
-        <div class="toolright">
-            <div class="dropdown">
-            <button class="dropbtn">Filter By</button>
-            <div class="dropdown-content">
-            <a href="#">Name</a>
-            <a href="#">Price</a>
-            <a href="#">Quantity</a>
+            
+            <div class="toolright">
+                <div class="dropdown">
+                    <button class="dropbtn">Filter By</button>
+                    <div class="dropdown-content">
+                        <a class="filterName">Name</a>
+                        <a href="#">Price</a>
+                        <a href="#">Quantity</a>
+                    </div>
+                </div>
             </div>
-            </div>
-        </div>
         </div>
         <br>
 
         <form>
         <table class="inventorytable mt-3">
             <col style="background-color: #FAFA87;"/>
-            <tr>
-            <th>PRODUCT NAME</th>
-            <th>EXPIRY</th>
-            <th>DATE BOUGHT</th>
-            <th>QUANTITY</th>
-            <th>BASE PRICE</th>
-            <th>SELLING PRICE</th>
-            <th>LOCATION</th>
-            <th>UPDATE</th>
-            <th>DELETE</th>
-            </tr>
+            <thead>
+                <th>PRODUCT NAME</th>
+                <th>EXPIRY</th>
+                <th>DATE BOUGHT</th>
+                <th>QUANTITY</th>
+                <th>BASE PRICE</th>
+                <th>SELLING PRICE</th>
+                <th>LOCATION</th>
+                <th>UPDATE</th>
+                <th>DELETE</th>
+                </tr>
+            </thead>
 
-            {{#each products}}
-            <tr id={{this._id}}>
-                <td class="productName">{{this.productName}}</td>
-                <td class="expiry">{{formatDate this.expirationDate}}</td>
-                <td> {{formatDate this.dateBought}}</td>
-                <td class="quantity">{{this.quantity}}</td>
-                <td class="basePrice">Php {{this.basePrice}}</td>
-                <td class="sellingPrice">Php {{this.sellingPrice}}</td>
-                <td class="location">{{this.location}}</td>
-                <td>
-                    <button class="button launchUpdate" data-id={{this._id}} type="button" data-toggle="modal" data-target="#updateModal">Update</button>
-                </td>
-                <td>
-                    <button class="button launchDelete" data-id={{this._id}} type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
-                </td>
-            </tr>
-            {{/each}}
+            <tbody>
+                {{#each products}}
+                <tr id={{this._id}}>
+                    <td class="productName">{{this.productName}}</td>
+                    <td class="expiry">{{formatDate this.expirationDate}}</td>
+                    <td> {{formatDate this.dateBought}}</td>
+                    <td class="quantity">{{this.quantity}}</td>
+                    <td class="basePrice">Php {{this.basePrice}}</td>
+                    <td class="sellingPrice">Php {{this.sellingPrice}}</td>
+                    <td class="location">{{this.location}}</td>
+                    <td>
+                        <button class="button launchUpdate" data-id={{this._id}} type="button" data-toggle="modal" data-target="#updateModal">Update</button>
+                    </td>
+                    <td>
+                        <button class="button launchDelete" data-id={{this._id}} type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                    </td>
+                </tr>
+                {{/each}}
+             </tbody>
 
         </table>
         </form>

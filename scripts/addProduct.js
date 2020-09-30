@@ -1,8 +1,41 @@
 
 $(document).ready(function() {
+    var month = [ "January","February","March","April","May","June","July","August","September","October","November","December"];
 
+    $(".filterName").click(function() {
+        $(".inventorytable tbody tr").remove();
+        $.ajax({
+            type: "GET",
+            url: "/inventory/sortByName"
+        }).done(function(data) {
+            var res = "";
+            data.forEach(function(entry) {
+                var expiry = new Date(entry.expirationDate);
+                var finalExpiry= month[expiry.getMonth()]+ " " + expiry.getDate() +", "+expiry.getFullYear();
+                var bought = new Date(entry.dateBought);
+                var finalBought = month[bought.getMonth()]+ " " + bought.getDate() +", "+bought.getFullYear();
+                var row = 
+                    `<tr id=`+entry._id+`>
+                        <td class="productName">`+ entry.productName +`</td>
+                        <td class="expiry">`+ finalExpiry+`</td>
+                        <td>`+ finalBought+`</td>
+                        <td class="quantity">`+entry.quantity+`</td>
+                        <td class="basePrice">Php `+entry.basePrice+`</td>
+                        <td class="sellingPrice">Php `+ entry.sellingPrice+`</td>
+                        <td class="location">`+entry.location+`</td>
+                        <td>
+                            <button class="button launchUpdate" data-id=`+entry._id+` type="button" data-toggle="modal" data-target="#updateModal">Update</button>
+                        </td>
+                        <td>
+                            <button class="button launchDelete" data-id=`+entry._id+` type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                        </td>
+                    </tr>`
+                $('.inventorytable tbody').append(row)
+            });
+        });
+    });
       // UPDATE PRODUCT
-    $(".launchUpdate").click(function(){
+    $(this).on('click','.launchUpdate',function(){
         var itemID = $(this).data('id');
 
       $.ajax({
@@ -62,11 +95,11 @@ $(document).ready(function() {
     })
 
     var deleteID;
-    $(".launchDelete").click(function(){
+    $(this).on('click','.launchDelete',function(){
         deleteID = $(this).data('id');
     });
 
-    $("#btnDeleteItem").click(function(){
+    $(this).on('click','#btnDeleteItem',function(){
         $.ajax({
             url: "/inventory/deleteItem/"+deleteID,
             type: 'DELETE'
