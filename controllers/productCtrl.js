@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+
 const productModel = require('../models/products');
 
 const {validationResult} = require('express-validator');
@@ -6,37 +7,36 @@ const {validationResult} = require('express-validator');
 exports.addProduct = function(req, res) {
   const errors = validationResult(req);
 
-  if(errors.isEmpty()){
+    if(errors.isEmpty()){
+      const {productName, expirationDate, dateBought, quantity, basePrice, sellingPrice, location} = req.body;
 
-    const {productName, expirationDate, dateBought, quantity, basePrice, sellingPrice, location} = req.body;
+      const newProduct = {
+        productName : productName,
+        expirationDate : expirationDate,
+        dateBought : dateBought,
+        quantity : quantity,
+        basePrice : basePrice,
+        sellingPrice : sellingPrice,
+        location : location
+      };
 
-    const newProduct = {
-      productName : productName,
-      expirationDate : expirationDate,
-      dateBought : dateBought,
-      quantity : quantity,
-      basePrice : basePrice,
-      sellingPrice : sellingPrice,
-      location : location
-    };
+      productModel.create(newProduct, function(err, product){
+        if (err) {
+          console.log(err);
+          req.flash('error_msg', 'Could not add product. Please Try Again!');
+          res.redirect('/inventory');
+        } else {
+          req.flash("success_msg", 'Product added!');
+          res.redirect('/inventory');
+        }
+      })
+    } else {
+      const messages = errors.array().map((item) => item.msg);
 
-    productModel.create(newProduct, function(err, product){
-      if (err) {
-        console.log(err);
-        req.flash('error_msg', 'Could not add product. Please Try Again!');
-        res.redirect('/inventory');
-      } else {
-        req.flash("success_msg", 'Product added!');
-        res.redirect('/inventory');
-      }
-    })
-  } else {
-    const messages = errors.array().map((item) => item.msg);
-
-    req.flash('error_msg', messages.join(' '));
-    res.redirect('/inventory');
-  }
-};
+      req.flash('error_msg', messages.join(' '));
+      res.redirect('/inventory')
+    }
+  };
 
 exports.getItemDetails = function(req,res)
 {
@@ -88,8 +88,8 @@ exports.updateItem = function(req,res) {
     }, (err) => {
       if(err)
         res.send(err);
-      else
-        res.redirect('/inventory')
+      //else
+        //res.redirect('/inventory')
     });
 };
 
@@ -103,4 +103,4 @@ exports.deleteItem = function(req, res) {
       res.redirect('/inventory')
     }
   });
- };
+};

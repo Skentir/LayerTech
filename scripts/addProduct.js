@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
 
-    // UPDATE PRODUCT
+      // UPDATE PRODUCT
     $(".launchUpdate").click(function(){
         var itemID = $(this).data('id');
 
@@ -17,8 +17,6 @@ $(document).ready(function() {
               $("#updateForm").attr('data-id', data._id);
               var parsedDate = new Date(data.expirationDate);
               var finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + ("0" + (parsedDate.getDay() + 1)).slice(-2);
-
-              console.log(finalDate);
               $("#updateexpiry").val(finalDate);
 
           }).fail(function(){
@@ -29,6 +27,7 @@ $(document).ready(function() {
     $('#updateForm').submit(function() {
         console.log("Update called")
         var itemID = $(this).data('id');
+        console.log("ID" + itemID)
         var productName = $("#updateproductname").val();
         var quantity = $("#updatequantity").val();
         var basePrice = $("#updatebaseprice").val();
@@ -67,14 +66,8 @@ $(document).ready(function() {
         var itemID = $(this).data('id');
         $.ajax({
           url: "/inventory/deleteItem/"+itemID,
-          type: 'DELETE',
-          success: function(result) {
-              // Do something with the result
-          }
+          type: 'DELETE'
         });
-
-
-
     });
 
     /*

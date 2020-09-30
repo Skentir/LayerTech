@@ -1,46 +1,41 @@
 {{#section 'header'}}
-    <title>Inventory</title>
+    <title>Transactions</title>
     <!--     CSS -->
     <link rel="stylesheet" href="css/tables.css">
     <!-- JS -->
-    <script src="addProduct.js"></script>
+    <script src="addTransaction.js"></script>
 {{/section}}
 <div class="inventorycontainer">
     <div class="headercontainer">
     <div class="headerleft">
-        <h1>Inventory</h1>
+        <h1>Transactions</h1>
     </div>
     <div class="headerright">
-        <p><span>Actual Products</span></p>
+        <p><span>Transactions</span></p>
     </div>
     </div>
 
     <div class="descriptioncontainer">
-      <div class="description">
-              This page contains the list of products that the
-              company has produced.
-      </div>
-    {{> messages}}
+    <div class="description">
+            This page stores details and information of suppliers 
+            the company gets raw materials or products from.
+    </div>
     </div>
 
     <div class="toolcontainer">
     <div class="toolleft">
         <div class="btncontainer">
-        <button class="button" id="btnadditemmodal">Add a Product</button>
+        <button class="button" id="btnadditemmodal">Add a Transaction</button>
         </div>
     </div>
-    <div class="toolleft">
-        <div class="btncontainer">
-        <button class="button" id="btngeneratesummary">Generate Summary</button>
-        </div>
-    </div>
+  
     <div class="toolright">
         <div class="dropdown">
         <button class="dropbtn">Filter By</button>
         <div class="dropdown-content">
-        <a href="#">Name</a>
-        <a href="#">Price</a>
-        <a href="#">Quantity</a>
+        <a href="#">abcdefg</a>
+        <a href="#">abcdefg</a>
+        <a href="#">abcdefg</a>
         </div>
         </div>
     </div>
@@ -51,31 +46,29 @@
     <table class="inventorytable">
         <col style="background-color: #FAFA87;"/>
         <tr>
-        <th>PRODUCT NAME</th>
-        <th>EXPIRY</th>
-        <th>DATE BOUGHT</th>
-        <th>QUANTITY</th>
-        <th>BASE PRICE</th>
-        <th>SELLING PRICE</th>
-        <th>LOCATION</th>
-        <th>UPDATE</th>
-        <th>DELETE</th>
+        <th>DESCRIPTION</th>
+        <th>DATE</th>
+        <th>AMOUNT</th>
+        <th>TYPE</th>
+        <th>PAYEE</th>
+        <th>PAYER</th>
+        <th>PAYER CONTACT<th>
+        <th>NOTES</th>
+        <th></th>
         </tr>
 
-        {{#each products}}
+        {{#each transaction}}
         <tr id={{this._id}}>
-            <td class="productName">{{this.productName}}</td>
-            <td class="expiry">{{formatDate this.expirationDate}}</td>
-            <td> {{formatDate this.dateBought}}</td>
-            <td class="quantity">{{this.quantity}}</td>
-            <td class="basePrice">Php {{this.basePrice}}</td>
-            <td class="sellingPrice">Php {{this.sellingPrice}}</td>
-            <td class="location">{{this.location}}</td>
+            <td class="desc">{{this.description}}</td>
+            <td class="date">{{formatDate this.dateStarted}}</td>
+             <td class="amount"> Php {{this.amount}}</td>
+            <td class="type"> {{this.type}}</td>
+            <td class="payee"> {{this.payee}}</td>
+            <td class="payer">{{this.payer}}</td>
+            <td class="contact">{{this.payerContact}}</td> 
+            <td class="notes">{{this.notes}}</td>
             <td>
                  <button class="button launchUpdate" data-id={{this._id}} type="button" data-toggle="modal" data-target="#updateModal">Update</button>
-            </td>
-            <td>
-                 <button class="button launchDelete" data-id={{this._id}} type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
             </td>
         </tr>
         {{/each}}
@@ -84,7 +77,7 @@
     </form>
 </div>
 
-<!-- Add Product Modal -->
+<!-- Add Transaction Modal -->
 <div class="modal" id="modalbg" >
     <!-- Modal Content -->
     <div class="addmodal">
@@ -93,81 +86,94 @@
     <br>
     <!-- Modal Form -->
     <div class="modalbody">
-        <!-- Modal Add Item Fields -->
+        <!-- Modal Add Transaction Fields -->
         <div class="inputcontainer">
-        <h1>Add a Product</h1>
-        <form method='POST' autocomplete="off" name="addProduct" action='/inventory/addProduct'>
-            <!-- Product Name -->
+        <h1>Add a Transaction</h1>
+        <form method='POST' autocomplete="off" name="addSupplier" action='/transactions/addTransaction'>
+            <!-- Description -->
             <div class="formcontainer">
                 <div class="formlabel">
-                    Product Name
+                Description
                 </div>
                 <div class="forminput">
-                    <input type="text" name="productName" required>
+                    <input type="text" name="description" required>
                 </div>
             </div>
             <br>
 
-            <!-- Expiration Date -->
+            <!-- Date of Transaction -->
             <div class="formcontainer">
                 <div class="formlabel">
-                    Expiration Date
+                    Date of Transaction
                 </div>
                 <div class="forminput">
-                    <input type="date" name="expirationDate" required>
+                    <input type="date" name="date" required>
                 </div>
             </div>
             <br>
 
-            <!-- Date Bought -->
+            <!-- Amount -->
             <div class="formcontainer">
                 <div class="formlabel">
-                    Date Bought
+                    Amount
                 </div>
                 <div class="forminput">
-                    <input type="date" name="dateBought" required>
+                    <input type="number" name="amount" required>
                 </div>
             </div>
             <br>
 
-            <!-- Quantity -->
+            <!-- Type -->
             <div class="formcontainer">
                 <div class="formlabel">
-                    Quantity
+                    Type
                 </div>
                 <div class="forminput">
-                    <input type="number" name="quantity" required>
+                    <input type="text" name="type" required>
                 </div>
             </div>
             <br>
 
-            <!-- Base Price -->
+            <!-- Payee -->
             <div class="formcontainer">
                 <div class="formlabel">
-                    Base Price (per item)
+                    Payee
                 </div>
                 <div class="forminput">
-                    <input type="number" name="basePrice" required>
+                    <input type="text" name="payee" required>
                 </div>
             </div>
             <br>
 
-            <!-- Selling Price -->
+            <!-- Payer -->
             <div class="formcontainer">
                 <div class="formlabel">
-                    Selling Price
+                    Payer
                 </div>
                 <div class="forminput">
-                    <input type="number" name="sellingPrice" required>
+                    <input type="text" name="payer" required>
                 </div>
             </div>
-             <!-- Location -->
+            <br>
+
+            <!-- Payer Contact No -->
             <div class="formcontainer">
                 <div class="formlabel">
-                    Location
+                    Payer Contact No
                 </div>
                 <div class="forminput">
-                    <input type="text" name="location" required>
+                    <input type="text" name="contact" required>
+                </div>
+            </div>
+            <br>
+
+             <!-- Notes -->
+            <div class="formcontainer">
+                <div class="formlabel">
+                    Notes
+                </div>
+                <div class="forminput">
+                    <input type="text" name="notes">
                 </div>
             </div>
             <br>
@@ -195,68 +201,92 @@
     <div class="modalbody">
         <!-- Modal Add Item Fields -->
         <div class="inputcontainer">
-            <h1>Update Product</h1>
-            <form id="updateForm">
-                <!-- Product Name -->
+            <h1>Update Transaction</h1>
+            <form id="updateForm"> 
+                <!-- Description -->
                 <div class="formcontainer">
                     <div class="formlabel">
-                        Product Name
+                       Description
                     </div>
                     <div class="forminput">
-                        <input type="text" id="updateproductname">
+                        <input type="text" id="updateDesc">
                     </div>
                 </div>
                 <br>
 
-                <!-- Quantity -->
+                <!-- Date of Transaction -->
                 <div class="formcontainer">
                     <div class="formlabel">
-                        Quantity
+                        Date of Transaction
                     </div>
                     <div class="forminput">
-                        <input type="number" id="updatequantity">
+                        <input type="date" id="updateDate">
+                    </div>
+                </div>
+                <br>
+                
+                <!-- Amount -->
+                <div class="formcontainer">
+                    <div class="formlabel">
+                       Amount
+                    </div>
+                    <div class="forminput">
+                        <input type="text" id="updateAmount">
                     </div>
                 </div>
                 <br>
 
-                <!-- Base Price -->
+                <!-- Type -->
                 <div class="formcontainer">
                     <div class="formlabel">
-                        Base Price (per item)
+                       Type
                     </div>
                     <div class="forminput">
-                        <input type="number" id="updatebaseprice">
+                        <input type="text" id="updateType">
                     </div>
                 </div>
                 <br>
 
-                <!-- Selling Price -->
+                <!-- Payee -->
                 <div class="formcontainer">
                     <div class="formlabel">
-                        Selling Price
+                        Payee
                     </div>
                     <div class="forminput">
-                        <input type="number" id="updatesellingprice">
+                        <input type="text" id="updatePayee">
                     </div>
                 </div>
                 <br>
 
-                <!-- Expiry -->
+                <!-- Payer -->
                 <div class="formcontainer">
                     <div class="formlabel">
-                        Expiry
+                        Payer
                     </div>
                     <div class="forminput">
-                        <input type="date" id="updateexpiry">
+                        <input type="text" id="updatePayer">
                     </div>
                 </div>
-                <!-- Expiry -->
+                <br>
+
+                <!-- Payer Contact No. -->
                 <div class="formcontainer">
                     <div class="formlabel">
-                        Location
+                        Payer Contact No.
                     </div>
                     <div class="forminput">
-                        <input type="text" id="updatelocation">
+                        <input type="text" id="updateContact">
+                    </div>
+                </div>
+                <br>
+
+                <!-- Notes -->
+                <div class="formcontainer">
+                    <div class="formlabel">
+                        Notes
+                    </div>
+                    <div class="forminput">
+                        <input type="text" id="updateNotes">
                     </div>
                 </div>
                 <br>
@@ -271,42 +301,9 @@
     </div>
 </div>
 
-<!-- Delete Product Modal -->
-<div id="deleteModal" class="modal" data-backdrop="false">
-    <!-- Modal Content -->
-    <div class="addmodal">
-    <!-- Modal Close Button -->
-    <span class="close" data-dismiss="modal">&times;</span>
-    <br>
-    <!-- Modal Form -->
-    <div class="modalbody">
-        <!-- Modal Add Item Fields -->
-        <div class="inputcontainer">
-            <h1>Delete Product</h1>
-            <p>Are you sure you want to delete this product?</p>
-            <form id="deleteForm">
-                <!-- Confirm Button -->
-                <div class="modalbtncontainer">
-                    <button type="submit" class="button" id="btnDeleteItem">Delete</button>
-                </div>
-                <!-- Cancel Button -->
-                <div class="modalbtncontainer">
-                    <button type="submit" class="button" id="btnCancelDeleteItem">Cancel</button>
-                </div>
-            </form>
-        </div>
-        <br>
-    </div>
-    </div>
-</div>
-
 <script>
     var modal = document.getElementById("modalbg");
     var btn = document.getElementById("btnadditemmodal");
-
-    //Maybe Change This
-    var btnCancelDeleteItem = document.getElementById("btnCancelDeleteItem");
-
     var span = document.getElementsByClassName("close")[0];
     btn.onclick = function() {
     modal.style.display = "block";
@@ -314,12 +311,6 @@
     span.onclick = function() {
     modal.style.display = "none";
     }
-
-    //Maybe Change This
-    btnCancelDeleteItem.onclick = function() {
-    modal.style.display = "none";
-    }
-
     window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";

@@ -2,7 +2,8 @@ const mongoose = require('./connection');
 
 const stockSchema = new mongoose.Schema({
     rawMaterial : {type:String},
-    //supplier :[{type:mongoose.Schema.Types.ObjectID, ref:'products'}],
+    supplier :{type:String},
+    // to do: use ids instead of string for supplier
     expirationDate : {type:Date},
     dateBought : {type:Date},
     quantity: {type:Number},

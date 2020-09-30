@@ -1,5 +1,5 @@
 {{#section 'header'}}
-    <title>Inventory</title>
+    <title>Suppliers</title>
     <!--     CSS -->
     <link rel="stylesheet" href="css/tables.css">
     <!-- JS -->
@@ -25,14 +25,10 @@
     <div class="toolcontainer">
     <div class="toolleft">
         <div class="btncontainer">
-        <button class="button" id="btnadditemmodal">Add a Product</button>
+        <button class="button" id="btnadditemmodal">Add a Supplier</button>
         </div>
     </div>
-    <div class="toolleft">
-        <div class="btncontainer">
-        <button class="button" id="btngeneratesummary">Generate Summary</button>
-        </div>
-    </div>
+  
     <div class="toolright">
         <div class="dropdown">
         <button class="dropbtn">Filter By</button>
@@ -131,7 +127,7 @@
                     Contact No.
                 </div>
                 <div class="forminput">
-                    <input type="number" name="contactNo" required>
+                    <input type="text" name="contactNo" required>
                 </div>
             </div>
             <br>
@@ -142,7 +138,7 @@
                     Email
                 </div>
                 <div class="forminput">
-                    <input type="number" name="basePrice" required>
+                    <input type="text" name="email" required>
                 </div>
             </div>
             <br>
@@ -161,10 +157,10 @@
              <!-- Notes -->
             <div class="formcontainer">
                 <div class="formlabel">
-                    notes
+                    Notes
                 </div>
                 <div class="forminput">
-                    <input type="text" name="notes" required>
+                    <input type="text" name="notes">
                 </div>
             </div>
             <br>
@@ -197,10 +193,10 @@
                 <!-- Product Name -->
                 <div class="formcontainer">
                     <div class="formlabel">
-                        Product Name
+                        Name
                     </div>
                     <div class="forminput">
-                        <input type="text" id="updateproductname">
+                        <input type="text" id="updateSuppName">
                     </div>
                 </div>
                 <br>
@@ -208,10 +204,10 @@
                 <!-- Quantity -->
                 <div class="formcontainer">
                     <div class="formlabel">
-                        Quantity
+                        Position
                     </div>
                     <div class="forminput">
-                        <input type="number" id="updatequantity">
+                        <input type="text" id="updatePosition">
                     </div>
                 </div>
                 <br>
@@ -219,10 +215,10 @@
                 <!-- Base Price -->
                 <div class="formcontainer">
                     <div class="formlabel">
-                        Base Price (per item)
+                       Company
                     </div>
                     <div class="forminput">
-                        <input type="number" id="updatebaseprice">
+                        <input type="text" id="updateCompany">
                     </div>
                 </div>
                 <br>
@@ -230,10 +226,10 @@
                 <!-- Selling Price -->
                 <div class="formcontainer">
                     <div class="formlabel">
-                        Selling Price
+                        Contact No
                     </div>
                     <div class="forminput">
-                        <input type="number" id="updatesellingprice">
+                        <input type="text" id="updateContact">
                     </div>
                 </div>
                 <br>
@@ -241,10 +237,32 @@
                 <!-- Expiry -->
                 <div class="formcontainer">
                     <div class="formlabel">
-                        Expiry
+                        Email
                     </div>
                     <div class="forminput">
-                        <input type="date" id="updateexpiry">
+                        <input type="text" id="updateEmail">
+                    </div>
+                </div>
+                <br>
+
+                <!-- Contract Terms -->
+                <div class="formcontainer">
+                    <div class="formlabel">
+                        Contract Terms
+                    </div>
+                    <div class="forminput">
+                        <input type="text" id="updateTerms">
+                    </div>
+                </div>
+                <br>
+
+                <!-- Notes -->
+                <div class="formcontainer">
+                    <div class="formlabel">
+                        Notes
+                    </div>
+                    <div class="forminput">
+                        <input type="text" id="updateNotes">
                     </div>
                 </div>
                 <br>

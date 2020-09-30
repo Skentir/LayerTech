@@ -169,24 +169,24 @@ body {
   }
 
   .launchDelete {
-    background-color: #C0F67B;
-    color: black;
-    border: 2px solid #C0F67B;
-    border-radius: 4px;
-    padding: 4px 12px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    }
+      background-color: #C0F67B;
+      color: black;
+      border: 2px solid #C0F67B;
+      border-radius: 4px;
+      padding: 4px 12px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      }
 
-  .launchDelete :hover {
-    background-color: #C0F67B;
-    color: white;
-  }
+    .launchDelete :hover {
+      background-color: #C0F67B;
+      color: white;
+    }
 
   #btngeneratesummary {
     background-color: #2F5400;

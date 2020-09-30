@@ -21,7 +21,7 @@
 <!-- Notification -->
 <div class="container adjustment">
     <div>
-        <p>Alerts</p>  
+        <p class="mb-0">Alerts</p>  
         <span>This section shows the different products you have that might be expiring soon.</span>
     </div>
     <div class="alerts">
@@ -29,8 +29,14 @@
             {{#if rawCount}}
                 <li style="background-color: aquamarine;">Raw Materials: You have {{rawCount}} item/s about to expire</li>
             {{/if}}
+            {{#if expiredRaw}}
+                <li style="background-color: aquamarine;">Raw Materials: You have {{rawCount}} item/s that are expired</li>
+            {{/if}}
             {{#if productCount}}
-                <li style="background-color: bisque;">Products: You have {{productCount}} item/s about to expire</li>
+                <li style="background-color: aquamarine;">Products: You have {{productCount}} item/s about to expire</li>
+            {{/if}}
+            {{#if expiredProd}}
+                <li style="background-color: bisque;">Products: You have {{productCount}} item/s that are expired</li>
             {{/if}}
             <!--
             <li style="background-color: rgb(233, 127, 127);">Transactions: You have 3 items about to expire</li>
@@ -41,7 +47,7 @@
 <!-- Pages -->
 <div class="container adjustment">
     <div>
-        <p>Quick Navigation</p>
+        <p class="mb-0">Quick Navigation</p>
         <span>Click on one of these cards to navigate to the database.</span>
     </div>
     <div class="row">
@@ -60,5 +66,22 @@
                 Products
             </span>
         </a>
+    </div>
+    <div class="row" style="margin-top: 14px;">
+        <a href="/transactions" class="col-sm">
+            <span>
+                Transactions
+            </span>
+        </a>
+        <div class="col-sm to-add">
+            <span>
+                Coming Soon
+            </span>
+        </div>
+        <div class="col-sm to-add">
+           <span>
+                Coming Soon
+            </span> 
+        </div>
     </div>
 </div>

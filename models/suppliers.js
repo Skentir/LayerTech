@@ -2,11 +2,13 @@ const mongoose = require('./connection');
 
 const supplierSchema = new mongoose.Schema({
     name: {type: String},
+    position: {type: String},
     contactNo: {type: String},
     email: {type: String},
     companyName: {type:String},
     productList: {type: Array},  //array of string products the supplier provides
-    contractTerms: {type: String}
+    contractTerms: {type: String},
+    notes : {type: String}
 },{
         toObject: {
             virtuals: true,
