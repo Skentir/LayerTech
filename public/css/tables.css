@@ -19,6 +19,7 @@ body {
   .inventorycontainer {
     width: 960px;
     margin: auto;
+    height: 100%;
   }
 
   .headercontainer {
