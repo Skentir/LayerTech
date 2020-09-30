@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 const stockModel = require('../models/stock');
 const {validationResult} = require('express-validator');
+const { raw } = require('body-parser');
 
 exports.getStocks = function(req, res) {
     stockModel.find({})
@@ -60,4 +61,23 @@ exports.addStock = function(req, res) {
       res.redirect('/raw');
     }
   })
+
+exports.updateStock = function(req,res) {
+
+  stockModel.findByIdAndUpdate({_id:req.params.id},
+    {
+      $set: {
+        rawMaterial : req.body.raw,
+        supplier : req.body.supplier,
+        expirationDate : req.body.expiry,
+        dateBought : req.body.bought,
+        quantity: req.body.quantity,
+        location: req.body.location,
+        unit: req.body.unit,
+        cost: req.body.cost
+      }      
+    }, (err) => {
+      if(err)
+        res.send(err);
+    });
 };

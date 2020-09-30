@@ -24,11 +24,47 @@ $(document).ready(function(){
         }).fail(function(){
             alert("Can't fetch this item.")
         });
-  });
-    
-    
-    
-    
-    
-    
-})
+    });
+
+
+  $('#updateForm').submit(function() {
+        var raw = $("#updateRawMaterial").val();
+        var supp = $("#updateSupp").val();
+        var quantity = $("#updateQuantity").val();
+        var unit = $("#updateUnit").val();
+        var cost = $("#updateCost").val();
+        var bought = $("#updateBought").val();
+        var expiry = $("#updateExpiry").val();
+        var location = $("#updateLocation").val();
+
+        var object = {
+            raw : raw,
+            supplier : supp,
+            expiry : expiry,
+            bought : bought,
+            quantity: quantity,
+            location: location,
+            unit: unit,
+            cost: cost,
+            location: location
+        }
+        
+        $.ajax({
+            type: "POST",
+            data : JSON.stringify(object),
+            processData: false,
+            contentType: 'application/json',
+            url: "/raw/updateStock/"+itemID,
+        }).done(function(data){
+            
+            $("#"+itemID+".rawMaterial").val(raw);
+            $("#"+itemID+".supplier").val(supp);
+            $("#"+itemID+".dateBought").val(bought);
+            $("#"+itemID+".quantity").val(quantity);
+            $("#"+itemID+".unit").val(unit);
+            $("#"+itemID+".cost").val(cost);
+            $("#"+itemID+".expiry").val(expiry);
+            $("#"+itemID+".location").val(location);
+        });
+    }) 
+});
