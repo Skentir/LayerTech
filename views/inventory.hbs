@@ -274,24 +274,22 @@
 <!-- Delete Product Modal -->
 <div id="deleteModal" class="modal" data-backdrop="false">
     <!-- Modal Content -->
-    <div class="addmodal">
+    <div class="addmodal delmodal">
     <!-- Modal Close Button -->
     <span class="close" data-dismiss="modal">&times;</span>
     <br>
     <!-- Modal Form -->
     <div class="modalbody">
         <!-- Modal Add Item Fields -->
-        <div class="inputcontainer">
+        <div class="delcontainer">
             <h1>Delete Product</h1>
             <p>Are you sure you want to delete this product?</p>
             <form id="deleteForm">
-                <!-- Confirm Button -->
-                <div class="modalbtncontainer">
-                    <button type="submit" class="button" id="btnDeleteItem">Delete</button>
-                </div>
-                <!-- Cancel Button -->
-                <div class="modalbtncontainer">
-                    <button type="submit" class="button" id="btnCancelDeleteItem">Cancel</button>
+                <div class="del-btn-group">
+                    <div>
+                        <button type="submit" class="button" id="btnDeleteItem">Delete</button>
+                        <button type="submit" class="button" id="btnCancelDeleteItem">Cancel</button>
+                    </div>
                 </div>
             </form>
         </div>

@@ -285,3 +285,22 @@ body {
     display: flex;
     justify-content: flex-end;
   }
+
+  .del-btn-group {
+    display: flex;
+    justify-content: center;
+  }
+
+  .delmodal {
+    max-width: 415px;
+  }
+
+  .delcontainer {
+    margin: auto;
+    max-width: max-content;
+  }
+
+  #btnDeleteItem {
+    background: #eb4444;
+    color: white;
+  }

@@ -61,12 +61,15 @@ $(document).ready(function() {
         });
     })
 
-    // DELETE PRODUCT
+    var deleteID;
     $(".launchDelete").click(function(){
-        var itemID = $(this).data('id');
+        deleteID = $(this).data('id');
+    });
+
+    $("#btnDeleteItem").click(function(){
         $.ajax({
-          url: "/inventory/deleteItem/"+itemID,
-          type: 'DELETE'
+            url: "/inventory/deleteItem/"+deleteID,
+            type: 'DELETE'
         });
     });
 

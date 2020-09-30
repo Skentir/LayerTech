@@ -59,12 +59,15 @@ $(document).ready(function() {
       });
   })
   
-   // DELETE PRODUCT
-   $(".launchDelete").click(function(){
-      var itemID = $(this).data('id');
-      $.ajax({
-        url: "/suppliers/deleteItem/"+itemID,
-        type: 'DELETE'
-      });
-  });
+  var deleteID;
+    $(".launchDelete").click(function(){
+        deleteID = $(this).data('id');
+    });
+
+    $("#btnDeleteItem").click(function(){
+        $.ajax({
+            url: "/suppliers/deleteItem/"+deleteID,
+            type: 'DELETE'
+        });
+    });
 });

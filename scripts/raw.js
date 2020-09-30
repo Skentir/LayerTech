@@ -68,10 +68,14 @@ $(document).ready(function(){
         });
     });
     
+    var deleteID;
     $(".launchDelete").click(function(){
-        var itemID = $(this).data('id');
+        deleteID = $(this).data('id');
+    });
+
+    $("#btnDeleteItem").click(function(){
         $.ajax({
-            url: "/raw/deleteItem/"+itemID,
+            url: "/raw/deleteItem/"+deleteID,
             type: 'DELETE'
         });
     });

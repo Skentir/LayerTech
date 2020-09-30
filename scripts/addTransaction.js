@@ -65,12 +65,16 @@ $(document).ready(function() {
         $("#"+itemID+".notes").val(notes);
     });
   })
-    // DELETE PRODUCT
+
+  var deleteID;
   $(".launchDelete").click(function(){
-      var itemID = $(this).data('id');
+      deleteID = $(this).data('id');
+  });
+
+  $("#btnDeleteItem").click(function(){
       $.ajax({
-        url: "/transactions/deleteItem/"+itemID,
-        type: 'DELETE'
+          url: "/transactions/deleteItem/"+deleteID,
+          type: 'DELETE'
       });
-  }); 
+  });
 });
