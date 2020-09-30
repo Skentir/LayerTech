@@ -26,7 +26,7 @@
         <div class="toolcontainer">
         <div class="toolleft">
             <div class="btncontainer">
-            <button class="button" id="btnadditemmodal">Add a Material</button>
+            <button class="button" id="btnadditemmodal" data-toggle="modal" data-target="#modalbg">Add a Material</button>
             </div>
         </div>
             
@@ -85,11 +85,11 @@
     </div>
 
     <!-- Add Raw Material Modal -->
-    <div class="modal" id="modalbg" >
+    <div class="modal" id="modalbg" data-backdrop="false">
         <!-- Modal Content -->
         <div class="addmodal">
         <!-- Modal Close Button -->
-        <span class="close">&times;</span>
+        <span class="close" data-dismiss="modal">&times;</span>
         <br>
         <!-- Modal Form -->
         <div class="modalbody">

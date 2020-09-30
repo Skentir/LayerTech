@@ -298,9 +298,11 @@ body {
   .delcontainer {
     margin: auto;
     max-width: max-content;
+    padding: 12px 0px;
   }
 
   #btnDeleteItem {
     background: #eb4444;
     color: white;
+    border: 2px solid #aa3131;
   }
