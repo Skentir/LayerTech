@@ -5,6 +5,6 @@ router.get('/', suppController.getSuppliers);
 router.get('/getSupplierDetails/:id', suppController.getSupplierDetails);
 router.post('/addSupplier', suppController.addSupplier);
 router.post('/updateSupplier/:id', suppController.updateSupplier)
-
+router.delete('/deleteItem/:id', suppController.deleteItem)
 
 module.exports = router;

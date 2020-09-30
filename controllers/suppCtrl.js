@@ -81,3 +81,15 @@ exports.updateSupplier= function(req,res) {
       });
   };
   
+  exports.deleteItem = function(req, res) {
+    supplierModel.deleteOne({ _id:req.params.id }, (err) => {
+      if(err) {
+        //req.flash('error_msg', 'Could not add product. Please Try Again!');
+        res.send(err);
+      } else {
+        //req.flash("success_msg", 'Product added!');
+        res.redirect('/suppliers')
+      }
+    });
+  };
+  

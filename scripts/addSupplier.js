@@ -57,5 +57,14 @@ $(document).ready(function() {
           $("#"+itemID+".contract").val(contract);
           $("#"+itemID+".notes").val(notes);
       });
-  }) 
+  })
+  
+   // DELETE PRODUCT
+   $(".launchDelete").click(function(){
+      var itemID = $(this).data('id');
+      $.ajax({
+        url: "/suppliers/deleteItem/"+itemID,
+        type: 'DELETE'
+      });
+  });
 });
