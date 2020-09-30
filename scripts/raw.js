@@ -66,5 +66,13 @@ $(document).ready(function(){
             $("#"+itemID+".expiry").val(expiry);
             $("#"+itemID+".location").val(location);
         });
-    }) 
+    });
+    
+    $(".launchDelete").click(function(){
+        var itemID = $(this).data('id');
+        $.ajax({
+            url: "/raw/deleteItem/"+itemID,
+            type: 'DELETE'
+        });
+    });
 });
