@@ -30,13 +30,13 @@
                 <li style="background-color: aquamarine;">Raw Materials: You have {{rawCount}} item/s about to expire</li>
             {{/if}}
             {{#if expiredRaw}}
-                <li style="background-color: aquamarine;">Raw Materials: You have {{rawCount}} item/s that are expired</li>
+                <li style="background-color: bisque;">Raw Materials: You have {{expiredRaw}} item/s that are expired</li>
             {{/if}}
             {{#if productCount}}
                 <li style="background-color: aquamarine;">Products: You have {{productCount}} item/s about to expire</li>
             {{/if}}
             {{#if expiredProd}}
-                <li style="background-color: bisque;">Products: You have {{productCount}} item/s that are expired</li>
+                <li style="background-color: bisque;">Products: You have {{expiredProd}} item/s that are expired</li>
             {{/if}}
             <!--
             <li style="background-color: rgb(233, 127, 127);">Transactions: You have 3 items about to expire</li>

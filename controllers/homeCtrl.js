@@ -6,10 +6,10 @@ const {validationResult} = require('express-validator');
 
 const async = require('async');
 
-function isExpired(date) {
+function isExpired(date,) {
     var today = new Date();
     var expiry = new Date(date);
-    const diffTime = Math.abs(expiry - today);
+    const diffTime = expiry-today;
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));   
 
     if (diffDays <= 14 && diffDays > 0)
@@ -36,7 +36,6 @@ exports.getExpired = function(req, res) {
                             productCount++;
                         else if(val == 2)
                             expiredProd++;
-
                     });
                     callback(null, productCount)
                 }
@@ -49,7 +48,7 @@ exports.getExpired = function(req, res) {
                     expiredRaw = 0;
                     results.forEach(function(entry) {
                         val = isExpired(entry.expirationDate)
-                        if (val == 1)
+                        if (val == 1) 
                             rawCount++;
                         else if(val == 2)
                             expiredRaw++;
@@ -66,10 +65,10 @@ exports.getExpired = function(req, res) {
               layout: 'main',
               productCount : results.prod,
               rawCount : results.raws,
-              expiredProd,
-              expiredRaw,
+              expiredProd: expiredProd,
+              expiredRaw: expiredRaw,
           }
-         res.render('dashboard',params)
+         res.render('dashboard',JSON.parse(JSON.stringify(params)))
           //res.send(params)
       }
     });

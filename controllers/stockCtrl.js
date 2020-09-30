@@ -84,7 +84,7 @@ exports.updateStock = function(req,res) {
 };
 
 exports.deleteItem = function(req, res) {
-  supplierModel.deleteOne({ _id:req.params.id }, (err) => {
+  stockModel.deleteOne({ _id:req.params.id }, (err) => {
     if(err) {
       res.send(err);
     } else {
