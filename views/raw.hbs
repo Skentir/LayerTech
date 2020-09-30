@@ -47,38 +47,40 @@
         <form>
         <table class="inventorytable mt-3">
             <col style="background-color: #FAFA87;"/>
-
-            <tr>
-                <th>RAW MATERIAL</th>
-                <th>SUPPLIER</th>
-                <th>EXPIRATION DATE</th>
-                <th>DATE BOUGHT</th>
-                <th>QUANTITY</th>
-                <th>LOCATION</th>
-                <th>UNIT</th>
-                <th>COST</th>
-                <th>UPDATE</th>
-                <th>DELETE</th>
-            </tr>
-
-            {{#each stock}}
-            <tr id={{this._id}}>
-                <td class="rawMaterial">{{this.rawMaterial}}</td>
-                <td class="supplier">{{this.supplier}}</td>
-                <td class="expiry">{{formatDate this.expirationDate}}</td>
-                <td class="dateBought"> {{formatDate this.dateBought}}</td>
-                <td class="quantity">{{this.quantity}}</td>
-                <td class="location">{{this.location}}</td>
-                <td class="unit">{{this.unit}}</td>
-                <td class="cost">Php {{this.cost}}</td>
-                <td>
-                    <button class="button launchUpdate" data-id={{this._id}} type="button" data-toggle="modal" data-target="#updateModal">Update</button>
-                </td>
-                <td>
-                    <button class="button launchDelete" data-id={{this._id}} type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
-                </td>
-            </tr>
-            {{/each}}
+            <thead>
+                <tr>
+                    <th>RAW MATERIAL</th>
+                    <th>SUPPLIER</th>
+                    <th>EXPIRATION DATE</th>
+                    <th>DATE BOUGHT</th>
+                    <th>QUANTITY</th>
+                    <th>LOCATION</th>
+                    <th>UNIT</th>
+                    <th>COST</th>
+                    <th>UPDATE</th>
+                    <th>DELETE</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each stock}}
+                <tr id={{this._id}}>
+                    <td class="rawMaterial">{{this.rawMaterial}}</td>
+                    <td class="supplier">{{this.supplier}}</td>
+                    <td class="expiry">{{formatDate this.expirationDate}}</td>
+                    <td class="dateBought"> {{formatDate this.dateBought}}</td>
+                    <td class="quantity">{{this.quantity}}</td>
+                    <td class="location">{{this.location}}</td>
+                    <td class="unit">{{this.unit}}</td>
+                    <td class="cost">Php {{this.cost}}</td>
+                    <td>
+                        <button class="button launchUpdate" data-id={{this._id}} type="button" data-toggle="modal" data-target="#updateModal">Update</button>
+                    </td>
+                    <td>
+                        <button class="button launchDelete" data-id={{this._id}} type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
 
         </table>
         </form>

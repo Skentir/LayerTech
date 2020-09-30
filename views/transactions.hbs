@@ -46,38 +46,42 @@
         <form>
         <table class="inventorytable mt-3">
             <col style="background-color: #FAFA87;"/>
-            <tr>
-            <th>DESCRIPTION</th>
-            <th>DATE</th>
-            <th>AMOUNT</th>
-            <th>TYPE</th>
-            <th>PAYEE</th>
-            <th>PAYER</th>
-            <th>PAYER CONTACT</th>
-            <th>NOTES</th>
-            <th>UPDATE</th>
-            <th>DELETE</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>DESCRIPTION</th>
+                    <th>DATE</th>
+                    <th>AMOUNT</th>
+                    <th>TYPE</th>
+                    <th>PAYEE</th>
+                    <th>PAYER</th>
+                    <th>PAYER CONTACT</th>
+                    <th>NOTES</th>
+                    <th>UPDATE</th>
+                    <th>DELETE</th>
+                </tr>
+            </thead>
 
-            {{#each transaction}}
-            <tr id={{this._id}}>
-                <td class="desc">{{this.description}}</td>
-                <td class="date">{{formatDate this.dateStarted}}</td>
-                <td class="amount"> Php {{this.amount}}</td>
-                <td class="type"> {{this.type}}</td>
-                <td class="payee"> {{this.payee}}</td>
-                <td class="payer">{{this.payer}}</td>
-                <td class="contact">{{this.payerContact}}</td> 
-                <td class="notes">{{this.notes}}</td>
-                <td>
-                    <button class="button launchUpdate" data-id={{this._id}} type="button" data-toggle="modal" data-target="#updateModal">Update</button>
-                </td>
-                <td>
-                    <button class="button launchDelete" data-id={{this._id}} type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
-                </td>
+            <tbody>
+                {{#each transaction}}
+                <tr id={{this._id}}>
+                    <td class="desc">{{this.description}}</td>
+                    <td class="date">{{formatDate this.dateStarted}}</td>
+                    <td class="amount"> Php {{this.amount}}</td>
+                    <td class="type"> {{this.type}}</td>
+                    <td class="payee"> {{this.payee}}</td>
+                    <td class="payer">{{this.payer}}</td>
+                    <td class="contact">{{this.payerContact}}</td> 
+                    <td class="notes">{{this.notes}}</td>
+                    <td>
+                        <button class="button launchUpdate" data-id={{this._id}} type="button" data-toggle="modal" data-target="#updateModal">Update</button>
+                    </td>
+                    <td>
+                        <button class="button launchDelete" data-id={{this._id}} type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                    </td>
 
-            </tr>
-            {{/each}}
+                </tr>
+                {{/each}}
+            </tbody>
 
         </table>
         </form>

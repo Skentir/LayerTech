@@ -47,35 +47,39 @@
         <form>
         <table class="inventorytable mt-3">
             <col style="background-color: #FAFA87;"/>
-            <tr>
-            <th>NAME</th>
-            <th>POSITION</th>
-            <th>COMPANY</th>
-            <th>CONTACT NO.</th>
-            <th>EMAIL</th>
-            <th>CONTRACT TERMS</th>
-            <th>NOTES</th>
-            <th>UPDATE</th>
-            <th>DELETE</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>NAME</th>
+                    <th>POSITION</th>
+                    <th>COMPANY</th>
+                    <th>CONTACT NO.</th>
+                    <th>EMAIL</th>
+                    <th>CONTRACT TERMS</th>
+                    <th>NOTES</th>
+                    <th>UPDATE</th>
+                    <th>DELETE</th>
+                </tr>
+            </thead>
 
-            {{#each supplier}}
-            <tr id={{this._id}}>
-                <td class="name">{{this.name}}</td>
-                <td class="position">{{this.position}}</td>
-                <td class="company"> {{this.companyName}}</td>
-                <td class="contact">{{this.contactNo}}</td>
-                <td class="email">{{this.email}}</td>
-                <td class="contract">{{this.contractTerms}}</td>
-                <td class="notes">{{this.notes}}</td>
-                <td>
-                    <button class="button launchUpdate" data-id={{this._id}} type="button" data-toggle="modal" data-target="#updateModal">Update</button>
-                </td>
-                <td>
-                    <button class="button launchDelete" data-id={{this._id}} type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
-                </td>
-            </tr>
-            {{/each}}
+            <tbody>
+                {{#each supplier}}
+                <tr id={{this._id}}>
+                    <td class="name">{{this.name}}</td>
+                    <td class="position">{{this.position}}</td>
+                    <td class="company"> {{this.companyName}}</td>
+                    <td class="contact">{{this.contactNo}}</td>
+                    <td class="email">{{this.email}}</td>
+                    <td class="contract">{{this.contractTerms}}</td>
+                    <td class="notes">{{this.notes}}</td>
+                    <td>
+                        <button class="button launchUpdate" data-id={{this._id}} type="button" data-toggle="modal" data-target="#updateModal">Update</button>
+                    </td>
+                    <td>
+                        <button class="button launchDelete" data-id={{this._id}} type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
 
         </table>
         </form>
