@@ -61,6 +61,7 @@ exports.addStock = function(req, res) {
       res.redirect('/raw');
     }
   })
+}
 
 exports.updateStock = function(req,res) {
 
