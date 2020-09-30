@@ -27,6 +27,7 @@ body {
     width: inherit;
     height: auto;
     vertical-align: middle;
+    padding-top: 20px;
   }
 
   .headerleft {
@@ -164,15 +165,10 @@ body {
     cursor: pointer;
     }
 
-  .button:hover {
-    background-color: #C0F67B;
-    color: white;
-  }
-
   .launchDelete {
       background-color: #eb4444;
       color: white;
-      border: 2px solid #C0F67B;
+      border: 2px solid #aa3131;
       border-radius: 4px;
       padding: 4px 12px;
       text-align: center;
@@ -182,12 +178,15 @@ body {
       margin: 4px 2px;
       transition-duration: 0.4s;
       cursor: pointer;
-      }
+  }
 
-    .launchDelete :hover {
-      background-color: #C0F67B;
-      color: white;
-    }
+  .launchUpdate {
+    border: 2px solid #a5d369;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+  }
 
   #btngeneratesummary {
     background-color: #2F5400;
