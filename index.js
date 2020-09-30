@@ -10,6 +10,8 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const MongoStore = require('connect-mongo')(session);
 
+const moment = require('moment');
+
 const indexRouter = require('./routes/index');
 const prodRouter = require('./routes/productRoutes');
 const stockRouter = require('./routes/stockRoutes');
@@ -31,6 +33,9 @@ app.engine( 'hbs', exphbs({
             if(!this._sections) this._sections = {};
             this._sections[name] = options.fn(this);
             return null;
+        },
+        'formatDate': function(dateTime) {
+          return moment(dateTime).format('MMMM DD, YYYY');
         }
     }
 }));
