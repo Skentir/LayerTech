@@ -92,3 +92,18 @@ exports.deleteItem = function(req, res) {
     }
   });
 };
+
+
+exports.sortByRawMaterial = function(req,res) {
+  stockModel.find({})
+  .sort({rawMaterial: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+        var prod = JSON.parse(JSON.stringify(results))
+        res.send(prod)
+    }
+  })
+}
