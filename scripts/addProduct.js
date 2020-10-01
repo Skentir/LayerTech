@@ -257,7 +257,7 @@ $(document).ready(function() {
             $("#"+itemID+".quantity").val(quantity);
             $("#"+itemID+".basePrice").val(basePrice);
             $("#"+itemID+".sellingPrice").val(sellingPrice);
-            $("#"+itemID+".expiryDate").val(expiryDate);
+            $("#"+itemID+".expiryDate").val(buffered);
             $("#"+itemID+".location").val(loca);
         });
     })
