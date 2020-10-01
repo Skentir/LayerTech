@@ -31,7 +31,7 @@ exports.getTransactionDetails = function(req,res)
         res.send(err);
       else if (!results)
         res.send(err);
-      else
+      else 
         res.send(results);
     });
 } 
@@ -95,4 +95,17 @@ exports.deleteItem = function(req, res) {
         res.redirect('/transactions')
       }
   });
+}
+
+exports.sortByDue = function(req,res) {
+  transactionModel.find({})
+  .sort({dateDue: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      res.send(err);
+    } else {
+        var supp = JSON.parse(JSON.stringify(results))
+        res.send(supp)
+    }
+  })
 }

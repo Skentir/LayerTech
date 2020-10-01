@@ -1,8 +1,43 @@
 $(document).ready(function() {
-
+    var month = [ "January","February","March","April","May","June","July","August","September","October","November","December"];
     var itemID;
-      // UPDATE PRODUCT
-    $(".launchUpdate").click(function(){
+
+    $(".filterDue").click(function() {
+        $(".inventorytable tbody tr").remove();
+        $.ajax({
+            type: "GET",
+            url: "/transactions/sortByDue"
+        }).done(function(data) {
+            var res = "";
+            data.forEach(function(entry) {
+                var due = new Date(entry.dateDue);
+                var finalDue= month[due.getMonth()]+ " " + due.getDate() +", "+due.getFullYear();
+                var start = new Date(entry.dateStarted);
+                var finalDate = month[start.getMonth()]+ " " + start.getDate() +", "+start.getFullYear();
+                var row = 
+                    `<tr id=`+entry._id+`>
+                        <td class="desc">`+entry.description+`</td>
+                        <td class="date">`+finalDate+`</td>
+                        <td class="due">`+finalDue+`</td>
+                        <td class="amount"> Php `+ entry.amount+`</td>
+                        <td class="type"> `+entry.type+`</td>
+                        <td class="payee">`+entry.payee+`</td>
+                        <td class="payer">`+entry.payer+`</td>
+                        <td class="contact">`+entry.payerContact+`</td> 
+                        <td class="notes">`+entry.notes+`</td>
+                        <td>
+                            <button class="button launchUpdate" data-id=`+entry._id+` type="button" data-toggle="modal" data-target="#updateModal">Update</button>
+                        </td>
+                        <td>
+                            <button class="button launchDelete" data-id=`+entry._id+` type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                        </td>
+                    </tr>`
+                $('.inventorytable tbody').append(row)
+            });
+        });
+    });
+     
+    $(this).on('click',".launchUpdate",function(){
         itemID = $(this).data('id');
   
       $.ajax({
