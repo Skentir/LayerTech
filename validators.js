@@ -65,8 +65,6 @@ const addProductValidation = [
       return true;
     })
 ];
-
-const addStockValidation = [
 /*
 rawMaterial
 supplier
@@ -78,7 +76,7 @@ cost
 location
 */
 
-
+const addStockValidation = [
   body('rawMaterial').not().isEmpty().withMessage("Raw material name is required."),
   body('supplier').not().isEmpty().withMessage("Supplier name is required."),
   body('expirationDate').not().isEmpty().withMessage("Expiration date is required."),
@@ -111,4 +109,37 @@ location
   body('rawMaterial').not().isEmpty().withMessage("Location is required."),
 ];
 
-module.exports = {registerValidation, loginValidation, addProductValidation, addStockValidation};
+const updateStockValidation = [
+  body('rawMaterial').not().isEmpty().withMessage("Raw material name is required."),
+  body('supplier').not().isEmpty().withMessage("Supplier name is required."),
+  body('expirationDate').not().isEmpty().withMessage("Expiration date is required."),
+  body('dateBought').not().isEmpty().withMessage("Date bought is required")
+    .custom((value, { req }) => {
+      //Throw error if dateBought < expiryDate
+      var dateBought = new Date(value).getTime();
+      var expirationDate = new Date(req.body.expirationDate).getTime();
+
+      if (dateBought > expirationDate) {
+        throw new Error("Date bought must be greater than expiration date.");
+      }
+      return true;
+    }),
+  body('quantity').not().isEmpty().withMessage("Quantity is required.")
+    .custom((value, { req }) => {
+      if (value < 0) {
+        throw new Error("Quantity cannot be negative.");
+      }
+      return true;
+    }),
+  body('unit').not().isEmpty().withMessage("Unit is required."),
+  body('cost').not().isEmpty().withMessage("Cost is required.")
+    .custom((value, { req }) => {
+      if (value < 0) {
+        throw new Error("Base price cannot be negative.");
+      }
+      return true;
+    }),
+  body('rawMaterial').not().isEmpty().withMessage("Location is required."),
+];
+
+module.exports = {registerValidation, loginValidation, addProductValidation, addStockValidation, updateStockValidation};

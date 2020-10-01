@@ -74,23 +74,31 @@ exports.addStock = function(req, res) {
 };
 
 exports.updateStock = function(req,res) {
+  const errors = validationResult(req);
 
-  stockModel.findByIdAndUpdate({_id:req.params.id},
-    {
-      $set: {
-        rawMaterial : req.body.raw,
-        supplier : req.body.supplier,
-        expirationDate : req.body.expiry,
-        dateBought : req.body.bought,
-        quantity: req.body.quantity,
-        location: req.body.location,
-        unit: req.body.unit,
-        cost: req.body.cost
-      }
-    }, (err) => {
-      if(err)
-        res.send(err);
-    });
+  if(errors.isEmpty()){
+    stockModel.findByIdAndUpdate({_id:req.params.id},
+      {
+        $set: {
+          rawMaterial : req.body.raw,
+          supplier : req.body.supplier,
+          expirationDate : req.body.expiry,
+          dateBought : req.body.bought,
+          quantity: req.body.quantity,
+          location: req.body.location,
+          unit: req.body.unit,
+          cost: req.body.cost
+        }
+      }, (err) => {
+        if(err)
+          res.send(err);
+      });
+    } else {
+      const messages = errors.array().map((item) => item.msg);
+
+      req.flash('error_msg', messages.join(' '));
+      res.redirect('/raw')
+    }
 };
 
 exports.deleteItem = function(req, res) {
