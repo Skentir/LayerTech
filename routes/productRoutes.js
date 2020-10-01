@@ -1,9 +1,7 @@
 const router = require('express').Router();
 
 const productController = require('../controllers/productCtrl');
-
 const {addProductValidation} = require('../validators.js');
-
 const { isPublic, isPrivate } = require('../middlewares/authenticator');
 
 router.get('/', isPrivate, productController.getProducts)
@@ -16,7 +14,6 @@ router.get('/sortByDateBought', productController.sortByDateBought)
 router.get('/sortBySellingPrice', productController.sortBySellingPrice)
 router.get('/sortByBasePrice', productController.sortByBasePrice)
 router.get('/sortByQuantity', productController.sortByQuantity)
-//Add product
 router.post('/addProduct', addProductValidation, productController.addProduct)
 router.delete('/deleteItem/:id', productController.deleteItem)
 
