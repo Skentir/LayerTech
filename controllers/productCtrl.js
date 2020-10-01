@@ -82,7 +82,7 @@ exports.updateItem = function(req,res) {
         quantity: req.body.quantity,
         basePrice: req.body.base,
         sellingPrice: req.body.selling,
-        expiryDate: req.body.expiry,
+        expirationDate: req.body.expiry,
         location: req.body.location
       }
     }, (err) => {
