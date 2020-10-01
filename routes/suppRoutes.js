@@ -7,5 +7,6 @@ router.post('/addSupplier', suppController.addSupplier);
 router.post('/updateSupplier/:id', suppController.updateSupplier);
 router.delete('/deleteItem/:id', suppController.deleteItem);
 router.get('/sortByName', suppController.sortByName)
+router.get('/sortByCompany', suppController.sortByCompany)
 
 module.exports = router;
