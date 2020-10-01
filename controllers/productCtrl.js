@@ -132,3 +132,59 @@ exports.sortByExpiry = function(req,res) {
     }
   })
 }
+
+exports.sortByDateBought = function(req,res) {
+  productModel.find({})
+  .sort({dateBought: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+        var prod = JSON.parse(JSON.stringify(results))
+        res.send(prod)
+    }
+  })
+}
+
+exports.sortByQuantity = function(req,res) {
+  productModel.find({})
+  .sort({quantity: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+        var prod = JSON.parse(JSON.stringify(results))
+        res.send(prod)
+    }
+  })
+}
+
+exports.sortBySellingPrice = function(req,res) {
+  productModel.find({})
+  .sort({sellingPrice: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+        var prod = JSON.parse(JSON.stringify(results))
+        res.send(prod)
+    }
+  })
+}
+
+exports.sortByBasePrice = function(req,res) {
+  productModel.find({})
+  .sort({basePrice: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+        var prod = JSON.parse(JSON.stringify(results))
+        res.send(prod)
+    }
+  })
+}

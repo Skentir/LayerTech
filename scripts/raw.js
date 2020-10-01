@@ -27,7 +27,8 @@ $(document).ready(function(){
     });
 
 
-  $('#updateForm').submit(function() {
+  //$('#updateForm').submit(function() {
+    $(this).on('submit','#updateForm', function() {
         var raw = $("#updateRawMaterial").val();
         var supp = $("#updateSupp").val();
         var quantity = $("#updateQuantity").val();

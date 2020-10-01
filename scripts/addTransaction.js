@@ -25,7 +25,8 @@ $(document).ready(function() {
     });
 
 
-  $('#updateForm').submit(function() {
+ // $('#updateForm').submit(function() {
+  $(this).on('submit','#updateForm', function() {
     var desc = $("#updateDesc").val();
     var date = $("#updateDate").val();
     var amount = $("#updateAmount").val();
