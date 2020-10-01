@@ -13,18 +13,18 @@ $(document).ready(function(){
                 var finalExpiry= month[expiry.getMonth()]+ " " + expiry.getDate() +", "+expiry.getFullYear();
                 var bought = new Date(entry.dateBought);
                 var finalBought = month[bought.getMonth()]+ " " + bought.getDate() +", "+bought.getFullYear();
-                var row = 
+                var row =
                     `<tr id=`+entry._id+`>
                         <td class="rawMaterial">`+ entry.rawMaterial +`</td>
                         <td class="supplier">`+ entry.supplier +`</td>
                         <td class="expiry">`+ finalExpiry+`</td>
                         <td>`+ finalBought+`</td>
                         <td class="quantity">`+entry.quantity+`</td>
-                        <td class="location">`+entry.location+`</td> 
+                        <td class="location">`+entry.location+`</td>
                         <td class="unit">Php `+ entry.unit+`</td>
                         <td class="cost">Php `+entry.cost+`</td>
-                       
-                        
+
+
                         <td>
                             <button class="button launchUpdate" data-id=`+entry._id+` type="button" data-toggle="modal" data-target="#updateModal">Update</button>
                         </td>
@@ -48,18 +48,18 @@ $(document).ready(function(){
                 var finalExpiry= month[expiry.getMonth()]+ " " + expiry.getDate() +", "+expiry.getFullYear();
                 var bought = new Date(entry.dateBought);
                 var finalBought = month[bought.getMonth()]+ " " + bought.getDate() +", "+bought.getFullYear();
-                var row = 
+                var row =
                     `<tr id=`+entry._id+`>
                         <td class="rawMaterial">`+ entry.rawMaterial +`</td>
                         <td class="supplier">`+ entry.supplier +`</td>
                         <td class="expiry">`+ finalExpiry+`</td>
                         <td>`+ finalBought+`</td>
                         <td class="quantity">`+entry.quantity+`</td>
-                        <td class="location">`+entry.location+`</td> 
+                        <td class="location">`+entry.location+`</td>
                         <td class="unit">Php `+ entry.unit+`</td>
                         <td class="cost">Php `+entry.cost+`</td>
-                       
-                        
+
+
                         <td>
                             <button class="button launchUpdate" data-id=`+entry._id+` type="button" data-toggle="modal" data-target="#updateModal">Update</button>
                         </td>
@@ -83,18 +83,18 @@ $(document).ready(function(){
                 var finalExpiry= month[expiry.getMonth()]+ " " + expiry.getDate() +", "+expiry.getFullYear();
                 var bought = new Date(entry.dateBought);
                 var finalBought = month[bought.getMonth()]+ " " + bought.getDate() +", "+bought.getFullYear();
-                var row = 
+                var row =
                     `<tr id=`+entry._id+`>
                         <td class="rawMaterial">`+ entry.rawMaterial +`</td>
                         <td class="supplier">`+ entry.supplier +`</td>
                         <td class="expiry">`+ finalExpiry+`</td>
                         <td>`+ finalBought+`</td>
                         <td class="quantity">`+entry.quantity+`</td>
-                        <td class="location">`+entry.location+`</td> 
+                        <td class="location">`+entry.location+`</td>
                         <td class="unit">Php `+ entry.unit+`</td>
                         <td class="cost">Php `+entry.cost+`</td>
-                       
-                        
+
+
                         <td>
                             <button class="button launchUpdate" data-id=`+entry._id+` type="button" data-toggle="modal" data-target="#updateModal">Update</button>
                         </td>
@@ -118,18 +118,18 @@ $(document).ready(function(){
                 var finalExpiry= month[expiry.getMonth()]+ " " + expiry.getDate() +", "+expiry.getFullYear();
                 var bought = new Date(entry.dateBought);
                 var finalBought = month[bought.getMonth()]+ " " + bought.getDate() +", "+bought.getFullYear();
-                var row = 
+                var row =
                     `<tr id=`+entry._id+`>
                         <td class="rawMaterial">`+ entry.rawMaterial +`</td>
                         <td class="supplier">`+ entry.supplier +`</td>
                         <td class="expiry">`+ finalExpiry+`</td>
                         <td>`+ finalBought+`</td>
                         <td class="quantity">`+entry.quantity+`</td>
-                        <td class="location">`+entry.location+`</td> 
+                        <td class="location">`+entry.location+`</td>
                         <td class="unit">Php `+ entry.unit+`</td>
                         <td class="cost">Php `+entry.cost+`</td>
-                       
-                        
+
+
                         <td>
                             <button class="button launchUpdate" data-id=`+entry._id+` type="button" data-toggle="modal" data-target="#updateModal">Update</button>
                         </td>
@@ -153,18 +153,18 @@ $(document).ready(function(){
                 var finalExpiry= month[expiry.getMonth()]+ " " + expiry.getDate() +", "+expiry.getFullYear();
                 var bought = new Date(entry.dateBought);
                 var finalBought = month[bought.getMonth()]+ " " + bought.getDate() +", "+bought.getFullYear();
-                var row = 
+                var row =
                     `<tr id=`+entry._id+`>
                         <td class="rawMaterial">`+ entry.rawMaterial +`</td>
                         <td class="supplier">`+ entry.supplier +`</td>
                         <td class="expiry">`+ finalExpiry+`</td>
                         <td>`+ finalBought+`</td>
                         <td class="quantity">`+entry.quantity+`</td>
-                        <td class="location">`+entry.location+`</td> 
+                        <td class="location">`+entry.location+`</td>
                         <td class="unit">Php `+ entry.unit+`</td>
                         <td class="cost">Php `+entry.cost+`</td>
-                       
-                        
+
+
                         <td>
                             <button class="button launchUpdate" data-id=`+entry._id+` type="button" data-toggle="modal" data-target="#updateModal">Update</button>
                         </td>
@@ -188,18 +188,18 @@ $(document).ready(function(){
                 var finalExpiry= month[expiry.getMonth()]+ " " + expiry.getDate() +", "+expiry.getFullYear();
                 var bought = new Date(entry.dateBought);
                 var finalBought = month[bought.getMonth()]+ " " + bought.getDate() +", "+bought.getFullYear();
-                var row = 
+                var row =
                     `<tr id=`+entry._id+`>
                         <td class="rawMaterial">`+ entry.rawMaterial +`</td>
                         <td class="supplier">`+ entry.supplier +`</td>
                         <td class="expiry">`+ finalExpiry+`</td>
                         <td>`+ finalBought+`</td>
                         <td class="quantity">`+entry.quantity+`</td>
-                        <td class="location">`+entry.location+`</td> 
+                        <td class="location">`+entry.location+`</td>
                         <td class="unit">Php `+ entry.unit+`</td>
                         <td class="cost">Php `+entry.cost+`</td>
-                       
-                        
+
+
                         <td>
                             <button class="button launchUpdate" data-id=`+entry._id+` type="button" data-toggle="modal" data-target="#updateModal">Update</button>
                         </td>
@@ -260,10 +260,10 @@ $(document).ready(function(){
             location: location
         }
 
-        var today = new Date()
-        var d2 = new Date(expiry)
-        if ((d2-today)<= 0) {
-        
+        const diffTime = expiry-bought;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays > 0) {
             $.ajax({
                 type: "POST",
                 data : JSON.stringify(object),
@@ -280,10 +280,11 @@ $(document).ready(function(){
                 $("#"+itemID+".expiry").val(expiry);
                 $("#"+itemID+".location").val(location);
             });
-        } else
-            alert("Sad")
+        } else {
+            alert("Illegal date")
+        }
     });
-    
+
     var deleteID;
     $(this).on('click',".launchDelete",function(){
         deleteID = $(this).data('id');
@@ -297,7 +298,7 @@ $(document).ready(function(){
     });
 
     var suppNames = [];
-    
+
     $.ajax({
         type: "GET",
         url: "/suppliers/getNames",
@@ -318,5 +319,3 @@ $(document).ready(function(){
         source: suppNames
     })
 });
-
-
