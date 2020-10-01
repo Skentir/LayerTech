@@ -9,5 +9,7 @@ router.post('/updateSupplier/:id', suppController.updateSupplier);
 router.delete('/deleteItem/:id', suppController.deleteItem);
 router.get('/sortByName', suppController.sortByName)
 router.get('/sortByCompany', suppController.sortByCompany)
+router.get('/getNames', suppController.getNames)
+router.get('/getPersonNames', suppController.getPersonNames)
 
 module.exports = router;

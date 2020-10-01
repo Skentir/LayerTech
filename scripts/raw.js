@@ -267,7 +267,6 @@ $(document).ready(function(){
             contentType: 'application/json',
             url: "/raw/updateStock/"+itemID,
         }).done(function(data){
-            
             $("#"+itemID+".rawMaterial").val(raw);
             $("#"+itemID+".supplier").val(supp);
             $("#"+itemID+".dateBought").val(bought);
@@ -289,7 +288,29 @@ $(document).ready(function(){
             url: "/raw/deleteItem/"+deleteID,
             type: 'DELETE'
         });
-        });
+    });
+
+    var suppNames = [];
+    
+    $.ajax({
+        type: "GET",
+        url: "/suppliers/getNames",
+    }).done(function (data) {
+        console.log(data)
+        for (var i=0; i < data.length; i++)
+            suppNames.push(data[i].companyName)
+        })
+    .fail(function()  {
+        alert("Sorry. Server unavailable. ");
+    });
+
+    $( "#updateSupp" ).autocomplete({
+        source: suppNames
+    });
+
+    $('#autoSupplier').autocomplete({
+        source: suppNames
+    })
 });
 
 

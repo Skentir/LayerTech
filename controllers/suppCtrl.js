@@ -118,3 +118,34 @@ exports.sortByCompany = function(req,res) {
     }
   })
 }
+
+
+exports.getNames = function(req, res) {
+  supplierModel.find({})
+      .select('companyName')
+      .exec(function(err,result) {
+          if (err)
+              res.send(err)
+          else if (!result)
+              res.send(err)
+          else {
+              var supp = JSON.parse(JSON.stringify(result));
+              res.send(supp)
+          }
+      })   
+}
+
+exports.getPersonNames = function(req, res) {
+  supplierModel.find({})
+      .select('name')
+      .exec(function(err,result) {
+          if (err)
+              res.send(err)
+          else if (!result)
+              res.send(err)
+          else {
+              var supp = JSON.parse(JSON.stringify(result));
+              res.send(supp)
+          }
+      })   
+}

@@ -189,4 +189,27 @@ $(document).ready(function() {
           type: 'DELETE'
       });
   });
+
+  var suppNames = [];
+    
+    $.ajax({
+        type: "GET",
+        url: "/suppliers/getPersonNames",
+    }).done(function (data) {
+        console.log(data)
+        for (var i=0; i < data.length; i++)
+            suppNames.push(data[i].name)
+        })
+    .fail(function()  {
+        alert("Sorry. Server unavailable. ");
+    });
+
+    $( "#updatePayee" ).autocomplete({
+        source: suppNames
+    });
+
+    $('#autoName').autocomplete({
+        source: suppNames
+    });
+
 });
