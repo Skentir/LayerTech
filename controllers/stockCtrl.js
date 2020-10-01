@@ -136,3 +136,45 @@ exports.sortByExpiry = function(req,res) {
     }
   })
 }
+
+exports.sortByDateBought = function(req,res) {
+  stockModel.find({})
+  .sort({dateBought: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+        var prod = JSON.parse(JSON.stringify(results))
+        res.send(prod)
+    }
+  })
+}
+
+exports.sortByCost = function(req,res) {
+  stockModel.find({})
+  .sort({cost: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+        var prod = JSON.parse(JSON.stringify(results))
+        res.send(prod)
+    }
+  })
+}
+
+exports.sortByQuantity = function(req,res) {
+  stockModel.find({})
+  .sort({quantity: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+        var prod = JSON.parse(JSON.stringify(results))
+        res.send(prod)
+    }
+  })
+}

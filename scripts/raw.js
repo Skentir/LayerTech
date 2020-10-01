@@ -107,7 +107,110 @@ $(document).ready(function(){
         });
     });
 
-    
+    $(".filterDateBought").click(function() {
+        $(".inventorytable tbody tr").remove();
+        $.ajax({
+            type: "GET",
+            url: "/raw/sortByDateBought"
+        }).done(function(data) {
+            data.forEach(function(entry) {
+                var expiry = new Date(entry.expirationDate);
+                var finalExpiry= month[expiry.getMonth()]+ " " + expiry.getDate() +", "+expiry.getFullYear();
+                var bought = new Date(entry.dateBought);
+                var finalBought = month[bought.getMonth()]+ " " + bought.getDate() +", "+bought.getFullYear();
+                var row = 
+                    `<tr id=`+entry._id+`>
+                        <td class="rawMaterial">`+ entry.rawMaterial +`</td>
+                        <td class="supplier">`+ entry.supplier +`</td>
+                        <td class="expiry">`+ finalExpiry+`</td>
+                        <td>`+ finalBought+`</td>
+                        <td class="quantity">`+entry.quantity+`</td>
+                        <td class="location">`+entry.location+`</td> 
+                        <td class="unit">Php `+ entry.unit+`</td>
+                        <td class="cost">Php `+entry.cost+`</td>
+                       
+                        
+                        <td>
+                            <button class="button launchUpdate" data-id=`+entry._id+` type="button" data-toggle="modal" data-target="#updateModal">Update</button>
+                        </td>
+                        <td>
+                            <button class="button launchDelete" data-id=`+entry._id+` type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                        </td>
+                    </tr>`
+                $('.inventorytable tbody').append(row)
+            });
+        });
+    });
+
+    $(".filterCost").click(function() {
+        $(".inventorytable tbody tr").remove();
+        $.ajax({
+            type: "GET",
+            url: "/raw/sortByCost"
+        }).done(function(data) {
+            data.forEach(function(entry) {
+                var expiry = new Date(entry.expirationDate);
+                var finalExpiry= month[expiry.getMonth()]+ " " + expiry.getDate() +", "+expiry.getFullYear();
+                var bought = new Date(entry.dateBought);
+                var finalBought = month[bought.getMonth()]+ " " + bought.getDate() +", "+bought.getFullYear();
+                var row = 
+                    `<tr id=`+entry._id+`>
+                        <td class="rawMaterial">`+ entry.rawMaterial +`</td>
+                        <td class="supplier">`+ entry.supplier +`</td>
+                        <td class="expiry">`+ finalExpiry+`</td>
+                        <td>`+ finalBought+`</td>
+                        <td class="quantity">`+entry.quantity+`</td>
+                        <td class="location">`+entry.location+`</td> 
+                        <td class="unit">Php `+ entry.unit+`</td>
+                        <td class="cost">Php `+entry.cost+`</td>
+                       
+                        
+                        <td>
+                            <button class="button launchUpdate" data-id=`+entry._id+` type="button" data-toggle="modal" data-target="#updateModal">Update</button>
+                        </td>
+                        <td>
+                            <button class="button launchDelete" data-id=`+entry._id+` type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                        </td>
+                    </tr>`
+                $('.inventorytable tbody').append(row)
+            });
+        });
+    });
+
+    $(".filterQuantity").click(function() {
+        $(".inventorytable tbody tr").remove();
+        $.ajax({
+            type: "GET",
+            url: "/raw/sortByQuantity"
+        }).done(function(data) {
+            data.forEach(function(entry) {
+                var expiry = new Date(entry.expirationDate);
+                var finalExpiry= month[expiry.getMonth()]+ " " + expiry.getDate() +", "+expiry.getFullYear();
+                var bought = new Date(entry.dateBought);
+                var finalBought = month[bought.getMonth()]+ " " + bought.getDate() +", "+bought.getFullYear();
+                var row = 
+                    `<tr id=`+entry._id+`>
+                        <td class="rawMaterial">`+ entry.rawMaterial +`</td>
+                        <td class="supplier">`+ entry.supplier +`</td>
+                        <td class="expiry">`+ finalExpiry+`</td>
+                        <td>`+ finalBought+`</td>
+                        <td class="quantity">`+entry.quantity+`</td>
+                        <td class="location">`+entry.location+`</td> 
+                        <td class="unit">Php `+ entry.unit+`</td>
+                        <td class="cost">Php `+entry.cost+`</td>
+                       
+                        
+                        <td>
+                            <button class="button launchUpdate" data-id=`+entry._id+` type="button" data-toggle="modal" data-target="#updateModal">Update</button>
+                        </td>
+                        <td>
+                            <button class="button launchDelete" data-id=`+entry._id+` type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                        </td>
+                    </tr>`
+                $('.inventorytable tbody').append(row)
+            });
+        });
+    });
 
   $(this).on('click',".launchUpdate",function(){
       itemID = $(this).data('id');
