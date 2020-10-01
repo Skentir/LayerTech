@@ -259,23 +259,29 @@ $(document).ready(function(){
             cost: cost,
             location: location
         }
+
+        var today = new Date()
+        var d2 = new Date(expiry)
+        if ((d2-today)<= 0) {
         
-        $.ajax({
-            type: "POST",
-            data : JSON.stringify(object),
-            processData: false,
-            contentType: 'application/json',
-            url: "/raw/updateStock/"+itemID,
-        }).done(function(data){
-            $("#"+itemID+".rawMaterial").val(raw);
-            $("#"+itemID+".supplier").val(supp);
-            $("#"+itemID+".dateBought").val(bought);
-            $("#"+itemID+".quantity").val(quantity);
-            $("#"+itemID+".unit").val(unit);
-            $("#"+itemID+".cost").val(cost);
-            $("#"+itemID+".expiry").val(expiry);
-            $("#"+itemID+".location").val(location);
-        });
+            $.ajax({
+                type: "POST",
+                data : JSON.stringify(object),
+                processData: false,
+                contentType: 'application/json',
+                url: "/raw/updateStock/"+itemID,
+            }).done(function(data){
+                $("#"+itemID+".rawMaterial").val(raw);
+                $("#"+itemID+".supplier").val(supp);
+                $("#"+itemID+".dateBought").val(bought);
+                $("#"+itemID+".quantity").val(quantity);
+                $("#"+itemID+".unit").val(unit);
+                $("#"+itemID+".cost").val(cost);
+                $("#"+itemID+".expiry").val(expiry);
+                $("#"+itemID+".location").val(location);
+            });
+        } else
+            alert("Sad")
     });
     
     var deleteID;

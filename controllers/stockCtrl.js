@@ -74,7 +74,7 @@ exports.addStock = function(req, res) {
 };
 
 exports.updateStock = function(req,res) {
-
+  
   stockModel.findByIdAndUpdate({_id:req.params.id},
     {
       $set: {
