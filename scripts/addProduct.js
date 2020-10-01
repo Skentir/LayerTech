@@ -1,6 +1,7 @@
 
 $(document).ready(function() {
     var month = [ "January","February","March","April","May","June","July","August","September","October","November","December"];
+    var itemID;
 
     $(".filterName").click(function() {
         $(".inventorytable tbody tr").remove();
@@ -36,7 +37,7 @@ $(document).ready(function() {
     });
       // UPDATE PRODUCT
     $(this).on('click','.launchUpdate',function(){
-        var itemID = $(this).data('id');
+        itemID = $(this).data('id');
 
       $.ajax({
             type: "GET",
@@ -56,10 +57,9 @@ $(document).ready(function() {
               alert("Can't fetch this item.")
           });
     });
-
-    $('#updateForm').submit(function() {
-        console.log("Update called")
-        var itemID = $(this).data('id');
+    
+    //$('#updateForm').submit(function() {
+    $(this).on('submit','#updateForm', function() {
         console.log("ID" + itemID)
         var productName = $("#updateproductname").val();
         var quantity = $("#updatequantity").val();
