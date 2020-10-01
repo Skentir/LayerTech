@@ -109,3 +109,30 @@ exports.sortByDue = function(req,res) {
     }
   })
 }
+
+exports.sortByStart = function(req,res) {
+  transactionModel.find({})
+  .sort({dateStarted: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      res.send(err);
+    } else {
+        var supp = JSON.parse(JSON.stringify(results))
+        res.send(supp)
+    }
+  })
+}
+
+
+exports.sortByAmount = function(req,res) {
+  transactionModel.find({})
+  .sort({amount: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      res.send(err);
+    } else {
+        var supp = JSON.parse(JSON.stringify(results))
+        res.send(supp)
+    }
+  })
+}
