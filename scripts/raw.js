@@ -226,10 +226,10 @@ $(document).ready(function(){
             $("#updateCost").val(data.cost);
             $("#updateLocation").val(data.location);
             var parsedDate = new Date(data.dateBought);
-            var finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + ("0" + (parsedDate.getDate())).slice(-2);
+            var finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + parsedDate.getDate();
             $("#updateBought").val(finalDate);
             parsedDate = new Date(data.expirationDate);
-            finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + ("0" + (parsedDate.getDate())).slice(-2);
+            finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + parsedDate.getDate();
             $("#updateExpiry").val(finalDate);
         }).fail(function(){
             alert("Can't fetch this item.")
@@ -267,7 +267,6 @@ $(document).ready(function(){
             contentType: 'application/json',
             url: "/raw/updateStock/"+itemID,
         }).done(function(data){
-            
             $("#"+itemID+".rawMaterial").val(raw);
             $("#"+itemID+".supplier").val(supp);
             $("#"+itemID+".dateBought").val(bought);
@@ -289,7 +288,29 @@ $(document).ready(function(){
             url: "/raw/deleteItem/"+deleteID,
             type: 'DELETE'
         });
-        });
+    });
+
+    var suppNames = [];
+    
+    $.ajax({
+        type: "GET",
+        url: "/suppliers/getNames",
+    }).done(function (data) {
+        console.log(data)
+        for (var i=0; i < data.length; i++)
+            suppNames.push(data[i].companyName)
+        })
+    .fail(function()  {
+        alert("Sorry. Server unavailable. ");
+    });
+
+    $( "#updateSupp" ).autocomplete({
+        source: suppNames
+    });
+
+    $('#autoSupplier').autocomplete({
+        source: suppNames
+    })
 });
 
 

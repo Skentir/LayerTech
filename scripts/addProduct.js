@@ -218,7 +218,7 @@ $(document).ready(function() {
               $("#updatelocation").val(data.location);
               $("#updateForm").attr('data-id', data._id);
               var parsedDate = new Date(data.expirationDate);
-              var finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + ("0" + (parsedDate.getDate() + 1)).slice(-2);
+              var finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + parsedDate.getDate();
               $("#updateexpiry").val(finalDate);
 
           }).fail(function(){
@@ -235,7 +235,6 @@ $(document).ready(function() {
         var sellingPrice = $("#updatesellingprice").val();
         var expiryDate = $("#updateexpiry").val();
         var location = $("#updatelocation").val();
-        console.log("Location " + location);
 
         var object = {
             name: productName,
@@ -253,12 +252,13 @@ $(document).ready(function() {
              contentType: 'application/json',
              url: "/inventory/updateItem/"+itemID,
         }).done(function(data){
-            $("#"+itemsID+".productName").val(productName);
+           
+            $("#"+itemID+".productName").val(productName);
             $("#"+itemID+".quantity").val(quantity);
             $("#"+itemID+".basePrice").val(basePrice);
             $("#"+itemID+".sellingPrice").val(sellingPrice);
-            $("#"+itemID+".expiryDate").val(buffered);
-            $("#"+itemID+".location").val(loca);
+            $("#"+itemID+".expiry").val(expiryDate);
+            $("#"+itemID+".location").val(location);
         });
     })
 

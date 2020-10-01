@@ -122,10 +122,10 @@ $(document).ready(function() {
               $("#updateContact").val(data.payerContact);
               $("#updateNotes").val(data.notes);
               var parsedDate = new Date(data.dateStarted);
-              var finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + ("0" + (parsedDate.getDate() + 1)).slice(-2);
+              var finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + parsedDate.getDate() ;
               $("#updateDate").val(finalDate);
               parsedDate = new Date(data.dateDue);
-              finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + ("0" + (parsedDate.getDate() + 1)).slice(-2);
+              finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + parsedDate.getDate() ;
               $("#updateDue").val(finalDate);
           }).fail(function(){
               alert("Can't fetch this item.")
@@ -189,4 +189,27 @@ $(document).ready(function() {
           type: 'DELETE'
       });
   });
+
+  var suppNames = [];
+    
+    $.ajax({
+        type: "GET",
+        url: "/suppliers/getPersonNames",
+    }).done(function (data) {
+        console.log(data)
+        for (var i=0; i < data.length; i++)
+            suppNames.push(data[i].name)
+        })
+    .fail(function()  {
+        alert("Sorry. Server unavailable. ");
+    });
+
+    $( "#updatePayee" ).autocomplete({
+        source: suppNames
+    });
+
+    $('#autoName').autocomplete({
+        source: suppNames
+    });
+
 });
