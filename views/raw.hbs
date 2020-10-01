@@ -21,6 +21,7 @@
                 This page contains all the raw materials the company has
                 acquired to produces products.
         </div>
+        {{> messages}}
         </div>
 
         <div class="toolcontainer">
@@ -29,8 +30,8 @@
             <button class="button" id="btnadditemmodal" data-toggle="modal" data-target="#modalbg">Add a Material</button>
             </div>
         </div>
-            
-            
+
+
         <div class="toolright">
             <div class="dropdown">
             <button class="dropbtn">Filter By</button>
@@ -212,7 +213,7 @@
             <!-- Modal Add Item Fields -->
             <div class="inputcontainer">
                 <h1>Update Material</h1>
-                <form id="updateForm"> 
+                <form id="updateForm">
                     <!-- Product Name -->
                     <div class="formcontainer">
                         <div class="formlabel">
