@@ -122,10 +122,10 @@ $(document).ready(function() {
               $("#updateContact").val(data.payerContact);
               $("#updateNotes").val(data.notes);
               var parsedDate = new Date(data.dateStarted);
-              var finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + parsedDate.getDate() ;
+              var finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + ("0" + parsedDate.getDate()).slice(-2) ;
               $("#updateDate").val(finalDate);
               parsedDate = new Date(data.dateDue);
-              finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + parsedDate.getDate() ;
+              finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + ("0" + parsedDate.getDate()).slice(-2) ;
               $("#updateDue").val(finalDate);
           }).fail(function(){
               alert("Can't fetch this item.")

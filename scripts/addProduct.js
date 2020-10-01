@@ -218,7 +218,7 @@ $(document).ready(function() {
               $("#updatelocation").val(data.location);
               $("#updateForm").attr('data-id', data._id);
               var parsedDate = new Date(data.expirationDate);
-              var finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + parsedDate.getDate();
+              var finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + ("0" + parsedDate.getDate()).slice(-2);
               $("#updateexpiry").val(finalDate);
 
           }).fail(function(){
@@ -244,22 +244,30 @@ $(document).ready(function() {
             expiry: expiryDate,
             location: location
         }
-
-        $.ajax({
-             type: "POST",
-             data : JSON.stringify(object),
-             processData: false,
-             contentType: 'application/json',
-             url: "/inventory/updateItem/"+itemID,
-        }).done(function(data){
-           
-            $("#"+itemID+".productName").val(productName);
-            $("#"+itemID+".quantity").val(quantity);
-            $("#"+itemID+".basePrice").val(basePrice);
-            $("#"+itemID+".sellingPrice").val(sellingPrice);
-            $("#"+itemID+".expiry").val(expiryDate);
-            $("#"+itemID+".location").val(location);
-        });
+        
+        var today = new Date()
+        var d2 = new Date(expiryDate)
+        var diff = d2-today;
+        const diffDays = Math.ceil(diff / (1000 * 60 * 60 * 24));   
+    
+        if ((diffDays) < 0) {
+            $.ajax({
+                type: "POST",
+                data : JSON.stringify(object),
+                processData: false,
+                contentType: 'application/json',
+                url: "/inventory/updateItem/"+itemID,
+            }).done(function(data){
+            
+                $("#"+itemID+".productName").val(productName);
+                $("#"+itemID+".quantity").val(quantity);
+                $("#"+itemID+".basePrice").val(basePrice);
+                $("#"+itemID+".sellingPrice").val(sellingPrice);
+                $("#"+itemID+".expiry").val(expiryDate);
+                $("#"+itemID+".location").val(location);
+            });
+        } else
+            alert("Illegal Date")
     })
 
     var deleteID;

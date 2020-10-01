@@ -226,10 +226,10 @@ $(document).ready(function(){
             $("#updateCost").val(data.cost);
             $("#updateLocation").val(data.location);
             var parsedDate = new Date(data.dateBought);
-            var finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + parsedDate.getDate();
+            var finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + ("0" + parsedDate.getDate()).slice(-2);
             $("#updateBought").val(finalDate);
             parsedDate = new Date(data.expirationDate);
-            finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + parsedDate.getDate();
+            finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + ("0" + parsedDate.getDate()).slice(-2);
             $("#updateExpiry").val(finalDate);
         }).fail(function(){
             alert("Can't fetch this item.")
