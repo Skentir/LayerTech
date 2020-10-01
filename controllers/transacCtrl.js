@@ -37,11 +37,12 @@ exports.getTransactionDetails = function(req,res)
 } 
 
 exports.addTransaction = function(req, res) {
-  const {description, date, amount, type, payee, payer, contact, notes} = req.body;
+  const {description, date, due, amount, type, payee, payer, contact, notes} = req.body;
 
   const newTransaction = {
       description: description,
       dateStarted: date,
+      dateDue: due,
       amount: amount,
       type: type,
       payee: payee,
@@ -70,6 +71,7 @@ exports.updateTransaction = function(req,res) {
       $set: {
         description: req.body.description,
         dateAdded: req.body.dateAdded,
+        dateDue: req.body.dateDue,
         amount: req.body.amount,
         type: req.body.type,
         payee: req.body.payee,

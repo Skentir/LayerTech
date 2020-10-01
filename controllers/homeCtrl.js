@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 const productModel = require('../models/products');
 const stockModel = require('../models/stock');
+const transactionModel = require('../models/transactions');
 
 const {validationResult} = require('express-validator');
 
@@ -23,6 +24,7 @@ function isExpired(date,) {
 exports.getExpired = function(req, res) {
     var expiredProd;
     var expiredRaw;
+    var expiredTrans;
     async.parallel({
         prod: function getProductCount(callback) {
             productModel.find({}).select('expirationDate').then(results=>{
@@ -56,6 +58,22 @@ exports.getExpired = function(req, res) {
                     callback(null,rawCount)
                 }
             });
+        },
+        trans: function getProductCount(callback) {
+            transactionModel.find({}).select('dateDue').then(results=>{
+                if (results) {
+                    var transCount = 0;
+                    expiredTrans = 0;
+                    results.forEach(function(entry) {
+                        val = isExpired(entry.expirationDate)
+                        if (val == 1) 
+                            transCount++;
+                        else if(val == 2)
+                            expiredTrans++;
+                    });
+                    callback(null,transCount)
+                }
+            });
         }
     }, function (err, results) {
         if (err) {
@@ -65,6 +83,8 @@ exports.getExpired = function(req, res) {
               layout: 'main',
               productCount : results.prod,
               rawCount : results.raws,
+              transCount: results.trans,
+              expiredTrans: expiredTrans,
               expiredProd: expiredProd,
               expiredRaw: expiredRaw,
           }

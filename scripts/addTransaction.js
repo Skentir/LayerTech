@@ -19,6 +19,9 @@ $(document).ready(function() {
               var parsedDate = new Date(data.dateStarted);
               var finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + ("0" + (parsedDate.getDay() + 1)).slice(-2);
               $("#updateDate").val(finalDate);
+              parsedDate = new Date(data.dateDue);
+              finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + ("0" + (parsedDate.getDay() + 1)).slice(-2);
+              $("#updateDue").val(finalDate);
           }).fail(function(){
               alert("Can't fetch this item.")
           });
@@ -29,6 +32,7 @@ $(document).ready(function() {
   $(this).on('submit','#updateForm', function() {
     var desc = $("#updateDesc").val();
     var date = $("#updateDate").val();
+    var due = $("#updateDue").val();
     var amount = $("#updateAmount").val();
     var type = $("#updateType").val();
     var payee = $("#updatePayee").val();
@@ -41,6 +45,7 @@ $(document).ready(function() {
     var object = {
         description: desc,
         dateAdded: date,
+        dateDue: due,
         amount: amount,
         type: type,
         payee: payee,
@@ -58,6 +63,7 @@ $(document).ready(function() {
     }).done(function(data){
         $("#"+itemsID+".desc").val(desc);
         $("#"+itemID+".date").val(date);
+        $("#"+itemID+".due").val(due);
         $("#"+itemID+".amount").val(amount);
         $("#"+itemID+".type").val(type);
         $("#"+itemID+".payee").val(payee);

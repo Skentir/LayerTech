@@ -50,6 +50,7 @@
                 <tr>
                     <th>DESCRIPTION</th>
                     <th>DATE</th>
+                    <th>DUE DATE</th>
                     <th>AMOUNT</th>
                     <th>TYPE</th>
                     <th>PAYEE</th>
@@ -66,6 +67,7 @@
                 <tr id={{this._id}}>
                     <td class="desc">{{this.description}}</td>
                     <td class="date">{{formatDate this.dateStarted}}</td>
+                    <td class="due">{{formatDate this.dateDue}}</td>
                     <td class="amount"> Php {{this.amount}}</td>
                     <td class="type"> {{this.type}}</td>
                     <td class="payee"> {{this.payee}}</td>
@@ -118,6 +120,17 @@
                     </div>
                     <div class="forminput">
                         <input type="date" name="date" required>
+                    </div>
+                </div>
+                <br>
+
+                <!-- Date Due -->
+                <div class="formcontainer">
+                    <div class="formlabel">
+                        Date Due
+                    </div>
+                    <div class="forminput">
+                        <input type="date" name="due" required>
                     </div>
                 </div>
                 <br>
@@ -231,6 +244,17 @@
                         </div>
                         <div class="forminput">
                             <input type="date" id="updateDate">
+                        </div>
+                    </div>
+                    <br>
+
+                    <!-- Date Due -->
+                    <div class="formcontainer">
+                        <div class="formlabel">
+                            Date Due
+                        </div>
+                        <div class="forminput">
+                            <input type="date" id="updateDue">
                         </div>
                     </div>
                     <br>
