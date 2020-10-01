@@ -1,15 +1,16 @@
 var mongoose = require('mongoose');
 const productModel = require('../models/products');
 const stockModel = require('../models/stock');
+const transactionModel = require('../models/transactions');
 
 const {validationResult} = require('express-validator');
 
 const async = require('async');
 
-function isExpired(date) {
+function isExpired(date,) {
     var today = new Date();
     var expiry = new Date(date);
-    const diffTime = Math.abs(expiry - today);
+    const diffTime = expiry-today;
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));   
 
     if (diffDays <= 14 && diffDays > 0)
@@ -23,6 +24,7 @@ function isExpired(date) {
 exports.getExpired = function(req, res) {
     var expiredProd;
     var expiredRaw;
+    var expiredTrans;
     async.parallel({
         prod: function getProductCount(callback) {
             productModel.find({}).select('expirationDate').then(results=>{
@@ -36,7 +38,6 @@ exports.getExpired = function(req, res) {
                             productCount++;
                         else if(val == 2)
                             expiredProd++;
-
                     });
                     callback(null, productCount)
                 }
@@ -49,12 +50,28 @@ exports.getExpired = function(req, res) {
                     expiredRaw = 0;
                     results.forEach(function(entry) {
                         val = isExpired(entry.expirationDate)
-                        if (val == 1)
+                        if (val == 1) 
                             rawCount++;
                         else if(val == 2)
                             expiredRaw++;
                     });
                     callback(null,rawCount)
+                }
+            });
+        },
+        trans: function getProductCount(callback) {
+            transactionModel.find({}).select('dateDue').then(results=>{
+                if (results) {
+                    var transCount = 0;
+                    expiredTrans = 0;
+                    results.forEach(function(entry) {
+                        val = isExpired(entry.expirationDate)
+                        if (val == 1) 
+                            transCount++;
+                        else if(val == 2)
+                            expiredTrans++;
+                    });
+                    callback(null,transCount)
                 }
             });
         }
@@ -66,10 +83,12 @@ exports.getExpired = function(req, res) {
               layout: 'main',
               productCount : results.prod,
               rawCount : results.raws,
-              expiredProd,
-              expiredRaw,
+              transCount: results.trans,
+              expiredTrans: expiredTrans,
+              expiredProd: expiredProd,
+              expiredRaw: expiredRaw,
           }
-         res.render('dashboard',params)
+         res.render('dashboard',JSON.parse(JSON.stringify(params)))
           //res.send(params)
       }
     });

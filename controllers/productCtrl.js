@@ -82,7 +82,7 @@ exports.updateItem = function(req,res) {
         quantity: req.body.quantity,
         basePrice: req.body.base,
         sellingPrice: req.body.selling,
-        expiryDate: req.body.expiryDate,
+        expiryDate: req.body.expiry,
         location: req.body.location
       }
     }, (err) => {
@@ -104,3 +104,87 @@ exports.deleteItem = function(req, res) {
     }
   });
 };
+
+exports.sortByName = function(req,res) {
+  productModel.find({})
+  .sort({productName: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+        var prod = JSON.parse(JSON.stringify(results))
+        res.send(prod)
+    }
+  })
+}
+
+exports.sortByExpiry = function(req,res) {
+  productModel.find({})
+  .sort({expiryDate: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+        var prod = JSON.parse(JSON.stringify(results))
+        res.send(prod)
+    }
+  })
+}
+
+exports.sortByDateBought = function(req,res) {
+  productModel.find({})
+  .sort({dateBought: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+        var prod = JSON.parse(JSON.stringify(results))
+        res.send(prod)
+    }
+  })
+}
+
+exports.sortByQuantity = function(req,res) {
+  productModel.find({})
+  .sort({quantity: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+        var prod = JSON.parse(JSON.stringify(results))
+        res.send(prod)
+    }
+  })
+}
+
+exports.sortBySellingPrice = function(req,res) {
+  productModel.find({})
+  .sort({sellingPrice: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+        var prod = JSON.parse(JSON.stringify(results))
+        res.send(prod)
+    }
+  })
+}
+
+exports.sortByBasePrice = function(req,res) {
+  productModel.find({})
+  .sort({basePrice: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+        var prod = JSON.parse(JSON.stringify(results))
+        res.send(prod)
+    }
+  })
+}

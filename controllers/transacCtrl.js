@@ -31,17 +31,18 @@ exports.getTransactionDetails = function(req,res)
         res.send(err);
       else if (!results)
         res.send(err);
-      else
+      else 
         res.send(results);
     });
 } 
 
 exports.addTransaction = function(req, res) {
-  const {description, date, amount, type, payee, payer, contact, notes} = req.body;
+  const {description, date, due, amount, type, payee, payer, contact, notes} = req.body;
 
   const newTransaction = {
       description: description,
       dateStarted: date,
+      dateDue: due,
       amount: amount,
       type: type,
       payee: payee,
@@ -70,6 +71,7 @@ exports.updateTransaction = function(req,res) {
       $set: {
         description: req.body.description,
         dateAdded: req.body.dateAdded,
+        dateDue: req.body.dateDue,
         amount: req.body.amount,
         type: req.body.type,
         payee: req.body.payee,
@@ -82,3 +84,55 @@ exports.updateTransaction = function(req,res) {
           res.send(err);
     });
 };
+
+exports.deleteItem = function(req, res) {
+  transactionModel.deleteOne({ _id:req.params.id }, (err) => {
+      if(err) {
+        //req.flash('error_msg', 'Could not add product. Please Try Again!');
+        res.send(err);
+      } else {
+        //req.flash("success_msg", 'Product added!');
+        res.redirect('/transactions')
+      }
+  });
+}
+
+exports.sortByDue = function(req,res) {
+  transactionModel.find({})
+  .sort({dateDue: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      res.send(err);
+    } else {
+        var supp = JSON.parse(JSON.stringify(results))
+        res.send(supp)
+    }
+  })
+}
+
+exports.sortByStart = function(req,res) {
+  transactionModel.find({})
+  .sort({dateStarted: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      res.send(err);
+    } else {
+        var supp = JSON.parse(JSON.stringify(results))
+        res.send(supp)
+    }
+  })
+}
+
+
+exports.sortByAmount = function(req,res) {
+  transactionModel.find({})
+  .sort({amount: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      res.send(err);
+    } else {
+        var supp = JSON.parse(JSON.stringify(results))
+        res.send(supp)
+    }
+  })
+}

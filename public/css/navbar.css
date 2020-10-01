@@ -1,3 +1,14 @@
+body {
+    background: #465649;
+}
+
+body > .wrapper {
+    -webkit-box-shadow: -1px -1px 21px -1px rgba(0,0,0,0.66);
+    -moz-box-shadow: -1px -1px 21px -1px rgba(0,0,0,0.66);
+    box-shadow: -1px -1px 21px -1px rgba(0,0,0,0.66);
+    background: white;
+}
+
 .navbar {
     background-color: darkslategray;
     color: white;
@@ -12,6 +23,12 @@
     display: block;
     padding-left: 5px;
     padding-right: 5px;
+    font-weight: 600;
+}
+
+.nav-items li>a {
+    color: white;
+    text-decoration: none;
 }
 
 .nav-logo {

@@ -50,6 +50,15 @@
     margin: auto;
 }
 
+a.col-sm {
+    text-decoration: none;
+}
+
 .to-add {
     background: linear-gradient(#495057, #6c757d);
+}
+
+.col-sm:hover {
+    color: rgb(166, 235, 235);
+    transform: scale(1.05);
 }

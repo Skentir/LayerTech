@@ -19,6 +19,7 @@ body {
   .inventorycontainer {
     width: 960px;
     margin: auto;
+    height: 100%;
   }
 
   .headercontainer {
@@ -26,6 +27,7 @@ body {
     width: inherit;
     height: auto;
     vertical-align: middle;
+    padding-top: 20px;
   }
 
   .headerleft {
@@ -123,7 +125,7 @@ body {
   }
 
   .inputcontainer input {
-    background-color: #E5E5E5;
+    background-color: #eeebeb;
     border: none;
     padding: 4px;
     width: 275px;
@@ -163,15 +165,10 @@ body {
     cursor: pointer;
     }
 
-  .button:hover {
-    background-color: #C0F67B;
-    color: white;
-  }
-
   .launchDelete {
-      background-color: #C0F67B;
-      color: black;
-      border: 2px solid #C0F67B;
+      background-color: #eb4444;
+      color: white;
+      border: 2px solid #aa3131;
       border-radius: 4px;
       padding: 4px 12px;
       text-align: center;
@@ -181,12 +178,15 @@ body {
       margin: 4px 2px;
       transition-duration: 0.4s;
       cursor: pointer;
-      }
+  }
 
-    .launchDelete :hover {
-      background-color: #C0F67B;
-      color: white;
-    }
+  .launchUpdate {
+    border: 2px solid #a5d369;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+  }
 
   #btngeneratesummary {
     background-color: #2F5400;
@@ -284,4 +284,25 @@ body {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+  }
+
+  .del-btn-group {
+    display: flex;
+    justify-content: center;
+  }
+
+  .delmodal {
+    max-width: 415px;
+  }
+
+  .delcontainer {
+    margin: auto;
+    max-width: max-content;
+    padding: 12px 0px;
+  }
+
+  #btnDeleteItem {
+    background: #eb4444;
+    color: white;
+    border: 2px solid #aa3131;
   }

@@ -82,3 +82,99 @@ exports.updateStock = function(req,res) {
         res.send(err);
     });
 };
+
+exports.deleteItem = function(req, res) {
+  stockModel.deleteOne({ _id:req.params.id }, (err) => {
+    if(err) {
+      res.send(err);
+    } else {
+      res.redirect('/raw')
+    }
+  });
+};
+
+
+exports.sortByRawMaterial = function(req,res) {
+  stockModel.find({})
+  .sort({rawMaterial: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+        var prod = JSON.parse(JSON.stringify(results))
+        res.send(prod)
+    }
+  })
+}
+
+exports.sortBySupplier = function(req,res) {
+  stockModel.find({})
+  .sort({supplier: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+        var prod = JSON.parse(JSON.stringify(results))
+        res.send(prod)
+    }
+  })
+}
+
+
+exports.sortByExpiry = function(req,res) {
+  stockModel.find({})
+  .sort({expirationDate: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+        var prod = JSON.parse(JSON.stringify(results))
+        res.send(prod)
+    }
+  })
+}
+
+exports.sortByDateBought = function(req,res) {
+  stockModel.find({})
+  .sort({dateBought: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+        var prod = JSON.parse(JSON.stringify(results))
+        res.send(prod)
+    }
+  })
+}
+
+exports.sortByCost = function(req,res) {
+  stockModel.find({})
+  .sort({cost: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+        var prod = JSON.parse(JSON.stringify(results))
+        res.send(prod)
+    }
+  })
+}
+
+exports.sortByQuantity = function(req,res) {
+  stockModel.find({})
+  .sort({quantity: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+        var prod = JSON.parse(JSON.stringify(results))
+        res.send(prod)
+    }
+  })
+}

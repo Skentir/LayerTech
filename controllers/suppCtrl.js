@@ -81,3 +81,40 @@ exports.updateSupplier= function(req,res) {
       });
   };
   
+exports.deleteItem = function(req, res) {
+  supplierModel.deleteOne({ _id:req.params.id }, (err) => {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+      //req.flash("success_msg", 'Product added!');
+      res.redirect('/suppliers')
+    }
+  });
+};
+  
+exports.sortByName = function(req,res) {
+  supplierModel.find({})
+  .sort({name: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      res.send(err);
+    } else {
+        var supp = JSON.parse(JSON.stringify(results))
+        res.send(supp)
+    }
+  })
+}
+
+exports.sortByCompany = function(req,res) {
+  supplierModel.find({})
+  .sort({company: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      res.send(err);
+    } else {
+        var supp = JSON.parse(JSON.stringify(results))
+        res.send(supp)
+    }
+  })
+}

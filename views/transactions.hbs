@@ -5,211 +5,110 @@
     <!-- JS -->
     <script src="addTransaction.js"></script>
 {{/section}}
-<div class="inventorycontainer">
-    <div class="headercontainer">
-    <div class="headerleft">
-        <h1>Transactions</h1>
-    </div>
-    <div class="headerright">
-        <p><span>Transactions</span></p>
-    </div>
-    </div>
-
-    <div class="descriptioncontainer">
-    <div class="description">
-            This page stores details and information of suppliers 
-            the company gets raw materials or products from.
-    </div>
-    </div>
-
-    <div class="toolcontainer">
-    <div class="toolleft">
-        <div class="btncontainer">
-        <button class="button" id="btnadditemmodal">Add a Transaction</button>
+<div class="container wrapper">
+    <div class="inventorycontainer">
+        <div class="headercontainer">
+        <div class="headerleft">
+            <h1>Transactions</h1>
         </div>
-    </div>
-  
-    <div class="toolright">
-        <div class="dropdown">
-        <button class="dropbtn">Filter By</button>
-        <div class="dropdown-content">
-        <a href="#">abcdefg</a>
-        <a href="#">abcdefg</a>
-        <a href="#">abcdefg</a>
+        <div class="headerright">
+            <p><span>Transactions</span></p>
         </div>
         </div>
-    </div>
-    </div>
-    <br>
 
-    <form>
-    <table class="inventorytable">
-        <col style="background-color: #FAFA87;"/>
-        <tr>
-        <th>DESCRIPTION</th>
-        <th>DATE</th>
-        <th>AMOUNT</th>
-        <th>TYPE</th>
-        <th>PAYEE</th>
-        <th>PAYER</th>
-        <th>PAYER CONTACT<th>
-        <th>NOTES</th>
-        <th></th>
-        </tr>
+        <div class="descriptioncontainer">
+        <div class="description">
+                This page stores details and information of suppliers 
+                the company gets raw materials or products from.
+        </div>
+        </div>
 
-        {{#each transaction}}
-        <tr id={{this._id}}>
-            <td class="desc">{{this.description}}</td>
-            <td class="date">{{formatDate this.dateStarted}}</td>
-             <td class="amount"> Php {{this.amount}}</td>
-            <td class="type"> {{this.type}}</td>
-            <td class="payee"> {{this.payee}}</td>
-            <td class="payer">{{this.payer}}</td>
-            <td class="contact">{{this.payerContact}}</td> 
-            <td class="notes">{{this.notes}}</td>
-            <td>
-                 <button class="button launchUpdate" data-id={{this._id}} type="button" data-toggle="modal" data-target="#updateModal">Update</button>
-            </td>
-        </tr>
-        {{/each}}
-
-    </table>
-    </form>
-</div>
-
-<!-- Add Transaction Modal -->
-<div class="modal" id="modalbg" >
-    <!-- Modal Content -->
-    <div class="addmodal">
-    <!-- Modal Close Button -->
-    <span class="close">&times;</span>
-    <br>
-    <!-- Modal Form -->
-    <div class="modalbody">
-        <!-- Modal Add Transaction Fields -->
-        <div class="inputcontainer">
-        <h1>Add a Transaction</h1>
-        <form method='POST' autocomplete="off" name="addSupplier" action='/transactions/addTransaction'>
-            <!-- Description -->
-            <div class="formcontainer">
-                <div class="formlabel">
-                Description
-                </div>
-                <div class="forminput">
-                    <input type="text" name="description" required>
+        <div class="toolcontainer">
+        <div class="toolleft">
+            <div class="btncontainer">
+            <button class="button" id="btnadditemmodal" data-toggle="modal" data-target="#modalbg">Add a Transaction</button>
+            </div>
+        </div>
+    
+        <div class="toolright">
+            <div class="dropdown">
+                <button class="dropbtn">Filter By</button>
+                <div class="dropdown-content">
+                    <a class="filterDue">Due Date</a>
+                    <a class="filterAmount">Amount</a>
+                    <a class="filterDate">Date</a>
                 </div>
             </div>
-            <br>
-
-            <!-- Date of Transaction -->
-            <div class="formcontainer">
-                <div class="formlabel">
-                    Date of Transaction
-                </div>
-                <div class="forminput">
-                    <input type="date" name="date" required>
-                </div>
-            </div>
-            <br>
-
-            <!-- Amount -->
-            <div class="formcontainer">
-                <div class="formlabel">
-                    Amount
-                </div>
-                <div class="forminput">
-                    <input type="number" name="amount" required>
-                </div>
-            </div>
-            <br>
-
-            <!-- Type -->
-            <div class="formcontainer">
-                <div class="formlabel">
-                    Type
-                </div>
-                <div class="forminput">
-                    <input type="text" name="type" required>
-                </div>
-            </div>
-            <br>
-
-            <!-- Payee -->
-            <div class="formcontainer">
-                <div class="formlabel">
-                    Payee
-                </div>
-                <div class="forminput">
-                    <input type="text" name="payee" required>
-                </div>
-            </div>
-            <br>
-
-            <!-- Payer -->
-            <div class="formcontainer">
-                <div class="formlabel">
-                    Payer
-                </div>
-                <div class="forminput">
-                    <input type="text" name="payer" required>
-                </div>
-            </div>
-            <br>
-
-            <!-- Payer Contact No -->
-            <div class="formcontainer">
-                <div class="formlabel">
-                    Payer Contact No
-                </div>
-                <div class="forminput">
-                    <input type="text" name="contact" required>
-                </div>
-            </div>
-            <br>
-
-             <!-- Notes -->
-            <div class="formcontainer">
-                <div class="formlabel">
-                    Notes
-                </div>
-                <div class="forminput">
-                    <input type="text" name="notes">
-                </div>
-            </div>
-            <br>
-
-            <br>
-            <!-- Modal Button -->
-            <div class="modalbtncontainer">
-                <button type="submit" id="add-item-btn" class="button">Add</button>
-            </div>
-        </form>
+        </div>
         </div>
         <br>
-    </div>
-    </div>
-</div>
 
-<!-- Update Product Modal -->
-<div id="updateModal" class="modal" data-backdrop="false">
-    <!-- Modal Content -->
-    <div class="addmodal">
-    <!-- Modal Close Button -->
-    <span class="close" data-dismiss="modal">&times;</span>
-    <br>
-    <!-- Modal Form -->
-    <div class="modalbody">
-        <!-- Modal Add Item Fields -->
-        <div class="inputcontainer">
-            <h1>Update Transaction</h1>
-            <form id="updateForm"> 
+        <form>
+        <table class="inventorytable mt-3">
+            <col style="background-color: #FAFA87;"/>
+            <thead>
+                <tr>
+                    <th>DESCRIPTION</th>
+                    <th>DATE</th>
+                    <th>DUE DATE</th>
+                    <th>AMOUNT</th>
+                    <th>TYPE</th>
+                    <th>PAYEE</th>
+                    <th>PAYER</th>
+                    <th>PAYER CONTACT</th>
+                    <th>NOTES</th>
+                    <th>UPDATE</th>
+                    <th>DELETE</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {{#each transaction}}
+                <tr id={{this._id}}>
+                    <td class="desc">{{this.description}}</td>
+                    <td class="date">{{formatDate this.dateStarted}}</td>
+                    <td class="due">{{formatDate this.dateDue}}</td>
+                    <td class="amount"> Php {{this.amount}}</td>
+                    <td class="type"> {{this.type}}</td>
+                    <td class="payee"> {{this.payee}}</td>
+                    <td class="payer">{{this.payer}}</td>
+                    <td class="contact">{{this.payerContact}}</td> 
+                    <td class="notes">{{this.notes}}</td>
+                    <td>
+                        <button class="button launchUpdate" data-id={{this._id}} type="button" data-toggle="modal" data-target="#updateModal">Update</button>
+                    </td>
+                    <td>
+                        <button class="button launchDelete" data-id={{this._id}} type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                    </td>
+
+                </tr>
+                {{/each}}
+            </tbody>
+
+        </table>
+        </form>
+    </div>
+
+    <!-- Add Transaction Modal -->
+    <div class="modal" id="modalbg" data-backdrop="false">
+        <!-- Modal Content -->
+        <div class="addmodal">
+        <!-- Modal Close Button -->
+        <span class="close" data-dismiss="modal">&times;</span>
+        <br>
+        <!-- Modal Form -->
+        <div class="modalbody">
+            <!-- Modal Add Transaction Fields -->
+            <div class="inputcontainer">
+            <h1>Add a Transaction</h1>
+            <form method='POST' autocomplete="off" name="addSupplier" action='/transactions/addTransaction'>
                 <!-- Description -->
                 <div class="formcontainer">
                     <div class="formlabel">
-                       Description
+                    Description
                     </div>
                     <div class="forminput">
-                        <input type="text" id="updateDesc">
+                        <input type="text" name="description" required>
                     </div>
                 </div>
                 <br>
@@ -220,18 +119,29 @@
                         Date of Transaction
                     </div>
                     <div class="forminput">
-                        <input type="date" id="updateDate">
+                        <input type="date" name="date" required>
                     </div>
                 </div>
                 <br>
-                
+
+                <!-- Date Due -->
+                <div class="formcontainer">
+                    <div class="formlabel">
+                        Date Due
+                    </div>
+                    <div class="forminput">
+                        <input type="date" name="due" required>
+                    </div>
+                </div>
+                <br>
+
                 <!-- Amount -->
                 <div class="formcontainer">
                     <div class="formlabel">
-                       Amount
+                        Amount
                     </div>
                     <div class="forminput">
-                        <input type="text" id="updateAmount">
+                        <input type="number" name="amount" required>
                     </div>
                 </div>
                 <br>
@@ -239,10 +149,10 @@
                 <!-- Type -->
                 <div class="formcontainer">
                     <div class="formlabel">
-                       Type
+                        Type
                     </div>
                     <div class="forminput">
-                        <input type="text" id="updateType">
+                        <input type="text" name="type" required>
                     </div>
                 </div>
                 <br>
@@ -253,7 +163,7 @@
                         Payee
                     </div>
                     <div class="forminput">
-                        <input type="text" id="updatePayee">
+                        <input type="text" name="payee" required>
                     </div>
                 </div>
                 <br>
@@ -264,18 +174,18 @@
                         Payer
                     </div>
                     <div class="forminput">
-                        <input type="text" id="updatePayer">
+                        <input type="text" name="payer" required>
                     </div>
                 </div>
                 <br>
 
-                <!-- Payer Contact No. -->
+                <!-- Payer Contact No -->
                 <div class="formcontainer">
                     <div class="formlabel">
-                        Payer Contact No.
+                        Payer Contact No
                     </div>
                     <div class="forminput">
-                        <input type="text" id="updateContact">
+                        <input type="text" name="contact" required>
                     </div>
                 </div>
                 <br>
@@ -286,34 +196,171 @@
                         Notes
                     </div>
                     <div class="forminput">
-                        <input type="text" id="updateNotes">
+                        <input type="text" name="notes">
                     </div>
                 </div>
                 <br>
-                    <!-- Modal Button -->
+
+                <br>
+                <!-- Modal Button -->
                 <div class="modalbtncontainer">
-                    <button type="submit" class="button" id="btnUpdateItem">Update</button>
+                    <button type="submit" id="add-item-btn" class="button">Add</button>
                 </div>
             </form>
+            </div>
+            <br>
         </div>
-        <br>
+        </div>
     </div>
-    </div>
-</div>
 
-<script>
-    var modal = document.getElementById("modalbg");
-    var btn = document.getElementById("btnadditemmodal");
-    var span = document.getElementsByClassName("close")[0];
-    btn.onclick = function() {
-    modal.style.display = "block";
-    }
-    span.onclick = function() {
-    modal.style.display = "none";
-    }
-    window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-    }
-</script>
+    <!-- Update Product Modal -->
+    <div id="updateModal" class="modal" data-backdrop="false">
+        <!-- Modal Content -->
+        <div class="addmodal">
+        <!-- Modal Close Button -->
+        <span class="close" data-dismiss="modal">&times;</span>
+        <br>
+        <!-- Modal Form -->
+        <div class="modalbody">
+            <!-- Modal Add Item Fields -->
+            <div class="inputcontainer">
+                <h1>Update Transaction</h1>
+                <form id="updateForm"> 
+                    <!-- Description -->
+                    <div class="formcontainer">
+                        <div class="formlabel">
+                        Description
+                        </div>
+                        <div class="forminput">
+                            <input type="text" id="updateDesc">
+                        </div>
+                    </div>
+                    <br>
+
+                    <!-- Date of Transaction -->
+                    <div class="formcontainer">
+                        <div class="formlabel">
+                            Date of Transaction
+                        </div>
+                        <div class="forminput">
+                            <input type="date" id="updateDate">
+                        </div>
+                    </div>
+                    <br>
+
+                    <!-- Date Due -->
+                    <div class="formcontainer">
+                        <div class="formlabel">
+                            Date Due
+                        </div>
+                        <div class="forminput">
+                            <input type="date" id="updateDue">
+                        </div>
+                    </div>
+                    <br>
+                    
+                    <!-- Amount -->
+                    <div class="formcontainer">
+                        <div class="formlabel">
+                        Amount
+                        </div>
+                        <div class="forminput">
+                            <input type="text" id="updateAmount">
+                        </div>
+                    </div>
+                    <br>
+
+                    <!-- Type -->
+                    <div class="formcontainer">
+                        <div class="formlabel">
+                        Type
+                        </div>
+                        <div class="forminput">
+                            <input type="text" id="updateType">
+                        </div>
+                    </div>
+                    <br>
+
+                    <!-- Payee -->
+                    <div class="formcontainer">
+                        <div class="formlabel">
+                            Payee
+                        </div>
+                        <div class="forminput">
+                            <input type="text" id="updatePayee">
+                        </div>
+                    </div>
+                    <br>
+
+                    <!-- Payer -->
+                    <div class="formcontainer">
+                        <div class="formlabel">
+                            Payer
+                        </div>
+                        <div class="forminput">
+                            <input type="text" id="updatePayer">
+                        </div>
+                    </div>
+                    <br>
+
+                    <!-- Payer Contact No. -->
+                    <div class="formcontainer">
+                        <div class="formlabel">
+                            Payer Contact No.
+                        </div>
+                        <div class="forminput">
+                            <input type="text" id="updateContact">
+                        </div>
+                    </div>
+                    <br>
+
+                    <!-- Notes -->
+                    <div class="formcontainer">
+                        <div class="formlabel">
+                            Notes
+                        </div>
+                        <div class="forminput">
+                            <input type="text" id="updateNotes">
+                        </div>
+                    </div>
+                    <br>
+                        <!-- Modal Button -->
+                    <div class="modalbtncontainer">
+                        <button type="submit" class="button" id="btnUpdateItem">Update</button>
+                    </div>
+                </form>
+            </div>
+            <br>
+        </div>
+        </div>
+    </div>
+
+
+    <!-- Delete Transaction Modal -->
+    <div id="deleteModal" class="modal" data-backdrop="false">
+        <!-- Modal Content -->
+        <div class="addmodal delmodal">
+        <!-- Modal Close Button -->
+        <span class="close" data-dismiss="modal">&times;</span>
+        <br>
+        <!-- Modal Form -->
+        <div class="modalbody">
+            <!-- Modal Add Item Fields -->
+            <div class="delcontainer">
+                <h1>Delete Transaction</h1>
+                <p>Are you sure you want to delete this transaction?</p>
+                <form id="deleteForm">
+                    <div class="del-btn-group">
+                        <div>
+                            <button type="submit" class="button" id="btnDeleteItem">Delete</button>
+                            <button type="submit" class="button" id="btnCancelDeleteItem">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <br>
+        </div>
+        </div>
+    </div>
+
+</div>

@@ -5,6 +5,7 @@
     <script src='time.js'></script>
 {{/section}}
 
+<div class="container wrapper">
 <!-- Event Image Header -->
 <header class="container">
     <div class = "container-fluid org-header">
@@ -30,13 +31,19 @@
                 <li style="background-color: aquamarine;">Raw Materials: You have {{rawCount}} item/s about to expire</li>
             {{/if}}
             {{#if expiredRaw}}
-                <li style="background-color: aquamarine;">Raw Materials: You have {{rawCount}} item/s that are expired</li>
+                <li style="background-color: bisque;">Raw Materials: You have {{expiredRaw}} item/s that are expired</li>
             {{/if}}
             {{#if productCount}}
                 <li style="background-color: aquamarine;">Products: You have {{productCount}} item/s about to expire</li>
             {{/if}}
             {{#if expiredProd}}
-                <li style="background-color: bisque;">Products: You have {{productCount}} item/s that are expired</li>
+                <li style="background-color: bisque;">Products: You have {{expiredProd}} item/s that are expired</li>
+            {{/if}}
+            {{#if transCount}}
+                <li style="background-color: aquamarine;">Transactions: You have {{transCount}} transaction/s about to expire</li>
+            {{/if}}
+            {{#if expiredTrans}}
+                <li style="background-color: bisque;">Transactions: You have {{expiredTrans}} transaction/s that are expired</li>
             {{/if}}
             <!--
             <li style="background-color: rgb(233, 127, 127);">Transactions: You have 3 items about to expire</li>
@@ -46,42 +53,46 @@
 </div>
 <!-- Pages -->
 <div class="container adjustment">
-    <div>
-        <p class="mb-0">Quick Navigation</p>
-        <span>Click on one of these cards to navigate to the database.</span>
-    </div>
-    <div class="row">
-        <a href="/suppliers" class="col-sm">
-            <span>
-                Suppliers
-            </span>
-        </a>
-         <a href="/raw" class="col-sm">
-            <span>
-                Raw Materials
-            </span>
-        </a>
-        <a href = "/inventory" class="col-sm">
-            <span>
-                Products
-            </span>
-        </a>
-    </div>
-    <div class="row" style="margin-top: 14px;">
-        <a href="/transactions" class="col-sm">
-            <span>
-                Transactions
-            </span>
-        </a>
-        <div class="col-sm to-add">
-            <span>
-                Coming Soon
-            </span>
+    <div class="pb-4">
+        <div>
+            <p class="mb-0">Quick Navigation</p>
+            <span>Click on one of these cards to navigate to the database.</span>
         </div>
-        <div class="col-sm to-add">
-           <span>
-                Coming Soon
-            </span> 
+        <div class="row">
+            <a href="/suppliers" class="col-sm">
+                <span>
+                    Suppliers
+                </span>
+            </a>
+            <a href="/raw" class="col-sm">
+                <span>
+                    Raw Materials
+                </span>
+            </a>
+            <a href = "/inventory" class="col-sm">
+                <span>
+                    Products
+                </span>
+            </a>
+        </div>
+        <div class="row" style="margin-top: 14px;">
+            <a href="/transactions" class="col-sm">
+                <span>
+                    Transactions
+                </span>
+            </a>
+            <div class="col-sm to-add">
+                <span>
+                    Coming Soon
+                </span>
+            </div>
+            <div class="col-sm to-add">
+            <span>
+                    Coming Soon
+                </span> 
+            </div>
         </div>
     </div>
+</div>
+
 </div>
