@@ -19,14 +19,14 @@ exports.getStocks = function(req, res) {
                 res.render('raw',params)
                 //res.send(params)
             }
-        })   
+        })
 }
 
 
-exports.getStockDetails = function(req,res) 
+exports.getStockDetails = function(req,res)
 {
   var itemID = mongoose.Types.ObjectId(req.params.id);
-  
+
   stockModel.findById(itemID)
     .exec(function(err,results){
       if (err)
@@ -39,29 +39,39 @@ exports.getStockDetails = function(req,res)
 }
 
 exports.addStock = function(req, res) {
-  const {rawMaterial, supplier, expirationDate, dateBought, quantity, unit, cost, location} = req.body;
+  const errors = validationResult(req);
 
-  const obj = {
-    rawMaterial : rawMaterial,
-    supplier : supplier,
-    expirationDate : expirationDate,
-    dateBought :dateBought,
-    quantity: quantity,
-    location: location,
-    unit: unit,
-    cost: cost
-  };
+  if(errors.isEmpty()){
+    const {rawMaterial, supplier, expirationDate, dateBought, quantity, unit, cost, location} = req.body;
 
-  stockModel.create(obj, function(err, result){
-    if (err) {
-      console.log(err);
-      req.flash('error_msg', 'Could not add product. Please Try Again!');
-    } else {
-      req.flash("success_msg", 'Raw Material added!');
-      res.redirect('/raw');
-    }
-  })
-}
+    const obj = {
+      rawMaterial : rawMaterial,
+      supplier : supplier,
+      expirationDate : expirationDate,
+      dateBought :dateBought,
+      quantity: quantity,
+      location: location,
+      unit: unit,
+      cost: cost
+    };
+
+    stockModel.create(obj, function(err, result){
+      if (err) {
+        console.log(err);
+        req.flash('error_msg', 'Could not add raw material. Please Try Again!');
+        res.redirect('/raw');
+      } else {
+        req.flash("success_msg", 'Raw material added!');
+        res.redirect('/raw');
+      }
+    })
+  } else {
+    const messages = errors.array().map((item) => item.msg);
+
+    req.flash('error_msg', messages.join(' '));
+    res.redirect('/raw')
+  }
+};
 
 exports.updateStock = function(req,res) {
 
@@ -76,7 +86,7 @@ exports.updateStock = function(req,res) {
         location: req.body.location,
         unit: req.body.unit,
         cost: req.body.cost
-      }      
+      }
     }, (err) => {
       if(err)
         res.send(err);
