@@ -9,5 +9,7 @@ router.post('/addStock', stockController.addStock)
 router.post('/updateStock/:id', stockController.updateStock)
 router.delete('/deleteItem/:id', stockController.deleteItem)
 router.get('/sortByRawMaterial', stockController.sortByRawMaterial)
+router.get('/sortBySupplier', stockController.sortBySupplier)
+router.get('/sortByExpiry', stockController.sortByExpiry)
 
 module.exports = router;

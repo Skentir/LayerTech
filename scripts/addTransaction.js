@@ -74,11 +74,11 @@ $(document).ready(function() {
   })
 
   var deleteID;
-  $(".launchDelete").click(function(){
+  $(this).on('click',".launchDelete",function(){
       deleteID = $(this).data('id');
   });
 
-  $("#btnDeleteItem").click(function(){
+  $(this).on('click',"#btnDeleteItem",function(){
       $.ajax({
           url: "/transactions/deleteItem/"+deleteID,
           type: 'DELETE'

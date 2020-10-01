@@ -107,3 +107,32 @@ exports.sortByRawMaterial = function(req,res) {
     }
   })
 }
+
+exports.sortBySupplier = function(req,res) {
+  stockModel.find({})
+  .sort({supplier: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+        var prod = JSON.parse(JSON.stringify(results))
+        res.send(prod)
+    }
+  })
+}
+
+
+exports.sortByExpiry = function(req,res) {
+  stockModel.find({})
+  .sort({expirationDate: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      //req.flash('error_msg', 'Could not add product. Please Try Again!');
+      res.send(err);
+    } else {
+        var prod = JSON.parse(JSON.stringify(results))
+        res.send(prod)
+    }
+  })
+}

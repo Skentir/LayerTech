@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  
+    var month = [ "January","February","March","April","May","June","July","August","September","October","November","December"];
     var itemID;
 
     $(".filterRawMaterial").click(function() {
@@ -8,7 +8,6 @@ $(document).ready(function(){
             type: "GET",
             url: "/raw/sortByRawMaterial"
         }).done(function(data) {
-            var res = "";
             data.forEach(function(entry) {
                 var expiry = new Date(entry.expirationDate);
                 var finalExpiry= month[expiry.getMonth()]+ " " + expiry.getDate() +", "+expiry.getFullYear();
@@ -37,9 +36,80 @@ $(document).ready(function(){
             });
         });
     });
+
+    $(".filterSupplier").click(function() {
+        $(".inventorytable tbody tr").remove();
+        $.ajax({
+            type: "GET",
+            url: "/raw/sortBySupplier"
+        }).done(function(data) {
+            data.forEach(function(entry) {
+                var expiry = new Date(entry.expirationDate);
+                var finalExpiry= month[expiry.getMonth()]+ " " + expiry.getDate() +", "+expiry.getFullYear();
+                var bought = new Date(entry.dateBought);
+                var finalBought = month[bought.getMonth()]+ " " + bought.getDate() +", "+bought.getFullYear();
+                var row = 
+                    `<tr id=`+entry._id+`>
+                        <td class="rawMaterial">`+ entry.rawMaterial +`</td>
+                        <td class="supplier">`+ entry.supplier +`</td>
+                        <td class="expiry">`+ finalExpiry+`</td>
+                        <td>`+ finalBought+`</td>
+                        <td class="quantity">`+entry.quantity+`</td>
+                        <td class="location">`+entry.location+`</td> 
+                        <td class="unit">Php `+ entry.unit+`</td>
+                        <td class="cost">Php `+entry.cost+`</td>
+                       
+                        
+                        <td>
+                            <button class="button launchUpdate" data-id=`+entry._id+` type="button" data-toggle="modal" data-target="#updateModal">Update</button>
+                        </td>
+                        <td>
+                            <button class="button launchDelete" data-id=`+entry._id+` type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                        </td>
+                    </tr>`
+                $('.inventorytable tbody').append(row)
+            });
+        });
+    });
+
+    $(".filterExpiry").click(function() {
+        $(".inventorytable tbody tr").remove();
+        $.ajax({
+            type: "GET",
+            url: "/raw/sortByExpiry"
+        }).done(function(data) {
+            data.forEach(function(entry) {
+                var expiry = new Date(entry.expirationDate);
+                var finalExpiry= month[expiry.getMonth()]+ " " + expiry.getDate() +", "+expiry.getFullYear();
+                var bought = new Date(entry.dateBought);
+                var finalBought = month[bought.getMonth()]+ " " + bought.getDate() +", "+bought.getFullYear();
+                var row = 
+                    `<tr id=`+entry._id+`>
+                        <td class="rawMaterial">`+ entry.rawMaterial +`</td>
+                        <td class="supplier">`+ entry.supplier +`</td>
+                        <td class="expiry">`+ finalExpiry+`</td>
+                        <td>`+ finalBought+`</td>
+                        <td class="quantity">`+entry.quantity+`</td>
+                        <td class="location">`+entry.location+`</td> 
+                        <td class="unit">Php `+ entry.unit+`</td>
+                        <td class="cost">Php `+entry.cost+`</td>
+                       
+                        
+                        <td>
+                            <button class="button launchUpdate" data-id=`+entry._id+` type="button" data-toggle="modal" data-target="#updateModal">Update</button>
+                        </td>
+                        <td>
+                            <button class="button launchDelete" data-id=`+entry._id+` type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                        </td>
+                    </tr>`
+                $('.inventorytable tbody').append(row)
+            });
+        });
+    });
+
     
 
-  $(".launchUpdate").click(function(){
+  $(this).on('click',".launchUpdate",function(){
       itemID = $(this).data('id');
 
     $.ajax({
@@ -107,15 +177,16 @@ $(document).ready(function(){
     });
     
     var deleteID;
-    $(".launchDelete").click(function(){
+    $(this).on('click',".launchDelete",function(){
         deleteID = $(this).data('id');
     });
 
-    $("#btnDeleteItem").click(function(){
+    $(this).on('click',"#btnDeleteItem",function(){
         $.ajax({
             url: "/raw/deleteItem/"+deleteID,
             type: 'DELETE'
         });
-    });
+        });
 });
+
 
