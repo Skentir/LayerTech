@@ -65,7 +65,7 @@ exports.getExpired = function(req, res) {
                     var transCount = 0;
                     expiredTrans = 0;
                     results.forEach(function(entry) {
-                        val = isExpired(entry.expirationDate)
+                        val = isExpired(entry.dateDue)
                         if (val == 1) 
                             transCount++;
                         else if(val == 2)
