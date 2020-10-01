@@ -218,7 +218,7 @@ $(document).ready(function() {
               $("#updatelocation").val(data.location);
               $("#updateForm").attr('data-id', data._id);
               var parsedDate = new Date(data.expirationDate);
-              var finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + ("0" + (parsedDate.getDay() + 1)).slice(-2);
+              var finalDate = parsedDate.getFullYear() + "-" + ("0" + (parsedDate.getMonth() + 1)).slice(-2) + "-" + ("0" + (parsedDate.getDate() + 1)).slice(-2);
               $("#updateexpiry").val(finalDate);
 
           }).fail(function(){
