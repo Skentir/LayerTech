@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const suppController = require('../controllers/suppCtrl');
 
-router.get('/', suppController.getSuppliers);
+const { isPublic, isPrivate } = require('../middlewares/authenticator');
+router.get('/',isPrivate, suppController.getSuppliers);
 router.get('/getSupplierDetails/:id', suppController.getSupplierDetails);
 router.post('/addSupplier', suppController.addSupplier);
 router.post('/updateSupplier/:id', suppController.updateSupplier);

@@ -1,6 +1,8 @@
 const router = require('express').Router();
 
-router.get('/', (req, res) => {
+const { isPublic, isPrivate } = require('../middlewares/authenticator');
+
+router.get('/', isPublic ,(req, res) => {
   res.render('login', { 
       layout: 'login',
     });

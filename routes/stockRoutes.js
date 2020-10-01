@@ -1,8 +1,9 @@
 const router = require('express').Router();
 
 const stockController = require('../controllers/stockCtrl');
+const { isPublic, isPrivate } = require('../middlewares/authenticator');
 
-router.get('/', stockController.getStocks)
+router.get('/', isPrivate ,stockController.getStocks)
 router.get('/getStockDetails/:id', stockController.getStockDetails)
 router.post('/addStock', stockController.addStock)
 router.post('/updateStock/:id', stockController.updateStock)

@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const transacController = require('../controllers/transacCtrl.js');
+const { isPublic, isPrivate } = require('../middlewares/authenticator');
 
-router.get('/',  transacController.getTransactions);
+router.get('/', isPrivate, transacController.getTransactions);
 
 router.get('/getTransactionDetails/:id', transacController.getTransactionDetails);
 router.post('/addTransaction', transacController.addTransaction);
