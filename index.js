@@ -35,7 +35,7 @@ app.engine( 'hbs', exphbs({
             return null;
         },
         'formatDate': function(dateTime) {
-          return moment(dateTime).add('days', 1).format('MMMM DD, YYYY')
+          return moment(dateTime).add(1, 'days').format('MMMM DD, YYYY')
         }
     }
 }));
