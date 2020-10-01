@@ -105,3 +105,16 @@ exports.sortByName = function(req,res) {
     }
   })
 }
+
+exports.sortByCompany = function(req,res) {
+  supplierModel.find({})
+  .sort({company: 'ascending'})
+  .exec(function(err, results) {
+    if(err) {
+      res.send(err);
+    } else {
+        var supp = JSON.parse(JSON.stringify(results))
+        res.send(supp)
+    }
+  })
+}

@@ -30,6 +30,37 @@ $(document).ready(function() {
             });
         });
     });
+    
+    $(".filterCompany").click(function() {
+        $(".inventorytable tbody tr").remove();
+        $.ajax({
+            type: "GET",
+            url: "/suppliers/sortByCompany"
+        }).done(function(data) {
+            var res = "";
+            data.forEach(function(entry) {
+                var row = 
+                    `<tr id={`+entry._id+`>
+                        <td class="name">`+entry.name+`</td>
+                        <td class="position">`+entry.position+`</td>
+                        <td class="company">`+entry.companyName+`</td>
+                        <td class="contact">`+entry.contactNo+`</td>
+                        <td class="email">`+entry.email+`</td>
+                        <td class="contract">`+entry.contractTerms+`</td>
+                        <td class="notes">`+entry.notes+`</td>
+                        <td>
+                            <button class="button launchUpdate" data-id=`+entry._id+` type="button" data-toggle="modal" data-target="#updateModal">Update</button>
+                        </td>
+                        <td>
+                            <button class="button launchDelete" data-id=`+entry._id+` type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                        </td>
+                    </tr>`
+                $('.inventorytable tbody').append(row)
+            });
+        });
+    });
+    
+
     // UPDATE PRODUCT
   $(this).on('click','.launchUpdate',function(){
       itemID = $(this).data('id');
