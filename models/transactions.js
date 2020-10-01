@@ -2,7 +2,7 @@ const mongoose = require('./connection');
 
 const transactionSchema = new mongoose.Schema({
     dateStarted: {type: Date}, //needs input validation
-    dateFinished: {type: Date}, //cannot be earlier than started
+    dateDue: {type: Date}, //cannot be earlier than started
     amount: {type: Number},
     payee: {type: String},
     payer: {type: String},

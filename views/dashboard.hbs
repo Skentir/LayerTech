@@ -39,6 +39,12 @@
             {{#if expiredProd}}
                 <li style="background-color: bisque;">Products: You have {{expiredProd}} item/s that are expired</li>
             {{/if}}
+            {{#if transCount}}
+                <li style="background-color: aquamarine;">Transactions: You have {{transCount}} transaction/s about to expire</li>
+            {{/if}}
+            {{#if expiredTrans}}
+                <li style="background-color: bisque;">Transactions: You have {{expiredTrans}} transaction/s that are expired</li>
+            {{/if}}
             <!--
             <li style="background-color: rgb(233, 127, 127);">Transactions: You have 3 items about to expire</li>
             -->
