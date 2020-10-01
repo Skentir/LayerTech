@@ -1,0 +1,13 @@
+@media screen and (max-width: 770px) {
+    td:nth-of-type(1):before { content: "DESCRIPTION"; }
+    td:nth-of-type(2):before { content: "DATE"; }
+    td:nth-of-type(3):before { content: "DUE DATE"; }
+    td:nth-of-type(4):before { content: "AMOUNT"; }
+    td:nth-of-type(5):before { content: "TYPE"; }
+    td:nth-of-type(6):before { content: "PAYEE"; }
+    td:nth-of-type(7):before { content: "PAYER"; }
+    td:nth-of-type(8):before { content: "PAYER CONTACT"; }
+    td:nth-of-type(9):before { content: "NOTES"; }
+    td:nth-of-type(10):before { content: "UPDATE";}
+    td:nth-of-type(11):before { content: "DELETE"; }
+}

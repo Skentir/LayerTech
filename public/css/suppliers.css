@@ -1,0 +1,11 @@
+@media screen and (max-width: 770px) {
+    td:nth-of-type(1):before { content: "NAME"; }
+    td:nth-of-type(2):before { content: "POSITION"; }
+    td:nth-of-type(3):before { content: "COMPANY"; }
+    td:nth-of-type(4):before { content: "CONTACT NO"; }
+    td:nth-of-type(5):before { content: "EMAIL"; }
+    td:nth-of-type(6):before { content: "CONTRACT TERMS"; }
+    td:nth-of-type(7):before { content: "NOTES"; }
+    td:nth-of-type(8):before { content: "UPDATE"; }
+    td:nth-of-type(9):before { content: "DELETE";}
+}
