@@ -245,12 +245,10 @@ $(document).ready(function() {
             location: location
         }
         
-        var today = new Date()
-        var d2 = new Date(expiryDate)
-        var diff = d2-today;
-        const diffDays = Math.ceil(diff / (1000 * 60 * 60 * 24));   
+        const diffTime = expiry-bought;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     
-        if ((diffDays) < 0) {
+        if ((diffDays) > 0) {
             $.ajax({
                 type: "POST",
                 data : JSON.stringify(object),
