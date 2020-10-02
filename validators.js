@@ -39,7 +39,7 @@ const addProductValidation = [
       var expirationDate = new Date(req.body.expirationDate).getTime();
 
       if (dateBought > expirationDate) {
-        throw new Error("Date bought must be greater than expiration date.");
+        throw new Error("Date bought must be before expiration date.");
       }
       return true;
     }),
@@ -89,7 +89,7 @@ location
       var expirationDate = new Date(req.body.expirationDate).getTime();
 
       if (dateBought > expirationDate) {
-        throw new Error("Date bought must be greater than expiration date.");
+        throw new Error("Date bought must be before expiration date.");
       }
       return true;
     }),
@@ -134,7 +134,7 @@ location
       var expirationDate = new Date(req.body.expirationDate).getTime();
 
       if (dateBought > expirationDate) {
-        throw new Error("Date bought must be greater than expiration date.");
+        throw new Error("Date bought must be before expiration date.");
       }
       return true;
     }),
