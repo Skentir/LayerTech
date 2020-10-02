@@ -83,6 +83,7 @@ exports.updateItem = function(req,res) {
         basePrice: req.body.base,
         sellingPrice: req.body.selling,
         expirationDate: req.body.expiry,
+        dateBought: req.body.bought,
         location: req.body.location
       }
     }, (err) => {
